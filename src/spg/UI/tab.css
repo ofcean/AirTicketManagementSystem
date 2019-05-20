@@ -1,0 +1,27 @@
+.tab {
+    -fx-pref-width: 200;
+    -fx-pref-height: 80;
+    -fx-font-family: "Microsoft YaHei UI";
+}
+
+.tab-header-background {
+    -fx-background-color: #34495e;
+}
+
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-background-color: white;
+}
+
+.jfx-tab-pane .tab-header-area .jfx-rippler {
+    -jfx-rippler-fill: white;
+}
+
+.combo-box {
+    -fx-font-size: 24px;
+    -fx-font-family: "Microsoft YaHei UI Light";
+}
+
+.table-view {
+    -fx-font-family: "Microsoft YaHei UI Light";
+}
