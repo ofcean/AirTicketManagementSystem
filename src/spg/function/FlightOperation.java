@@ -120,7 +120,7 @@ public class FlightOperation implements Tool {
         Connection conn = null;
         try {
             conn = DatabaseConnection.getCon();
-            String sql = "delete from Flight.tb_flight where flightNum = ?";
+            String sql = "delete from flight.flight where flight_id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, flightNum);
             int i = stmt.executeUpdate();

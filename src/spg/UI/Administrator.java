@@ -14,7 +14,6 @@ import com.jfoenix.controls.JFXToggleButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.beans.NamedArg;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -375,6 +374,10 @@ public class Administrator implements Tool {
                     comboCity21.getValue() == null ? "不限制" : comboCity21.getValue(), comboCity23.getValue() == null ? "不限制" : comboCity23.getValue()));
 
         });
+
+        buttonExit5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            System.exit(0);
+        });
     }
 
 
@@ -427,6 +430,7 @@ public class Administrator implements Tool {
                         this.setGraphic(delBtn);
                         delBtn.setOnMouseClicked((me) -> {
                             Flight clickedFli = this.getTableView().getItems().get(this.getIndex());
+                            op.deleteFlight(clickedFli.getFlightId());
                         });
                     }
                 }
