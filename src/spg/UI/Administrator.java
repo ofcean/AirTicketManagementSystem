@@ -14,6 +14,7 @@ import com.jfoenix.controls.JFXToggleButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.NamedArg;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +26,7 @@ import spg.function.FlightOperation;
 import spg.function.Tool;
 
 public class Administrator implements Tool {
+    private FlightOperation op = new FlightOperation();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -111,16 +113,37 @@ public class Administrator implements Tool {
     private TableColumn<Flight, String> colAirway; // Value injected by FXMLLoader
 
     @FXML // fx:id="colCity"
-    private TableColumn<Flight, String> colCity; // Value injected by FXMLLoader
+    private TableColumn<Flight, String> colCity1; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colCity2"
+    private TableColumn<Flight, String> colCity2; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colCity3"
+    private TableColumn<Flight, String> colCity3; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTime"
-    private TableColumn<Flight, String> colTime; // Value injected by FXMLLoader
+    private TableColumn<Flight, String> colTime1; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colTime2"
+    private TableColumn<Flight, String> colTime2; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colTime3"
+    private TableColumn<Flight, String> colTime3; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colTime4"
+    private TableColumn<Flight, String> colTime4; // Value injected by FXMLLoader
 
     @FXML // fx:id="colPrice"
-    private TableColumn<Flight, String> colPrice; // Value injected by FXMLLoader
+    private TableColumn<Flight, String> colPrice1; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colPrice2"
+    private TableColumn<Flight, String> colPrice2; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTicket"
-    private TableColumn<Flight, String> colTicket; // Value injected by FXMLLoader
+    private TableColumn<Flight, String> colTicket1; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colTicket2"
+    private TableColumn<Flight, String> colTicket2; // Value injected by FXMLLoader
 
     @FXML // fx:id="colStatus"
     private TableColumn<Flight, String> colStatus; // Value injected by FXMLLoader
@@ -259,10 +282,17 @@ public class Administrator implements Tool {
         assert tableFlight != null : "fx:id=\"tableFlight\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert colId != null : "fx:id=\"colId\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert colAirway != null : "fx:id=\"colAirway\" was not injected: check your FXML file 'Administrator.fxml'.";
-        assert colCity != null : "fx:id=\"colCity\" was not injected: check your FXML file 'Administrator.fxml'.";
-        assert colTime != null : "fx:id=\"colTime\" was not injected: check your FXML file 'Administrator.fxml'.";
-        assert colPrice != null : "fx:id=\"colPrice\" was not injected: check your FXML file 'Administrator.fxml'.";
-        assert colTicket != null : "fx:id=\"colTicket\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colCity1 != null : "fx:id=\"colCity1\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colCity2 != null : "fx:id=\"colCity2\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colCity3 != null : "fx:id=\"colCity3\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colTime1 != null : "fx:id=\"colTime1\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colTime2 != null : "fx:id=\"colTime2\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colTime3 != null : "fx:id=\"colTime3\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colTime4 != null : "fx:id=\"colTime4\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colPrice1 != null : "fx:id=\"colPrice1\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colPrice2 != null : "fx:id=\"colPrice2\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colTicket1 != null : "fx:id=\"colTicket1\" was not injected: check your FXML file 'Administrator.fxml'.";
+        assert colTicket2 != null : "fx:id=\"colTicket2\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert colStatus != null : "fx:id=\"colStatus\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert colDelete != null : "fx:id=\"colDelete\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert textFlight31 != null : "fx:id=\"textFlight31\" was not injected: check your FXML file 'Administrator.fxml'.";
@@ -307,8 +337,10 @@ public class Administrator implements Tool {
         comboAirway3.setItems(FXCollections.observableArrayList(AIRWAYS));
 
         //Initializes the toggleIsStop1 and toggleIsStop3
-        toggleIsStop1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setMyDisable(toggleIsStop1, comboCity12, date12, time12, date13, time13, textPrice12, textTicket12));
-        toggleIsStop3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setMyDisable(toggleIsStop3, comboCity32, date32, time32, date33, time33, textPrice32, textTicket32));
+        toggleIsStop1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setMyDisable(toggleIsStop1, comboCity12,
+                date12, time12, date13, time13, textPrice12, textTicket12));
+        toggleIsStop3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setMyDisable(toggleIsStop3, comboCity32,
+                date32, time32, date33, time33, textPrice32, textTicket32));
 
         buttonAdd1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             FlightOperation operation = new FlightOperation();
@@ -337,7 +369,14 @@ public class Administrator implements Tool {
             newFlight.addFlight(textFlightId1.getText(), comboAirway1.getValue(), place, time, toggleIsStop1.isSelected(), ticket, price);
             operation.saveFlight(newFlight);//Save the data in the database
         });
+
+        buttonSearch2.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            this.showFlightTable(op.seekFlight(textFlightId2.getText().equals("") ? "不限制" : textFlightId2.getText(),
+                    comboCity21.getValue() == null ? "不限制" : comboCity21.getValue(), comboCity23.getValue() == null ? "不限制" : comboCity23.getValue()));
+
+        });
     }
+
 
     //About initializes the toggleIsStop1 and toggleIsStop3
     private void setMyDisable(JFXToggleButton a, JFXComboBox b, JFXDatePicker c, JFXTimePicker d, JFXDatePicker e, JFXTimePicker f, TextField g, TextField h) {
@@ -360,21 +399,21 @@ public class Administrator implements Tool {
         }
     }
 
-    public ObservableList<Flight> getFlightData() {
-        Flight flight1 = new Flight();
-        ObservableList<Flight> flightList = FXCollections.observableArrayList(flight1);
-        return flightList;
-    }
-
     public void showFlightTable(ObservableList<Flight> flightList) {
         colId.setCellValueFactory(new PropertyValueFactory<>("flightId"));
         colAirway.setCellValueFactory(new PropertyValueFactory<>("airway"));
-        colCity.setCellValueFactory(new PropertyValueFactory<>("place"));
-        colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-        colTicket.setCellValueFactory(new PropertyValueFactory<>("ticket"));
-        colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        colCity1.setCellValueFactory((new PropertyValueFactory<>("place1")));
+        colCity2.setCellValueFactory(new PropertyValueFactory<>("place2"));
+        colCity3.setCellValueFactory(new PropertyValueFactory<>("place3"));
+        colTime1.setCellValueFactory(new PropertyValueFactory<>("time1"));
+        colTime2.setCellValueFactory(new PropertyValueFactory<>("time2"));
+        colTime3.setCellValueFactory(new PropertyValueFactory<>("time3"));
+        colTime4.setCellValueFactory(new PropertyValueFactory<>("time4"));
+        colTicket1.setCellValueFactory(new PropertyValueFactory<>("ticket1"));
+        colTicket2.setCellValueFactory(new PropertyValueFactory<>("ticket2"));
+        colPrice1.setCellValueFactory(new PropertyValueFactory<>("price1"));
+        colPrice2.setCellValueFactory(new PropertyValueFactory<>("price2"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-
         colDelete.setCellFactory((col) -> {
             TableCell<Flight, String> cell = new TableCell<Flight, String>() {
 
@@ -383,7 +422,6 @@ public class Administrator implements Tool {
                     super.updateItem(item, empty);
                     this.setText(null);
                     this.setGraphic(null);
-
                     if (!empty) {
                         JFXButton delBtn = new JFXButton("删除");
                         this.setGraphic(delBtn);
@@ -398,4 +436,5 @@ public class Administrator implements Tool {
         });
         tableFlight.setItems(flightList);
     }
+
 }
