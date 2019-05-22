@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import java.lang.String;
 
 public class FlightOperation implements Tool {
+
     private static FlightOperation instance = new FlightOperation();
 
     public static FlightOperation getInstance() {

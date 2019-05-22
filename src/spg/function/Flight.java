@@ -1,6 +1,7 @@
 package spg.function;
 
 public class Flight implements spg.function.Tool {
+
     private String flightId;//flight number
     private String airway;//airway
     private String status;//Flight status: normal, delayed
@@ -11,6 +12,7 @@ public class Flight implements spg.function.Tool {
     private int price1, price2;
     //The total ticket price of the whole journey or the first journey ticket price,
     //the second journey ticket price and the total ticket price shall be the sum of the two multiplied by 0.9
+
 
     public Flight() {//Initial flight
         status = "正常";
@@ -32,16 +34,6 @@ public class Flight implements spg.function.Tool {
         this.ticket2 = ticket[1];
         this.price1 = price[0];
         this.price2 = price[1];
-    }
-
-    //取消航班
-    public void deleteFlight(int flightNum) {
-
-    }
-
-    //修改航班信息
-    public void updateInfo() {
-
     }
 
     public String getFlightId() {
