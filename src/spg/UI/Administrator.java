@@ -12,6 +12,9 @@ import com.jfoenix.controls.JFXTimePicker;
 import com.jfoenix.controls.JFXToggleButton;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -23,6 +26,7 @@ import javafx.scene.input.MouseEvent;
 import spg.function.Flight;
 import spg.function.FlightOperation;
 import spg.function.Tool;
+import sun.awt.SunHints;
 
 public class Administrator implements Tool {
     private FlightOperation op = new FlightOperation();
@@ -330,8 +334,10 @@ public class Administrator implements Tool {
         assert buttonExit5 != null : "fx:id=\"buttonExit5\" was not injected: check your FXML file 'Administrator.fxml'.";
 
         //Initializes the all comboBox
-        JFXComboBox[] comboPLACE = {comboCity11, comboCity12, comboCity13, comboCity21, comboCity23, comboCity31, comboCity32, comboCity33};
+        JFXComboBox[] comboPLACE = {comboCity11, comboCity12, comboCity13, comboCity31, comboCity32, comboCity33};
         for (JFXComboBox btn : comboPLACE) btn.setItems(FXCollections.observableArrayList(PLACE));
+        comboCity21.setItems(FXCollections.observableArrayList(PLACE2));
+        comboCity23.setItems(FXCollections.observableArrayList(PLACE2));
         comboAirway1.setItems(FXCollections.observableArrayList(AIRWAYS));
         comboAirway3.setItems(FXCollections.observableArrayList(AIRWAYS));
 
@@ -342,13 +348,11 @@ public class Administrator implements Tool {
                 date32, time32, date33, time33, textPrice32, textTicket32));
 
         buttonAdd1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            FlightOperation operation = new FlightOperation();
             Flight newFlight = new Flight();
             String[] place = new String[3];
             String[] time = new String[4];
             int[] ticket = new int[2];
             int[] price = new int[2];
-
             if (toggleIsStop1.isSelected()) {
                 place[1] = comboCity12.getValue();
                 time[1] = date12.getValue().toString() + '-' + time12.getValue().toString();
@@ -366,13 +370,66 @@ public class Administrator implements Tool {
             ticket[0] = Integer.valueOf(textTicket11.getText());
             price[0] = Integer.valueOf(textPrice11.getText());
             newFlight.addFlight(textFlightId1.getText(), comboAirway1.getValue(), place, time, toggleIsStop1.isSelected(), ticket, price);
-            operation.saveFlight(newFlight);//Save the data in the database
+            op.saveFlight(newFlight);//Save the data in the database
         });
 
         buttonSearch2.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             this.showFlightTable(op.seekFlight(textFlightId2.getText().equals("") ? "不限制" : textFlightId2.getText(),
                     comboCity21.getValue() == null ? "不限制" : comboCity21.getValue(), comboCity23.getValue() == null ? "不限制" : comboCity23.getValue()));
+        });
 
+        buttonSearch3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            ObservableList<Flight> flight = op.seekFlight(textFlight31.getText(), "不限制", "不限制");
+            for (Flight btn : flight) {
+                toggleIsStop3.setSelected(btn.getIsStop());
+                setMyDisable(toggleIsStop3, comboCity32, date32, time32, date33, time33, textPrice32, textTicket32);
+                textFlight32.setText(btn.getFlightId());
+                comboAirway3.setValue(btn.getAirway());
+                comboCity31.setValue(btn.getPlace1());
+                comboCity33.setValue(btn.getPlace3());
+                date31.setValue(LocalDate.parse(btn.getTime1().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                date34.setValue(LocalDate.parse(btn.getTime4().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                time31.setValue(LocalTime.parse(btn.getTime1().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
+                time34.setValue(LocalTime.parse(btn.getTime4().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
+                textPrice31.setText(String.valueOf(btn.getPrice1()));
+                textTicket31.setText(String.valueOf(btn.getTicket1()));
+                if(toggleIsStop3.isSelected()){
+                    comboCity32.setValue(btn.getPlace2());
+                    date32.setValue(LocalDate.parse(btn.getTime2().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                    date33.setValue(LocalDate.parse(btn.getTime3().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                    time32.setValue(LocalTime.parse(btn.getTime2().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
+                    time33.setValue(LocalTime.parse(btn.getTime3().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
+                    textPrice32.setText(String.valueOf(btn.getPrice2()));
+                    textTicket32.setText(String.valueOf(btn.getTicket2()));
+                }
+            }
+        });
+
+        buttonUpdate3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            Flight newFlight = new Flight();
+            String[] place = new String[3];
+            String[] time = new String[4];
+            int[] ticket = new int[2];
+            int[] price = new int[2];
+            if (toggleIsStop3.isSelected()) {
+                place[1] = comboCity32.getValue();
+                time[1] = date32.getValue().toString() + '-' + time32.getValue().toString();
+                time[2] = date33.getValue().toString() + '-' + time33.getValue().toString();
+                ticket[1] = Integer.valueOf(textTicket32.getText());
+                price[1] = Integer.valueOf(textPrice32.getText());
+            } else {
+                place[1] = "无";
+                time[1] = time[2] = "0000-00-00 00:00";
+            }
+            place[0] = comboCity31.getValue();
+            place[2] = comboCity33.getValue();
+            time[0] = date31.getValue().toString() + '-' + time31.getValue().toString();
+            time[3] = date34.getValue().toString() + '-' + time34.getValue().toString();
+            ticket[0] = Integer.valueOf(textTicket31.getText());
+            price[0] = Integer.valueOf(textPrice31.getText());
+            op.deleteFlight(textFlight31.getText());
+            newFlight.addFlight(textFlight32.getText(), comboAirway3.getValue(), place, time, toggleIsStop3.isSelected(), ticket, price);
+            op.saveFlight(newFlight);//Save the data in the database
         });
 
         buttonExit5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
