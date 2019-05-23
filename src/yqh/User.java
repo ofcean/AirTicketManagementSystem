@@ -1,27 +1,31 @@
 package yqh;
 
-import spg.function.Flight;
+import spg.function.*;
 
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.ArrayList;
+import  java.sql.SQLException;
 import java.util.Queue;
 
 
 public class User {
-    public int id;//ID
+    public String id;//ID
     public ArrayList ticketlist = new ArrayList();//已购航班
 
     public Flight getflight(String flightNum) {//参数为航班号，返回指定航班，未完成
         Flight x = new Flight();
         return x;
     }
-    public int buy(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，购票成功返回1并修改x，失败返回0，x无变化
+    public Order buy(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化
+        Order r=new Order(null,null,null,0);//初始化为空订单，属性皆为null
         int p[]=new int[2];
         p[0]=x.getTicket1();
         p[1]=x.getTicket2();
-        switch (t){ //检查余票，无余票返回0退出。有则余票数减1
+        switch (t){ //检查余票，无余票返回r退出。有则余票数减1
             case FULL:
                 if(p[0]==0||p[1]==0)
-                    return 0;
+                    return r;
                 p[0]--;
                 p[1]--;
                 x.setTicket1(p[0]);
@@ -29,28 +33,37 @@ public class User {
                 break;
             case FIRST:
                 if(p[0]==0)
-                    return 0;
+                    return r;
                 p[0]--;
                 x.setTicket1(p[0]);
                 break;
             case SECOND:
                 if(p[1]==0)
-                    return 0;
+                    return r;
                 p[1]--;
                 x.setTicket2(p[1]);
                 break;
         }
-        /*for(int i=0;i<x.getWaybill().length;i++)//更新x的乘客列表
-            if(x.getWaybill()[i]==0){
-                int[] item = new int[MAXCAPACITY];
-                item=x.getWaybill();
-                item[i]=id;
-                x.setWaybill(item);
-                break;
-            }*/
-        Ticket a = new Ticket(x,t);//更新用户已购航班列表
-        ticketlist.add(a);
-        return 1;
+        r.setFlightId(x.getFlightId());
+        r.setOrderStatus("已出票");
+        r.setPassengerId(id);
+        return r;
+    }
+
+    public void buyDB(Flight x, Type.PlaceEnum t){
+        try{
+            Connection conn=DatabaseConnection.getCon();
+            conn.setAutoCommit(false);
+            Statement s=conn.createStatement();
+            s.execute("create table ORDER (passengerId varchar(11),flightId char(6),orderStatus varchar(6),leg int )");
+            Order r=buy(x,t);
+            s.execute("insert into ORDER values ('"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
+            s.close();
+            conn.commit();
+            conn.close();
+        }catch (Exception e){
+
+        }
     }
 
     /*public void reservation(Flight x, Type.PlaceEnum t){//预约抢票，参数为航班x和上下机情况t

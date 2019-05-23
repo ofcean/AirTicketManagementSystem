@@ -7,10 +7,11 @@ public class Order {
     private String orderStatus;
     private int leg;//One of the first half,two for the second half,and three for the second half
 
-    public Order(String passengerId, String flightId, String orderStatus) {
+    public Order(String passengerId, String flightId, String orderStatus, int leg) {
         this.passengerId = passengerId;
         this.flightId = flightId;
         this.orderStatus = orderStatus;//The ticket has been issued and the reservation is in process
+        this.leg = leg;
     }
 
     public void setFlightId(String flightId) {
