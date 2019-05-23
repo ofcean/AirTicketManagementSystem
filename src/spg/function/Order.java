@@ -5,6 +5,7 @@ public class Order {
     private String passengerId;
     private String flightId;
     private String orderStatus;
+    private int leg;//One of the first half,two for the second half,and three for the second half
 
     public Order(String passengerId, String flightId, String orderStatus) {
         this.passengerId = passengerId;
@@ -24,6 +25,10 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
+    public void setLeg(int leg) {
+        this.leg = leg;
+    }
+
     public String getFlightId() {
         return flightId;
     }
@@ -34,5 +39,9 @@ public class Order {
 
     public String getOrderStatus() {
         return orderStatus;
+    }
+
+    public int getLeg() {
+        return leg;
     }
 }
