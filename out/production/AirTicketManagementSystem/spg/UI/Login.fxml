@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spg.UI.Login">
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/login.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="textId" layoutX="440.0" layoutY="400.0" prefHeight="50.0" prefWidth="400.0" promptText="账号">
+         <font>
+            <Font name="Microsoft YaHei UI Light" size="24.0" />
+         </font>
+      </TextField>
+      <JFXButton fx:id="buttonLogin" layoutX="440.0" layoutY="550.0" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: #5352ed;" text="安  全  登  录" textFill="WHITE">
+         <font>
+            <Font name="Microsoft YaHei UI Light" size="24.0" />
+         </font>
+      </JFXButton>
+      <PasswordField fx:id="textPassword" layoutX="440.0" layoutY="450.0" prefHeight="50.0" prefWidth="400.0" promptText="密码">
+         <font>
+            <Font name="Microsoft YaHei UI Light" size="24.0" />
+         </font>
+      </PasswordField>
+   </children>
+</Pane>
