@@ -2,16 +2,12 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTimePicker?>
-<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -26,7 +22,7 @@
                             <children>
                                 <Pane prefHeight="80.0" prefWidth="1240.0" style="-fx-border-color: #ffffff;">
                            <children>
-                              <Label fx:id="textUserId1" alignment="CENTER" layoutX="470.0" layoutY="10.0" prefHeight="60.0" prefWidth="300.0" text="77827803" textFill="#d35400">
+                              <Label fx:id="textUserId1" alignment="CENTER" layoutX="470.0" layoutY="10.0" prefHeight="60.0" prefWidth="300.0" textFill="#d35400">
                                  <font>
                                     <Font name="Microsoft YaHei UI Light" size="48.0" />
                                  </font>
@@ -41,8 +37,41 @@
                                     <Font name="Microsoft YaHei UI Light" size="48.0" />
                                  </font>
                               </Label>
+                              <TableView fx:id="tableFlight1" layoutY="160.0" prefHeight="520.0" prefWidth="1240.0">
+                                 <columns>
+                                    <TableColumn fx:id="colId1" prefWidth="60.0" text="航班编号" />
+                                    <TableColumn fx:id="colAirway1" prefWidth="100.0" text="航空公司" />
+                                    <TableColumn fx:id="colCity11" prefWidth="60.0" text="始发城市" />
+                                    <TableColumn fx:id="colCity21" prefWidth="60.0" text="经停城市" />
+                                    <TableColumn fx:id="colCity31" prefWidth="60.0" text="终到城市" />
+                                    <TableColumn fx:id="colTime11" prefWidth="125.0" text="始发时间" />
+                                    <TableColumn fx:id="colTime21" prefWidth="125.0" text="经停时间" />
+                                    <TableColumn fx:id="colTime31" prefWidth="125.0" text="续航时间" />
+                                    <TableColumn fx:id="colTime41" prefWidth="125.0" text="终到时间" />
+                                    <TableColumn fx:id="colPrice11" text="首/全程票价" />
+                                    <TableColumn fx:id="colPrice21" prefWidth="70.0" text="次程票价" />
+                                    <TableColumn fx:id="colTicket11" text="首/全程余票" />
+                                    <TableColumn fx:id="colTicket21" prefWidth="70.0" text="次程余票" />
+                                    <TableColumn fx:id="colStatus1" prefWidth="50.0" text="状态" />
+                                    <TableColumn fx:id="colBuy1" prefWidth="50.0" text="购票" />
+                                 </columns>
+                              </TableView>
                            </children>
                                 </Pane>
+                        <Pane layoutY="80.0" prefHeight="80.0" prefWidth="1240.0" style="-fx-border-color: white;">
+                           <children>
+                              <Label fx:id="textMessage1" alignment="CENTER" layoutX="120.0" layoutY="10.0" prefHeight="60.0" prefWidth="1000.0" text="我们抱歉地通知您，航班AS1234已延误。" textFill="#e74c3c">
+                                 <font>
+                                    <Font name="Microsoft YaHei UI Light" size="48.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="buttonSearch211" layoutX="1100.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="推荐" textFill="WHITE">
+                                 <font>
+                                    <Font name="Microsoft YaHei UI Light" size="24.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </Pane>
                             </children>
                         </Pane>
                     </children>
@@ -62,13 +91,21 @@
                                     <Font name="Microsoft YaHei UI Light" size="48.0" />
                                  </font>
                               </Label>
-                              <JFXButton fx:id="buttonSearch21" layoutX="1040.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="刷新" textFill="WHITE">
+                              <JFXButton fx:id="buttonSearch2" layoutX="1040.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="刷新" textFill="WHITE">
                                  <font>
                                     <Font name="Microsoft YaHei UI Light" size="24.0" />
                                  </font>
                               </JFXButton>
                            </children>
                                 </Pane>
+                        <TableView layoutY="80.0" prefHeight="600.0" prefWidth="1240.0">
+                          <columns>
+                            <TableColumn fx:id="passenger_id2" prefWidth="390.0" text="我的用户名" />
+                            <TableColumn fx:id="flight_id2" prefWidth="400.0" text="我的航班号" />
+                              <TableColumn fx:id="order_status2" prefWidth="400.0" text="订单状态" />
+                              <TableColumn prefWidth="50.0" text="退票" />
+                          </columns>
+                        </TableView>
                             </children>
                         </Pane>
                     </children>
@@ -83,7 +120,7 @@
                             <children>
                                 <Pane prefHeight="80.0" prefWidth="1240.0" style="-fx-border-color: #ffffff;">
                                     <children>
-                                        <JFXTextField fx:id="textFlightId2" layoutX="100.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限制">
+                                        <JFXTextField fx:id="textFlightId3" layoutX="100.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限制">
                                             <font>
                                                 <Font name="Microsoft YaHei UI Light" size="24.0" />
                                             </font>
@@ -98,20 +135,20 @@
                                                 <Font name="Microsoft YaHei UI Light" size="24.0" />
                                             </font>
                                         </Label>
-                                        <JFXComboBox fx:id="comboCity21" layoutX="370.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限制" />
+                                        <JFXComboBox fx:id="comboCity13" layoutX="370.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="北京" />
                                         <Label layoutX="520.0" layoutY="20.0" prefHeight="40.0" prefWidth="120.0" text="到达城市：">
                                             <font>
                                                 <Font name="Microsoft YaHei UI Light" size="24.0" />
                                             </font>
                                         </Label>
-                                        <JFXComboBox fx:id="comboCity23" layoutX="640.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限制" />
+                                        <JFXComboBox fx:id="comboCity23" layoutX="640.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="北京" />
                               <Label layoutX="790.0" layoutY="20.0" prefHeight="40.0" prefWidth="120.0" text="排序方式：">
                                  <font>
                                     <Font name="Microsoft YaHei UI Light" size="24.0" />
                                  </font>
                               </Label>
-                              <JFXComboBox fx:id="comboSort2" layoutX="910.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限制" />
-                                        <JFXButton fx:id="buttonSearch2" layoutX="1100.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="查询" textFill="WHITE">
+                              <JFXComboBox fx:id="comboSort3" layoutX="910.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限制" />
+                                        <JFXButton fx:id="buttonSearch3" layoutX="1100.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="查询" textFill="WHITE">
                                             <font>
                                                 <Font name="Microsoft YaHei UI Light" size="24.0" />
                                             </font>
@@ -120,25 +157,22 @@
                                 </Pane>
                                 <TableView fx:id="tableFlight" layoutY="80.0" prefHeight="600.0" prefWidth="1240.0">
                                     <columns>
-                                        <TableColumn fx:id="colId" prefWidth="60.0" text="航班编号" />
-                                        <TableColumn fx:id="colAirway" prefWidth="100.0" text="航空公司" />
-                                        <TableColumn fx:id="colCity1" prefWidth="60.0" text="始发城市" />
-                                        <TableColumn fx:id="colCity2" prefWidth="60.0" text="经停城市" />
-                                        <TableColumn fx:id="colCity3" prefWidth="60.0" text="终到城市" />
-                                        <TableColumn fx:id="colTime1" prefWidth="125.0" text="始发时间" />
-                                        <TableColumn fx:id="colTime2" prefWidth="125.0" text="经停时间" />
-                                        <TableColumn fx:id="colTime3" prefWidth="125.0" text="续航时间" />
-                                        <TableColumn fx:id="colTime4" prefWidth="125.0" text="终到时间" />
-                                        <TableColumn fx:id="colPrice1" text="首/全程票价" />
-                                        <TableColumn fx:id="colPrice2" prefWidth="70.0" text="次程票价" />
-                                        <TableColumn fx:id="colTicket1" text="首/全程余票" />
-                                        <TableColumn fx:id="colTicket2" prefWidth="70.0" text="次程余票" />
-                                        <TableColumn fx:id="colStatus" prefWidth="50.0" text="状态" />
-                                        <TableColumn fx:id="colDelete" prefWidth="50.0" text="删除" />
+                                        <TableColumn fx:id="colId3" prefWidth="60.0" text="航班编号" />
+                                        <TableColumn fx:id="colAirway3" prefWidth="100.0" text="航空公司" />
+                                        <TableColumn fx:id="colCity13" prefWidth="60.0" text="始发城市" />
+                                        <TableColumn fx:id="colCity23" prefWidth="60.0" text="经停城市" />
+                                        <TableColumn fx:id="colCity33" prefWidth="60.0" text="终到城市" />
+                                        <TableColumn fx:id="colTime13" prefWidth="125.0" text="始发时间" />
+                                        <TableColumn fx:id="colTime23" prefWidth="125.0" text="经停时间" />
+                                        <TableColumn fx:id="colTime33" prefWidth="125.0" text="续航时间" />
+                                        <TableColumn fx:id="colTime43" prefWidth="125.0" text="终到时间" />
+                                        <TableColumn fx:id="colPrice13" text="首/全程票价" />
+                                        <TableColumn fx:id="colPrice23" prefWidth="70.0" text="次程票价" />
+                                        <TableColumn fx:id="colTicket13" text="首/全程余票" />
+                                        <TableColumn fx:id="colTicket23" prefWidth="70.0" text="次程余票" />
+                                        <TableColumn fx:id="colStatus3" prefWidth="50.0" text="状态" />
+                                        <TableColumn fx:id="colBuy3" prefWidth="50.0" text="购票" />
                                     </columns>
-                                    <effect>
-                                        <DropShadow />
-                                    </effect>
                                 </TableView>
                             </children>
                         </Pane>
@@ -152,122 +186,56 @@
                     <children>
                         <Pane layoutX="20.0" layoutY="20.0" prefHeight="680.0" prefWidth="1240.0" style="-fx-border-color: #ffffff;">
                             <children>
-                                <Label layoutX="200.0" layoutY="30.0" text="每一天，严于心细。">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="48.0" />
-                                    </font>
-                                </Label>
-                                <JFXTimePicker fx:id="time11" defaultColor="BLACK" editable="true" layoutX="415.0" layoutY="360.0" prefHeight="30.0" prefWidth="175.0" promptText="始发时刻" />
-                                <JFXComboBox fx:id="comboAirway1" layoutX="240.0" layoutY="160.0" prefHeight="40.0" prefWidth="800.0" promptText="航空公司" />
-                                <JFXTextField fx:id="textFlightId1" layoutX="240.0" layoutY="100.0" prefHeight="40.0" prefWidth="600.0" promptText="航班号（由2位大写字母与4位数字组成）">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                    </font>
-                                </JFXTextField>
-                                <JFXToggleButton fx:id="toggleIsStop1" layoutX="840.0" layoutY="100.0" prefWidth="200.0" text="是否经停">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                    </font>
-                                </JFXToggleButton>
-                                <JFXTextField fx:id="textPrice11" layoutX="240.0" layoutY="480.0" prefHeight="40.0" prefWidth="350.0" promptText="首程/全程票价（¥）">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                    </font>
-                                </JFXTextField>
-                                <JFXTextField fx:id="textPrice12" disable="true" layoutX="690.0" layoutY="480.0" prefHeight="40.0" prefWidth="350.0" promptText="次程票价（¥）">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                    </font>
-                                </JFXTextField>
-                                <JFXTextField fx:id="textTicket11" layoutX="240.0" layoutY="540.0" prefHeight="40.0" prefWidth="350.0" promptText="首程/全程票数（张）">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                    </font>
-                                </JFXTextField>
-                                <JFXTextField fx:id="textTicket12" disable="true" layoutX="690.0" layoutY="540.0" prefHeight="40.0" prefWidth="350.0" promptText="次程票数（张）">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                    </font>
-                                </JFXTextField>
-                                <Label layoutX="240.0" layoutY="220.0" prefHeight="40.0" prefWidth="200.0" text="途经城市：" textFill="#ffa502">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="240.0" layoutY="320.0" prefHeight="40.0" prefWidth="200.0" text="时间信息：" textFill="#ffa502">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
-                                <JFXComboBox fx:id="comboCity11" layoutX="240.0" layoutY="260.0" prefHeight="40.0" prefWidth="200.0" promptText="始发城市" />
-                                <JFXComboBox fx:id="comboCity12" disable="true" layoutX="540.0" layoutY="260.0" prefHeight="40.0" prefWidth="200.0" promptText="经停城市" />
-                                <JFXComboBox fx:id="comboCity13" layoutX="840.0" layoutY="260.0" prefHeight="40.0" prefWidth="200.0" promptText="终到城市" />
-                                <JFXDatePicker fx:id="date11" defaultColor="BLACK" layoutX="240.0" layoutY="360.0" prefHeight="30.0" prefWidth="175.0" promptText="始发日期" />
-                                <JFXDatePicker fx:id="date12" defaultColor="BLACK" disable="true" layoutX="690.0" layoutY="360.0" prefHeight="30.0" prefWidth="175.0" promptText="经停日期" />
-                                <JFXTimePicker fx:id="time12" defaultColor="BLACK" disable="true" editable="true" layoutX="865.0" layoutY="360.0" prefHeight="30.0" prefWidth="175.0" promptText="经停时刻" />
-                                <JFXDatePicker fx:id="date13" defaultColor="BLACK" disable="true" layoutX="240.0" layoutY="400.0" prefHeight="30.0" prefWidth="175.0" promptText="续航日期" />
-                                <JFXDatePicker fx:id="date14" defaultColor="BLACK" layoutX="690.0" layoutY="400.0" prefHeight="30.0" prefWidth="175.0" promptText="终到日期" />
-                                <JFXTimePicker fx:id="time13" defaultColor="BLACK" disable="true" editable="true" layoutX="415.0" layoutY="400.0" prefHeight="30.0" prefWidth="175.0" promptText="续航时刻" />
-                                <JFXTimePicker fx:id="time14" defaultColor="BLACK" editable="true" layoutX="865.0" layoutY="400.0" prefHeight="30.0" prefWidth="175.0" promptText="终到时刻" />
-                                <Label layoutX="240.0" layoutY="440.0" prefHeight="40.0" prefWidth="200.0" text="票务信息：" textFill="#ffa502">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
-                                <JFXButton fx:id="buttonAdd1" layoutX="240.0" layoutY="605.0" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: #5352ed;" text="立  即  添  加" textFill="WHITE">
-                                    <font>
-                                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                    </font>
-                                </JFXButton>
-                                <Label layoutX="440.0" layoutY="275.0" prefWidth="100.0" text="--------------------" />
-                                <Label layoutX="740.0" layoutY="275.0" prefWidth="100.0" text="--------------------" />
-                                <Label layoutX="590.0" layoutY="365.0" prefWidth="100.0" text="--------------------" />
-                                <Label layoutX="590.0" layoutY="405.0" prefWidth="100.0" text="--------------------" />
-                                <Label layoutX="220.0" layoutY="110.0" text="*" textFill="RED">
+                        <TableView fx:id="tableFlight2" layoutY="80.0" prefHeight="600.0" prefWidth="1240.0">
+                           <columns>
+                              <TableColumn fx:id="colId31" prefWidth="60.0" text="航班编号" />
+                              <TableColumn fx:id="colAirway31" prefWidth="100.0" text="航空公司" />
+                              <TableColumn fx:id="colCity131" prefWidth="60.0" text="始发城市" />
+                              <TableColumn fx:id="colCity231" prefWidth="60.0" text="经停城市" />
+                              <TableColumn fx:id="colCity331" prefWidth="60.0" text="终到城市" />
+                              <TableColumn fx:id="colTime131" prefWidth="125.0" text="始发时间" />
+                              <TableColumn fx:id="colTime231" prefWidth="125.0" text="经停时间" />
+                              <TableColumn fx:id="colTime331" prefWidth="125.0" text="续航时间" />
+                              <TableColumn fx:id="colTime431" prefWidth="125.0" text="终到时间" />
+                              <TableColumn fx:id="colPrice131" text="首/全程票价" />
+                              <TableColumn fx:id="colPrice231" prefWidth="70.0" text="次程票价" />
+                              <TableColumn fx:id="colTicket131" text="首/全程余票" />
+                              <TableColumn fx:id="colTicket231" prefWidth="70.0" text="次程余票" />
+                              <TableColumn fx:id="colStatus31" prefWidth="50.0" text="状态" />
+                           </columns>
+                        </TableView>
+                                <Label layoutX="220.0" layoutY="490.0" textFill="RED">
                                     <font>
                                         <Font name="Microsoft JhengHei UI Light" size="24.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="220.0" layoutY="170.0" text="*" textFill="RED">
-                                    <font>
-                                        <Font name="Microsoft JhengHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="220.0" layoutY="270.0" text="*" textFill="RED">
-                                    <font>
-                                        <Font name="Microsoft JhengHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="220.0" layoutY="360.0" text="*" textFill="RED">
-                                    <font>
-                                        <Font name="Microsoft JhengHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="220.0" layoutY="550.0" text="*" textFill="RED">
-                                    <font>
-                                        <Font name="Microsoft JhengHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="220.0" layoutY="490.0" text="*" textFill="RED">
-                                    <font>
-                                        <Font name="Microsoft JhengHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="850.0" layoutY="110.0" text="*" textFill="RED">
-                                    <font>
-                                        <Font name="Microsoft JhengHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="820.0" layoutY="270.0" text="*" textFill="RED">
-                                    <font>
-                                        <Font name="Microsoft JhengHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="670.0" layoutY="400.0" text="*" textFill="RED">
-                                    <font>
-                                        <Font name="Microsoft JhengHei UI Light" size="24.0" />
-                                    </font>
-                                </Label>
+                        <Pane prefHeight="80.0" prefWidth="1240.0" style="-fx-border-color: white;">
+                           <children>
+                              <JFXButton fx:id="butttonRecommend4" layoutX="1100.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="推荐" textFill="WHITE">
+                                 <font>
+                                    <Font name="Microsoft YaHei UI Light" size="24.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXComboBox fx:id="comboCity24" layoutX="580.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="北京" />
+                              <Label layoutX="460.0" layoutY="20.0" prefHeight="40.0" prefWidth="120.0" text="到达城市：">
+                                 <font>
+                                    <Font name="Microsoft YaHei UI Light" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="100.0" layoutY="20.0" prefHeight="40.0" prefWidth="120.0" text="出发城市：">
+                                 <font>
+                                    <Font name="Microsoft YaHei UI Light" size="24.0" />
+                                 </font>
+                              </Label>
+                              <JFXComboBox fx:id="comboCity14" layoutX="220.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="北京" />
+                              <Label layoutX="780.0" layoutY="20.0" prefHeight="40.0" prefWidth="120.0" text="推荐方案：">
+                                 <font>
+                                    <Font name="Microsoft YaHei UI Light" size="24.0" />
+                                 </font>
+                              </Label>
+                              <JFXComboBox fx:id="comboRecommend4" layoutX="900.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="价格" />
+                           </children>
+                        </Pane>
                             </children>
                         </Pane>
                     </children>
