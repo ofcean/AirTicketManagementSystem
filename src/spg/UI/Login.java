@@ -6,7 +6,11 @@ package spg.UI;
 
 import com.jfoenix.controls.JFXButton;
 
-import java.awt.event.MouseEvent;
+import com.jfoenix.controls.JFXTabPane;
+import javafx.scene.input.MouseEvent;
+
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,10 +22,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import spg.function.DatabaseConnection;
+import spg.function.LoginOperation;
 
 public class Login {
+
+    LoginOperation op = new LoginOperation();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -49,25 +57,35 @@ public class Login {
         assert buttonLogin != null : "fx:id=\"buttonLogin\" was not injected: check your FXML file 'Login.fxml'.";
         assert textPassword != null : "fx:id=\"textPassword\" was not injected: check your FXML file 'Login.fxml'.";
 
-        buttonLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            Connection conn = null;
-            conn = DatabaseConnection.getCon();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from flight.user where id='" + textId + "' and passward='" + textPassword + "'");//Execute the SQL and return the result set
-            if (rs == null)
-                System.out.println("无该用户或密码错误");//后期改成弹窗
-            else {
-                while (rs.next()) {
-                    if (rs.getBoolean("is_admin")) {
-                        Parent root = FXMLLoader.load(getClass().getResource("Administrator.fxml"));
-                        paneLogin.getChildren().setAll(root);
-                    } else if (!rs.getBoolean("is_admin")) {
-                        Parent root = FXMLLoader.load(getClass().getResource("PassengerInterface.fxml"));
-                        paneLogin.getChildren().setAll(root);
-                    }
-
-                }
-            }
-        });
+        buttonLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> login());
     }
+
+    public void login() {
+        if (!op.isUser(textId.getText(), textPassword.getText()))
+            System.out.println("账号或密码错误");//后期改成弹窗
+        else if (op.isAdmin(textId.getText(), textPassword.getText())) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("Administrator.fxml"));
+                paneLogin.getChildren().setAll(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("PassengerInterface.fxml"));
+                paneLogin.getChildren().setAll(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("PassengerInterface.fxml"));
+            try {
+                Pane login = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            PassengerInterface control = loader.getController();
+            control.model.setText(textId.getText());
+        }
+    }
+
 }

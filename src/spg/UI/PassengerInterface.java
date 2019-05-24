@@ -9,15 +9,25 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import spg.function.FlightOperation;
 
 public class PassengerInterface {
+
+    FlightOperation op = new FlightOperation();
+
+    public static AppModel model = new AppModel();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -26,10 +36,10 @@ public class PassengerInterface {
     private URL location;
 
     @FXML // fx:id="panePassenger"
-    private JFXTabPane panePassenger; // Value injected by FXMLLoader
+    private Pane panePassenger; // Value injected by FXMLLoader
 
     @FXML // fx:id="textUserId1"
-    private static Label textUserId1; // Value injected by FXMLLoader
+    private Label textUserId1; // Value injected by FXMLLoader
 
     @FXML // fx:id="tableFlight1"
     private TableView<?> tableFlight1; // Value injected by FXMLLoader
@@ -82,8 +92,11 @@ public class PassengerInterface {
     @FXML // fx:id="textMessage1"
     private Label textMessage1; // Value injected by FXMLLoader
 
+    @FXML // fx:id="buttonSearch1"
+    private JFXButton buttonSearch1; // Value injected by FXMLLoader
+
     @FXML // fx:id="buttonSearch211"
-    private JFXButton buttonSearch211; // Value injected by FXMLLoader
+    private JFXButton buttonCheck1; // Value injected by FXMLLoader
 
     @FXML // fx:id="buttonSearch2"
     private JFXButton buttonSearch2; // Value injected by FXMLLoader
@@ -226,6 +239,8 @@ public class PassengerInterface {
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
+        // update text area if text in model changes:
+        model.textProperty().addListener((obs, oldText, newText) -> textUserId1.setText(newText));
         assert panePassenger != null : "fx:id=\"panePassenger\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert textUserId1 != null : "fx:id=\"textUserId1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert tableFlight1 != null : "fx:id=\"tableFlight1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
@@ -245,7 +260,8 @@ public class PassengerInterface {
         assert colStatus1 != null : "fx:id=\"colStatus1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colBuy1 != null : "fx:id=\"colBuy1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert textMessage1 != null : "fx:id=\"textMessage1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert buttonSearch211 != null : "fx:id=\"buttonSearch211\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert buttonSearch1 != null : "fx:id=\"buttonSearch1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert buttonCheck1 != null : "fx:id=\"buttonCheck1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert buttonSearch2 != null : "fx:id=\"buttonSearch2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert passenger_id2 != null : "fx:id=\"passenger_id2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert flight_id2 != null : "fx:id=\"flight_id2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
@@ -293,9 +309,28 @@ public class PassengerInterface {
         assert buttonReturn5 != null : "fx:id=\"buttonReturn5\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert buttonExit5 != null : "fx:id=\"buttonExit5\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
 
+        buttonCheck1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            String delayFlightId;
+            if ((delayFlightId = op.seekDelayFlight(textUserId1.getText())) != null) {
+                textMessage1.setText("我们抱歉地通知您，航班" + delayFlightId + "延误。");
+            }
+        });
+
+        buttonReturn5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                panePassenger.getChildren().setAll(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonExit5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            System.exit(0);
+        });
     }
 
-    public static void setTextUserId1(Label textUserId1) {
-        PassengerInterface.textUserId1 = textUserId1;
+    public static void setText(String text) {
+        model.setText(text);
     }
 }

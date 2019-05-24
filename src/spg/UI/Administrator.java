@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import com.jfoenix.controls.JFXToggleButton;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -21,13 +22,15 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import spg.function.Flight;
 import spg.function.FlightOperation;
 import spg.function.Tool;
-import sun.awt.SunHints;
 
 public class Administrator implements Tool {
     private FlightOperation op = new FlightOperation();
@@ -39,7 +42,7 @@ public class Administrator implements Tool {
     private URL location;
 
     @FXML // fx:id="paneAdmin"
-    private JFXTabPane paneAdmin; // Value injected by FXMLLoader
+    private Pane paneAdmin; // Value injected by FXMLLoader
 
     @FXML // fx:id="time11"
     private JFXTimePicker time11; // Value injected by FXMLLoader
@@ -435,6 +438,15 @@ public class Administrator implements Tool {
             op.deleteFlight(textFlight31.getText());
             newFlight.addFlight(textFlight32.getText(), comboAirway3.getValue(), place, time, toggleIsStop3.isSelected(), ticket, price);
             op.saveFlight(newFlight);//Save the data in the database
+        });
+
+        buttonReturn5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                paneAdmin.getChildren().setAll(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         buttonExit5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {

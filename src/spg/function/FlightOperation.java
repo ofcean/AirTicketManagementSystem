@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -138,5 +139,64 @@ public class FlightOperation implements Tool {
             }
         }
         return result;
+    }
+
+    public String seekDelayFlight(String passengerId) {//Query the required data from the database
+        Connection conn = null;
+        try {
+            conn = DatabaseConnection.getCon();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from flight.order where passenger_id='" + passengerId + "'");//Execute the SQL and return the result set
+            if (!rs.next()) return null;
+            while (rs.next()) {
+                String flightId = rs.getString("flight_id");
+                ResultSet rt = stmt.executeQuery("select * from flight.flight where flight_id='" + flightId + "' and status=延误");
+                if (rt.next()) return flightId;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();//Close the connection
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;//Returns the result
+    }
+
+    public String[] seekDelayFlightCity(String passengerId, String flightId) {
+        Connection conn = null;
+        String[] city = new String[2];
+        try {
+            conn = DatabaseConnection.getCon();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from flight.order where passenger_id='" + passengerId + "' and flight_id='" + flightId + "'");//Execute the SQL and return the result set
+            if (!rs.next()) return null;
+            while (rs.next()) {
+                int leg = rs.getInt("leg");
+                ResultSet rt = stmt.executeQuery("select * from flight.flight where flight_id='" + flightId + "'");
+                if (leg == 1) {
+                    city[0] = rt.getString("place1");
+                    city[1] = rt.getString("place2");
+                } else if (leg == 2) {
+                    city[0] = rt.getString("place2");
+                    city[1] = rt.getString("place3");
+                } else {
+                    city[0] = rt.getString("place1");
+                    city[1] = rt.getString("place3");
+                }
+                return city;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();//Close the connection
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;//Returns the result
     }
 }
