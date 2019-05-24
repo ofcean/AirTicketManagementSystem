@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #dfe4ea;" stylesheets="@tab.css" tabMaxHeight="50.0" tabMaxWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spg.UI.PassengerInterface">
+<JFXTabPane fx:id="panePassenger" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #dfe4ea;" stylesheets="@tab.css" tabMaxHeight="50.0" tabMaxWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spg.UI.PassengerInterface">
     <tabs>
         <Tab text="我的消息">
             <content>
@@ -188,20 +188,20 @@
                             <children>
                         <TableView fx:id="tableFlight2" layoutY="80.0" prefHeight="600.0" prefWidth="1240.0">
                            <columns>
-                              <TableColumn fx:id="colId31" prefWidth="60.0" text="航班编号" />
-                              <TableColumn fx:id="colAirway31" prefWidth="100.0" text="航空公司" />
-                              <TableColumn fx:id="colCity131" prefWidth="60.0" text="始发城市" />
-                              <TableColumn fx:id="colCity231" prefWidth="60.0" text="经停城市" />
-                              <TableColumn fx:id="colCity331" prefWidth="60.0" text="终到城市" />
-                              <TableColumn fx:id="colTime131" prefWidth="125.0" text="始发时间" />
-                              <TableColumn fx:id="colTime231" prefWidth="125.0" text="经停时间" />
-                              <TableColumn fx:id="colTime331" prefWidth="125.0" text="续航时间" />
-                              <TableColumn fx:id="colTime431" prefWidth="125.0" text="终到时间" />
-                              <TableColumn fx:id="colPrice131" text="首/全程票价" />
-                              <TableColumn fx:id="colPrice231" prefWidth="70.0" text="次程票价" />
-                              <TableColumn fx:id="colTicket131" text="首/全程余票" />
-                              <TableColumn fx:id="colTicket231" prefWidth="70.0" text="次程余票" />
-                              <TableColumn fx:id="colStatus31" prefWidth="50.0" text="状态" />
+                              <TableColumn fx:id="colId4" prefWidth="60.0" text="航班编号" />
+                              <TableColumn fx:id="colAirway4" prefWidth="100.0" text="航空公司" />
+                              <TableColumn fx:id="colCity14" prefWidth="60.0" text="始发城市" />
+                              <TableColumn fx:id="colCity24" prefWidth="60.0" text="经停城市" />
+                              <TableColumn fx:id="colCity34" prefWidth="60.0" text="终到城市" />
+                              <TableColumn fx:id="colTime14" prefWidth="125.0" text="始发时间" />
+                              <TableColumn fx:id="colTime24" prefWidth="125.0" text="经停时间" />
+                              <TableColumn fx:id="colTime34" prefWidth="125.0" text="续航时间" />
+                              <TableColumn fx:id="colTime44" prefWidth="125.0" text="终到时间" />
+                              <TableColumn fx:id="colPrice14" text="首/全程票价" />
+                              <TableColumn fx:id="colPrice24" prefWidth="70.0" text="次程票价" />
+                              <TableColumn fx:id="colTicket14" text="首/全程余票" />
+                              <TableColumn fx:id="colTicket24" prefWidth="70.0" text="次程余票" />
+                              <TableColumn fx:id="colStatus4" prefWidth="50.0" text="状态" />
                            </columns>
                         </TableView>
                                 <Label layoutX="220.0" layoutY="490.0" textFill="RED">

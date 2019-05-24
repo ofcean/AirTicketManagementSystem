@@ -7,6 +7,7 @@ package spg.UI;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import com.jfoenix.controls.JFXToggleButton;
@@ -36,6 +37,9 @@ public class Administrator implements Tool {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+
+    @FXML // fx:id="paneAdmin"
+    private JFXTabPane paneAdmin; // Value injected by FXMLLoader
 
     @FXML // fx:id="time11"
     private JFXTimePicker time11; // Value injected by FXMLLoader
@@ -259,6 +263,7 @@ public class Administrator implements Tool {
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
+        assert paneAdmin != null : "fx:id=\"paneAdmin\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert time11 != null : "fx:id=\"time11\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert comboAirway1 != null : "fx:id=\"comboAirway1\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert textFlightId1 != null : "fx:id=\"textFlightId1\" was not injected: check your FXML file 'Administrator.fxml'.";
@@ -393,7 +398,7 @@ public class Administrator implements Tool {
                 time34.setValue(LocalTime.parse(btn.getTime4().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
                 textPrice31.setText(String.valueOf(btn.getPrice1()));
                 textTicket31.setText(String.valueOf(btn.getTicket1()));
-                if(toggleIsStop3.isSelected()){
+                if (toggleIsStop3.isSelected()) {
                     comboCity32.setValue(btn.getPlace2());
                     date32.setValue(LocalDate.parse(btn.getTime2().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
                     date33.setValue(LocalDate.parse(btn.getTime3().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
