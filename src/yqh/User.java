@@ -19,6 +19,7 @@ public class User {
     }
     public Order buy(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化，此方法不改变数据库
         Order r=new Order(null,null,null,0);//初始化为空订单，属性皆为null
+        r.setIndex(0);
         int p[]=new int[2];
         p[0]=x.getTicket1();
         p[1]=x.getTicket2();
@@ -61,8 +62,14 @@ public class User {
             Order r=buy(x,t);
             if(r.getFlightId()==null&&r.getPassengerId()==null)
                 return false;
+            ResultSet rs = s.executeQuery("select max(index) from flight.order;");
+            int orderid=0;
+            if(rs.next()) {//目前order中最大ID加1作为新orderID，若目前无order则新ID为0
+                rs.previous();
+                orderid=rs.getInt(1)+1;
+            }
             s.execute("update flight.flight set ticket1="+x.getTicket1()+",ticket2="+x.getTicket2()+" where flight_id="+x.getFlightId()+";");
-            s.execute("insert into flight.order values ('"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
+            s.execute("insert into flight.order values ("+orderid+",'"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
             s.close();
             conn.commit();
             conn.close();
@@ -94,7 +101,13 @@ public class User {
             Statement s=conn.createStatement();
             if(r.getFlightId()==null&&r.getPassengerId()==null)
                 return false;
-            s.execute("insert into flight.order values ('"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
+            ResultSet rs = s.executeQuery("select max(index) from flight.order;");
+            int orderid=0;
+            if(rs.next()) {//目前order中最大ID加1作为新orderID，若目前无order则新ID为0
+                rs.previous();
+                orderid=rs.getInt(1)+1;
+            }
+            s.execute("insert into flight.order values ("+orderid+",'"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
             s.close();
             conn.commit();
             conn.close();
@@ -112,22 +125,23 @@ public class User {
             Statement s=conn.createStatement();
             ResultSet rs = s.executeQuery("select * from flight.flight where flight_id="+flightId+";");
             String place[]=new String[3];
-            place[0]=rs.getString(4);
-            place[1]=rs.getString(5);
-            place[2]=rs.getString(6);
+            place[0]=rs.getString("place1");
+            place[1]=rs.getString("place2");
+            place[2]=rs.getString("place3");
             String time[]=new String[4];
-            time[0]=rs.getString(7);
-            time[1]=rs.getString(8);
-            time[2]=rs.getString(9);
-            time[3]=rs.getString(10);
+            time[0]=rs.getString("time1");
+            time[1]=rs.getString("time2");
+            time[2]=rs.getString("time3");
+            time[3]=rs.getString("time4");
             int ticket[]=new int[2];
-            ticket[0]=rs.getInt(12);
-            ticket[0]=rs.getInt(13);
+            ticket[0]=rs.getInt("ticket1");
+            ticket[0]=rs.getInt("ticket2");
             int price[]=new int[2];
-            ticket[0]=rs.getInt(14);
-            ticket[0]=rs.getInt(15);
-            x.addFlight(rs.getString(1),rs.getString(2), place,time, rs.getBoolean(11),ticket,price);
+            ticket[0]=rs.getInt("price1");
+            ticket[0]=rs.getInt("price2");
+            x.addFlight(rs.getString("flight_id"),rs.getString("airway"), place,time, rs.getBoolean("is_stop"),ticket,price);
             s.close();
+            rs.close();
             conn.commit();
             conn.close();
         }catch (Exception e){
