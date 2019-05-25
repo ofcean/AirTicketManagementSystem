@@ -9,12 +9,10 @@ import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import javax.naming.directory.SearchResult;
 import java.lang.String;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
-import java.util.Date;
 
 public class FlightOperation implements Tool {
 
@@ -150,7 +148,7 @@ public class FlightOperation implements Tool {
             ResultSet rs = stmt.executeQuery("select * from flight.order where passenger_id='" + passengerId + "'");//Execute the SQL and return the result set
             while (rs.next()) {
                 String flightId = rs.getString("flight_id");
-                ResultSet rt = stmt.executeQuery("select * from flight.flight where flight_id='" + flightId + "' and status=延误");
+                ResultSet rt = stmt.executeQuery("select * from flight.flight where flight_id='" + flightId + "' and status='延误'");
                 if (rt.next()) return flightId;
             }
         } catch (Exception e) {
@@ -199,36 +197,53 @@ public class FlightOperation implements Tool {
         return null;//Returns the result
     }
 
-    public ObservableList<Flight> seekFlightWithSort(String a, String b, String c, String d) {//Query the required data from the database
-        ObservableList<Flight> flightList = FXCollections.observableArrayList();
+    public ObservableList<Flight2> seekFlightWithSort(String a, String b, String c, String d) {//Query the required data from the database
+        ObservableList<Flight2> flightList = FXCollections.observableArrayList();
         Connection conn = null;
         try {
             conn = DatabaseConnection.getCon();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from flight.flight");//Execute the SQL and return the result set
-            if (!a.equals("不限制"))//Execute the SQL and return the result set
-                rs = stmt.executeQuery("select * from flight.flight where flight_id='" + a + "'");
-            else
-                rs = stmt.executeQuery("select *from flight.flight where (place1='" + b + "' and place2='" + c + "') " +
-                        "or (place2='" + b + "' and place3='" + c + "') or (place1='" + b + "' and place3='" + c + "')");
-            while (rs.next()) {
-                Flight flight = new Flight();
-                flight.setFlightId(rs.getString("flight_id"));
-                flight.setAirway(rs.getString("airway"));
-                flight.setStatus(rs.getString("status"));
-                flight.setPlace1(rs.getString("place1"));
-                flight.setPlace2(rs.getString("place2"));
-                flight.setPlace3(rs.getString("place3"));
-                flight.setTime1(rs.getString("time1"));
-                flight.setTime2(rs.getString("time2"));
-                flight.setTime3(rs.getString("time3"));
-                flight.setTime4(rs.getString("time4"));
-                flight.setIsStop(rs.getBoolean("is_stop"));
-                flight.setTicket1(rs.getInt("ticket1"));
-                flight.setTicket2(rs.getInt("ticket2"));
-                flight.setPrice1(rs.getInt("price1"));
-                flight.setPrice2(rs.getInt("price2"));
-                flightList.add(flight);
+            ResultSet r1, r2, r3, r4, r5;
+            if (!a.equals("不限")) {
+                r1 = stmt.executeQuery("select * from flight.flight where flight_id='" + a + "'");
+                while (r1.next()) {
+                    Flight flight = new Flight();
+                    flight.setIsStop(r1.getBoolean("is_stop"));
+                    r1.previous();
+                    if (flight.getIsStop()) {
+                        flightList = setFlight2(flightList, r1, "place1", "place2", "time1",
+                                "time2", "ticket1", "price1");
+                        r2 = stmt.executeQuery("select * from flight.flight where flight_id='" + a + "'");
+                        flightList = setFlight2(flightList, r2, "place2", "place3", "time3",
+                                "time4", "ticket2", "price2");
+                    } else {
+                        flightList = setFlight2(flightList, r1, "place1", "place3", "time1",
+                                "time4", "ticket1", "price1");
+                    }
+                    break;
+                }
+                return flightList;
+            } else {
+                r3 = stmt.executeQuery("select * from flight.flight where place1='" + b + "' and place2='" + c + "'");
+                flightList = setFlight2(flightList, r3, "place1", "place2", "time1",
+                        "time2", "ticket1", "price1");
+                r4 = stmt.executeQuery("select * from flight.flight where place2='" + b + "' and place3='" + c + "'");
+                flightList = setFlight2(flightList, r4, "place2", "place3", "time3",
+                        "time4", "ticket2", "price2");
+                r5 = stmt.executeQuery("select * from flight.flight where place1='" + b + "' and place3='" + c + "'");
+                while (r5.next()) {
+                    Flight2 flight = new Flight2();
+                    flight.setFlightId(r5.getString("flight_id"));
+                    flight.setAirway(r5.getString("airway"));
+                    flight.setStatus(r5.getString("status"));
+                    flight.setPlace1(r5.getString("place1"));
+                    flight.setPlace2(r5.getString("place3"));
+                    flight.setTime1(r5.getString("time1"));
+                    flight.setTime2(r5.getString("time4"));
+                    flight.setTicket(r5.getInt("ticket1") + r5.getInt("ticket2"));
+                    flight.setPrice(r5.getInt("price1") + r5.getInt("price2"));
+                    flightList.add(flight);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -240,12 +255,12 @@ public class FlightOperation implements Tool {
             }
         }
         if (d.equals("票价"))
-            FXCollections.sort(flightList, Comparator.comparing((Flight s) -> (s.getPrice1() + s.getPrice2())));
+            FXCollections.sort(flightList, Comparator.comparing((Flight2 s) -> s.getPrice()));
         else if (d.equals("飞行时间")) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            FXCollections.sort(flightList, Comparator.comparing((Flight s) -> {
+            FXCollections.sort(flightList, Comparator.comparing((Flight2 s) -> {
                 try {
-                    return (int) (sdf.parse(s.getTime4()).getTime() -
+                    return (int) (sdf.parse(s.getTime2()).getTime() -
                             sdf.parse(s.getTime1()).getTime()) / (1000 * 60);
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -254,7 +269,29 @@ public class FlightOperation implements Tool {
             }));
 
         } else if (d.equals("余票数量"))
-            FXCollections.sort(flightList, Comparator.comparing((Flight s) -> (s.getTicket1() < s.getPrice2() ? s.getTicket1() : s.getTicket2())));
+            FXCollections.sort(flightList, Comparator.comparing((Flight2 s) -> 0 - s.getTicket()));
         return flightList;//Returns the result
+    }
+
+    private ObservableList<Flight2> setFlight2(ObservableList<Flight2> flightList, ResultSet rs, String place1, String
+            place2, String time1, String time2, String ticket, String price) {
+        try {
+            while (rs.next()) {
+                Flight2 flight = new Flight2();
+                flight.setFlightId(rs.getString("flight_id"));
+                flight.setAirway(rs.getString("airway"));
+                flight.setStatus(rs.getString("status"));
+                flight.setPlace1(rs.getString(place1));
+                flight.setPlace2(rs.getString(place2));
+                flight.setTime1(rs.getString(time1));
+                flight.setTime2(rs.getString(time2));
+                flight.setTicket(rs.getInt(ticket));
+                flight.setPrice(rs.getInt(price));
+                flightList.add(flight);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flightList;
     }
 }

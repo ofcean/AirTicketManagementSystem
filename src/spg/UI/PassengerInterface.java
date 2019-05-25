@@ -25,8 +25,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import spg.function.*;
+import yqh.Type;
+import yqh.User;
 
 public class PassengerInterface implements Tool {
+
+    User us = new User();
 
     FlightOperation fop = new FlightOperation();
 
@@ -47,52 +51,37 @@ public class PassengerInterface implements Tool {
     private Label textUserId1; // Value injected by FXMLLoader
 
     @FXML // fx:id="tableFlight1"
-    private TableView<Flight> tableFlight1; // Value injected by FXMLLoader
+    private TableView<Flight2> tableFlight1; // Value injected by FXMLLoader
 
     @FXML // fx:id="colId1"
-    private TableColumn<Flight, String> colId1; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colId1; // Value injected by FXMLLoader
 
     @FXML // fx:id="colAirway1"
-    private TableColumn<Flight, String> colAirway1; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colAirway1; // Value injected by FXMLLoader
 
     @FXML // fx:id="colCity11"
-    private TableColumn<Flight, String> colCity11; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colCity11; // Value injected by FXMLLoader
 
     @FXML // fx:id="colCity21"
-    private TableColumn<Flight, String> colCity21; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colCity31"
-    private TableColumn<Flight, String> colCity31; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colCity21; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTime11"
-    private TableColumn<Flight, String> colTime11; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colTime11; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTime21"
-    private TableColumn<Flight, String> colTime21; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colTime31"
-    private TableColumn<Flight, String> colTime31; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colTime41"
-    private TableColumn<Flight, String> colTime41; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colTime21; // Value injected by FXMLLoader
 
     @FXML // fx:id="colPrice11"
-    private TableColumn<Flight, String> colPrice11; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colPrice21"
-    private TableColumn<Flight, String> colPrice21; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colPrice1; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTicket11"
-    private TableColumn<Flight, String> colTicket11; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colTicket21"
-    private TableColumn<Flight, String> colTicket21; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colTicket1; // Value injected by FXMLLoader
 
     @FXML // fx:id="colStatus1"
-    private TableColumn<Flight, String> colStatus1; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colStatus1; // Value injected by FXMLLoader
 
     @FXML // fx:id="colBuy1"
-    private TableColumn<Flight, String> colBuy1; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colBuy1; // Value injected by FXMLLoader
 
     @FXML // fx:id="textMessage1"
     private Label textMessage1; // Value injected by FXMLLoader
@@ -110,13 +99,16 @@ public class PassengerInterface implements Tool {
     private TableView<Order> tableOrder2; // Value injected by FXMLLoader
 
     @FXML // fx:id="passenger_id2"
-    private TableColumn<Flight, String> passenger_id2; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colPassengerId2; // Value injected by FXMLLoader
 
     @FXML // fx:id="flight_id2"
-    private TableColumn<Flight, String> flight_id2; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colFlightId2; // Value injected by FXMLLoader
 
     @FXML // fx:id="order_status2"
-    private TableColumn<Flight, String> order_status2; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colOrderStatus2; // Value injected by FXMLLoader
+
+    @FXML // fx:id="order_status2"
+    private TableColumn<Flight2, String> colRefund2; // Value injected by FXMLLoader
 
     @FXML // fx:id="textFlightId3"
     private JFXTextField textFlightId3; // Value injected by FXMLLoader
@@ -134,97 +126,70 @@ public class PassengerInterface implements Tool {
     private JFXButton buttonSearch3; // Value injected by FXMLLoader
 
     @FXML // fx:id="tableFlight"
-    private TableView<Flight> tableFlight3; // Value injected by FXMLLoader
+    private TableView<Flight2> tableFlight3; // Value injected by FXMLLoader
 
     @FXML // fx:id="colId3"
-    private TableColumn<Flight, String> colId3; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colId3; // Value injected by FXMLLoader
 
     @FXML // fx:id="colAirway3"
-    private TableColumn<Flight, String> colAirway3; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colAirway3; // Value injected by FXMLLoader
 
     @FXML // fx:id="colCity13"
-    private TableColumn<Flight, String> colCity13; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colCity13; // Value injected by FXMLLoader
 
     @FXML // fx:id="colCity23"
-    private TableColumn<Flight, String> colCity23; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colCity33"
-    private TableColumn<Flight, String> colCity33; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colCity23; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTime13"
-    private TableColumn<Flight, String> colTime13; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colTime13; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTime23"
-    private TableColumn<Flight, String> colTime23; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colTime33"
-    private TableColumn<Flight, String> colTime33; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colTime43"
-    private TableColumn<Flight, String> colTime43; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colTime23; // Value injected by FXMLLoader
 
     @FXML // fx:id="colPrice13"
-    private TableColumn<Flight, String> colPrice13; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colPrice23"
-    private TableColumn<Flight, String> colPrice23; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colPrice3; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTicket13"
-    private TableColumn<Flight, String> colTicket13; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colTicket23"
-    private TableColumn<Flight, String> colTicket23; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colTicket3; // Value injected by FXMLLoader
 
     @FXML // fx:id="colStatus3"
-    private TableColumn<Flight, String> colStatus3; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colStatus3; // Value injected by FXMLLoader
 
     @FXML // fx:id="colBuy3"
-    private TableColumn<Flight, String> colBuy3; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colBuy3; // Value injected by FXMLLoader
 
     @FXML // fx:id="tableFlight2"
-    private TableView<Flight> tableFlight4; // Value injected by FXMLLoader
+    private TableView<Flight2> tableFlight4; // Value injected by FXMLLoader
 
     @FXML // fx:id="colId4"
-    private TableColumn<Flight, String> colId4; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colId4; // Value injected by FXMLLoader
 
     @FXML // fx:id="colAirway4"
-    private TableColumn<Flight, String> colAirway4; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colAirway4; // Value injected by FXMLLoader
 
     @FXML // fx:id="colCity14"
-    private TableColumn<Flight, String> colCity14; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colCity14; // Value injected by FXMLLoader
 
     @FXML // fx:id="colCity24"
-    private TableColumn<Flight, String> colCity24; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colCity34"
-    private TableColumn<Flight, String> colCity34; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colCity24; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTime14"
-    private TableColumn<Flight, String> colTime14; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colTime14; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTime24"
-    private TableColumn<Flight, String> colTime24; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colTime34"
-    private TableColumn<Flight, String> colTime34; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colTime44"
-    private TableColumn<Flight, String> colTime44; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colTime24; // Value injected by FXMLLoader
 
     @FXML // fx:id="colPrice14"
-    private TableColumn<Flight, String> colPrice14; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colPrice24"
-    private TableColumn<Flight, String> colPrice24; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colPrice4; // Value injected by FXMLLoader
 
     @FXML // fx:id="colTicket14"
-    private TableColumn<Flight, String> colTicket14; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colTicket24"
-    private TableColumn<Flight, String> colTicket24; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colTicket4; // Value injected by FXMLLoader
 
     @FXML // fx:id="colStatus4"
-    private TableColumn<Flight, String> colStatus4; // Value injected by FXMLLoader
+    private TableColumn<Flight2, String> colStatus4; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colBuy4"
+    private TableColumn<Flight2, String> colBuy4; // Value injected by FXMLLoader
 
     @FXML // fx:id="butttonRecommend4"
     private JFXButton butttonRecommend4; // Value injected by FXMLLoader
@@ -256,15 +221,10 @@ public class PassengerInterface implements Tool {
         assert colAirway1 != null : "fx:id=\"colAirway1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colCity11 != null : "fx:id=\"colCity11\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colCity21 != null : "fx:id=\"colCity21\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colCity31 != null : "fx:id=\"colCity31\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colTime11 != null : "fx:id=\"colTime11\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colTime21 != null : "fx:id=\"colTime21\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTime31 != null : "fx:id=\"colTime31\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTime41 != null : "fx:id=\"colTime41\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colPrice11 != null : "fx:id=\"colPrice11\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colPrice21 != null : "fx:id=\"colPrice21\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTicket11 != null : "fx:id=\"colTicket11\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTicket21 != null : "fx:id=\"colTicket21\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colPrice1 != null : "fx:id=\"colPrice1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colTicket1 != null : "fx:id=\"colTicket1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colStatus1 != null : "fx:id=\"colStatus1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colBuy1 != null : "fx:id=\"colBuy1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert textMessage1 != null : "fx:id=\"textMessage1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
@@ -272,45 +232,37 @@ public class PassengerInterface implements Tool {
         assert buttonCheck1 != null : "fx:id=\"buttonCheck1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert buttonSearch2 != null : "fx:id=\"buttonSearch2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert tableOrder2 != null : "fx:id=\"tableOrder2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert passenger_id2 != null : "fx:id=\"passenger_id2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert flight_id2 != null : "fx:id=\"flight_id2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert order_status2 != null : "fx:id=\"order_status2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colPassengerId2 != null : "fx:id=\"colPassengerId2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colFlightId2 != null : "fx:id=\"colFlightId2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colOrderStatus2 != null : "fx:id=\"colOrderStatus2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colRefund2 != null : "fx:id=\"colRefund2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert textFlightId3 != null : "fx:id=\"textFlightId3\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert comboCity13 != null : "fx:id=\"comboCity13\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert comboCity23 != null : "fx:id=\"comboCity23\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert comboSort3 != null : "fx:id=\"comboSort3\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert buttonSearch3 != null : "fx:id=\"buttonSearch3\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert tableFlight3 != null : "fx:id=\"tableFlight\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert tableFlight3 != null : "fx:id=\"tableFlight3\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colId3 != null : "fx:id=\"colId3\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colAirway3 != null : "fx:id=\"colAirway3\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colCity13 != null : "fx:id=\"colCity13\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colCity23 != null : "fx:id=\"colCity23\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colCity33 != null : "fx:id=\"colCity33\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colTime13 != null : "fx:id=\"colTime13\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colTime23 != null : "fx:id=\"colTime23\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTime33 != null : "fx:id=\"colTime33\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTime43 != null : "fx:id=\"colTime43\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colPrice13 != null : "fx:id=\"colPrice13\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colPrice23 != null : "fx:id=\"colPrice23\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTicket13 != null : "fx:id=\"colTicket13\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTicket23 != null : "fx:id=\"colTicket23\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colPrice3 != null : "fx:id=\"colPrice3\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colTicket3 != null : "fx:id=\"colTicket3\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colStatus3 != null : "fx:id=\"colStatus3\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colBuy3 != null : "fx:id=\"colBuy3\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert tableFlight4 != null : "fx:id=\"tableFlight2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert tableFlight4 != null : "fx:id=\"tableFlight4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colId4 != null : "fx:id=\"colId4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colAirway4 != null : "fx:id=\"colAirway4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colCity14 != null : "fx:id=\"colCity14\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colCity24 != null : "fx:id=\"colCity24\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colCity34 != null : "fx:id=\"colCity34\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colTime14 != null : "fx:id=\"colTime14\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colTime24 != null : "fx:id=\"colTime24\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTime34 != null : "fx:id=\"colTime34\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTime44 != null : "fx:id=\"colTime44\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colPrice14 != null : "fx:id=\"colPrice14\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colPrice24 != null : "fx:id=\"colPrice24\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTicket14 != null : "fx:id=\"colTicket14\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert colTicket24 != null : "fx:id=\"colTicket24\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colPrice4 != null : "fx:id=\"colPrice4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colTicket4 != null : "fx:id=\"colTicket4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colStatus4 != null : "fx:id=\"colStatus4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colBuy4 != null : "fx:id=\"colBuy4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert butttonRecommend4 != null : "fx:id=\"butttonRecommend4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert comboCity24 != null : "fx:id=\"comboCity24\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert comboCity14 != null : "fx:id=\"comboCity14\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
@@ -331,8 +283,12 @@ public class PassengerInterface implements Tool {
             }
         });
 
+        buttonSearch1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+
+        });
+
         buttonSearch3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            this.showFlightTable(fop.seekFlightWithSort(textFlightId3.getText().equals("") ? "不限制" : textFlightId3.getText(), comboCity13.getValue() == null ? "北" +
+            this.showFlightTable(fop.seekFlightWithSort(textFlightId3.getText().equals("") ? "不限" : textFlightId3.getText(), comboCity13.getValue() == null ? "北" +
                     "京" : comboCity13.getValue(), comboCity23.getValue() == null ? "北京" : comboCity23.getValue(), comboSort3.getValue() == null ? "不限制" : comboSort3.getValue()));
         });
 
@@ -350,23 +306,18 @@ public class PassengerInterface implements Tool {
         });
     }
 
-    private void showFlightTable(ObservableList<Flight> flightList) {
+    private void showFlightTable(ObservableList<Flight2> flightList) {
         colId3.setCellValueFactory(new PropertyValueFactory<>("flightId"));
         colAirway3.setCellValueFactory(new PropertyValueFactory<>("airway"));
         colCity13.setCellValueFactory((new PropertyValueFactory<>("place1")));
         colCity23.setCellValueFactory(new PropertyValueFactory<>("place2"));
-        colCity33.setCellValueFactory(new PropertyValueFactory<>("place3"));
         colTime13.setCellValueFactory(new PropertyValueFactory<>("time1"));
         colTime23.setCellValueFactory(new PropertyValueFactory<>("time2"));
-        colTime33.setCellValueFactory(new PropertyValueFactory<>("time3"));
-        colTime43.setCellValueFactory(new PropertyValueFactory<>("time4"));
-        colTicket13.setCellValueFactory(new PropertyValueFactory<>("ticket1"));
-        colTicket23.setCellValueFactory(new PropertyValueFactory<>("ticket2"));
-        colPrice13.setCellValueFactory(new PropertyValueFactory<>("price1"));
-        colPrice23.setCellValueFactory(new PropertyValueFactory<>("price2"));
+        colTicket3.setCellValueFactory(new PropertyValueFactory<>("ticket"));
+        colPrice3.setCellValueFactory(new PropertyValueFactory<>("price"));
         colStatus3.setCellValueFactory(new PropertyValueFactory<>("status"));
         colBuy3.setCellFactory((col) -> {
-            TableCell<Flight, String> cell = new TableCell<Flight, String>() {
+            TableCell<Flight2, String> cell = new TableCell<Flight2, String>() {
 
                 @Override
                 public void updateItem(String item, boolean empty) {
@@ -377,19 +328,18 @@ public class PassengerInterface implements Tool {
                         JFXButton delBtn = new JFXButton("购票");
                         this.setGraphic(delBtn);
                         delBtn.setOnMouseClicked((me) -> {
-                            Flight clickedFli = this.getTableView().getItems().get(this.getIndex());
-                            if (comboCity13.getValue() != null && comboCity23.getValue() != null) {
+                            Flight2 clickedFli = this.getTableView().getItems().get(this.getIndex());
+                            /*if (comboCity13.getValue() != null && comboCity23.getValue() != null) {
                                 if (comboCity13.getValue().equals(clickedFli.getPlace1()) && comboCity23.getValue().equals(clickedFli.getPlace2()))
-                                    oop.buyTicket(textUserId1.getText(), clickedFli.getFlightId(), clickedFli.getTicket1(), 1);
+                                    //购票函数us.buyDB(clickedFli, Type.PlaceEnum.FIRST);
                                 else if (comboCity13.getValue().equals(clickedFli.getPlace2()) && comboCity23.getValue().equals(clickedFli.getPlace3()))
-                                    oop.buyTicket(textUserId1.getText(), clickedFli.getFlightId(), clickedFli.getTicket2(), 2);
+                                    us.buyDB(clickedFli, Type.PlaceEnum.SECOND);
                                 else
-                                    oop.buyTicket(textUserId1.getText(), clickedFli.getFlightId(), ((clickedFli.getTicket2()
-                                            < clickedFli.getTicket2()) || clickedFli.getTicket2() == 0) ? clickedFli.getTicket1() : clickedFli.getTicket2(), 3);
+                                    us.buyDB(clickedFli, Type.PlaceEnum.FULL);
                             } else {
                                 System.out.println("购票失败");
                                 //弹出购票失败窗口
-                            }
+                            }*/
                         });
                     }
                 }
