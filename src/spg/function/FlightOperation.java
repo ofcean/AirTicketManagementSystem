@@ -9,7 +9,12 @@ import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javax.naming.directory.SearchResult;
 import java.lang.String;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
+import java.util.Date;
 
 public class FlightOperation implements Tool {
 
@@ -64,10 +69,6 @@ public class FlightOperation implements Tool {
     public ObservableList<Flight> seekFlight(String a, String b, String c) {//Query the required data from the database
         ObservableList<Flight> flightList = FXCollections.observableArrayList();
         Connection conn = null;
-        String[] place = new String[3];
-        String[] time = new String[4];
-        int[] ticket = new int[2];
-        int[] price = new int[2];
         try {
             conn = DatabaseConnection.getCon();
             Statement stmt = conn.createStatement();
@@ -147,7 +148,6 @@ public class FlightOperation implements Tool {
             conn = DatabaseConnection.getCon();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select * from flight.order where passenger_id='" + passengerId + "'");//Execute the SQL and return the result set
-            if (!rs.next()) return null;
             while (rs.next()) {
                 String flightId = rs.getString("flight_id");
                 ResultSet rt = stmt.executeQuery("select * from flight.flight where flight_id='" + flightId + "' and status=延误");
@@ -172,7 +172,6 @@ public class FlightOperation implements Tool {
             conn = DatabaseConnection.getCon();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select * from flight.order where passenger_id='" + passengerId + "' and flight_id='" + flightId + "'");//Execute the SQL and return the result set
-            if (!rs.next()) return null;
             while (rs.next()) {
                 int leg = rs.getInt("leg");
                 ResultSet rt = stmt.executeQuery("select * from flight.flight where flight_id='" + flightId + "'");
@@ -198,5 +197,64 @@ public class FlightOperation implements Tool {
             }
         }
         return null;//Returns the result
+    }
+
+    public ObservableList<Flight> seekFlightWithSort(String a, String b, String c, String d) {//Query the required data from the database
+        ObservableList<Flight> flightList = FXCollections.observableArrayList();
+        Connection conn = null;
+        try {
+            conn = DatabaseConnection.getCon();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from flight.flight");//Execute the SQL and return the result set
+            if (!a.equals("不限制"))//Execute the SQL and return the result set
+                rs = stmt.executeQuery("select * from flight.flight where flight_id='" + a + "'");
+            else
+                rs = stmt.executeQuery("select *from flight.flight where (place1='" + b + "' and place2='" + c + "') " +
+                        "or (place2='" + b + "' and place3='" + c + "') or (place1='" + b + "' and place3='" + c + "')");
+            while (rs.next()) {
+                Flight flight = new Flight();
+                flight.setFlightId(rs.getString("flight_id"));
+                flight.setAirway(rs.getString("airway"));
+                flight.setStatus(rs.getString("status"));
+                flight.setPlace1(rs.getString("place1"));
+                flight.setPlace2(rs.getString("place2"));
+                flight.setPlace3(rs.getString("place3"));
+                flight.setTime1(rs.getString("time1"));
+                flight.setTime2(rs.getString("time2"));
+                flight.setTime3(rs.getString("time3"));
+                flight.setTime4(rs.getString("time4"));
+                flight.setIsStop(rs.getBoolean("is_stop"));
+                flight.setTicket1(rs.getInt("ticket1"));
+                flight.setTicket2(rs.getInt("ticket2"));
+                flight.setPrice1(rs.getInt("price1"));
+                flight.setPrice2(rs.getInt("price2"));
+                flightList.add(flight);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();//Close the connection
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (d.equals("票价"))
+            FXCollections.sort(flightList, Comparator.comparing((Flight s) -> (s.getPrice1() + s.getPrice2())));
+        else if (d.equals("飞行时间")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            FXCollections.sort(flightList, Comparator.comparing((Flight s) -> {
+                try {
+                    return (int) (sdf.parse(s.getTime4()).getTime() -
+                            sdf.parse(s.getTime1()).getTime()) / (1000 * 60);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return 0;
+            }));
+
+        } else if (d.equals("余票数量"))
+            FXCollections.sort(flightList, Comparator.comparing((Flight s) -> (s.getTicket1() < s.getPrice2() ? s.getTicket1() : s.getTicket2())));
+        return flightList;//Returns the result
     }
 }

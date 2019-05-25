@@ -476,7 +476,7 @@ public class Administrator implements Tool {
         }
     }
 
-    public void showFlightTable(ObservableList<Flight> flightList) {
+    private void showFlightTable(ObservableList<Flight> flightList) {
         colId.setCellValueFactory(new PropertyValueFactory<>("flightId"));
         colAirway.setCellValueFactory(new PropertyValueFactory<>("airway"));
         colCity1.setCellValueFactory((new PropertyValueFactory<>("place1")));
