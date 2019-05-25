@@ -55,8 +55,8 @@ public class User {
             Connection conn=DatabaseConnection.getCon();
             conn.setAutoCommit(false);
             Statement s=conn.createStatement();
-            s.execute("create table ORDER (passengerId varchar(11),flightId char(6),orderStatus varchar(6),leg int )");
             Order r=buy(x,t);
+            s.execute("update flight set ticket1="+x.getTicket1()+",ticket2="+x.getTicket2()+" where flight_id="+x.getFlightId()+";");
             s.execute("insert into ORDER values ('"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
             s.close();
             conn.commit();
