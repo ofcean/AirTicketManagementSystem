@@ -5,6 +5,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spg/UI/PassengerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/PassengerInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spg/function/OrderOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/function/OrderOperation.java" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/src/spg/function/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/function/Tool.java" afterDir="false" />
+=======
+    <list default="true" id="4f563730-a7c3-4f91-8f6a-01edb4047b8e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yqh/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yqh/User.java" afterDir="false" />
+>>>>>>> edca0c46c518f38f2c8f0cb7382c5d91e67e223a
+>>>>>>> 623b91d7bf187fd34286cb2651b9116026e86703
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +120,21 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+<<<<<<< HEAD
+=======
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/yqh/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="304">
+              <caret line="52" column="97" selection-start-line="52" selection-start-column="97" selection-end-line="52" selection-end-column="97" />
+=======
+            <state relative-caret-position="-209">
+              <caret line="19" column="109" selection-start-line="19" selection-start-column="109" selection-end-line="19" selection-end-column="109" />
+>>>>>>> edca0c46c518f38f2c8f0cb7382c5d91e67e223a
+>>>>>>> d1c84e68e02c2a414c9ad5072d6bca08ccadba16
+>>>>>>> 623b91d7bf187fd34286cb2651b9116026e86703
             </state>
           </provider>
         </entry>
@@ -142,6 +166,20 @@
     <option name="y" value="102" />
     <option name="width" value="1612" />
     <option name="height" value="876" />
+<<<<<<< HEAD
+=======
+=======
+        <option value="$PROJECT_DIR$/src/yqh/User.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="160" />
+    <option name="y" value="45" />
+    <option name="width" value="1615" />
+    <option name="height" value="880" />
+>>>>>>> edca0c46c518f38f2c8f0cb7382c5d91e67e223a
+>>>>>>> 623b91d7bf187fd34286cb2651b9116026e86703
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -247,10 +285,39 @@
     <configuration />
   </component>
   <component name="TaskManager">
+<<<<<<< HEAD
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="2061000" />
+=======
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4f563730-a7c3-4f91-8f6a-01edb4047b8e" name="Default Changelist" comment="" />
+      <created>1558681221441</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558681221441</updated>
+      <workItem from="1558681230689" duration="8494000" />
+<<<<<<< HEAD
+      <workItem from="1558777484285" duration="320000" />
+=======
+<<<<<<< HEAD
+      <workItem from="1558705515831" duration="3872000" />
+      <workItem from="1558769385939" duration="8231000" />
+=======
+      <workItem from="1558777484285" duration="89000" />
+>>>>>>> edca0c46c518f38f2c8f0cb7382c5d91e67e223a
+>>>>>>> d1c84e68e02c2a414c9ad5072d6bca08ccadba16
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="10416000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="20597000" />
+>>>>>>> 623b91d7bf187fd34286cb2651b9116026e86703
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -262,6 +329,24 @@
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
+<<<<<<< HEAD
+=======
+=======
+    <option name="totallyTimeSpent" value="10185000" />
+>>>>>>> d1c84e68e02c2a414c9ad5072d6bca08ccadba16
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533512" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="设计师" order="5" />
+>>>>>>> edca0c46c518f38f2c8f0cb7382c5d91e67e223a
+>>>>>>> 623b91d7bf187fd34286cb2651b9116026e86703
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -387,6 +472,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -394,13 +480,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/yqh/Ticket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/spg/function/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+>>>>>>> 623b91d7bf187fd34286cb2651b9116026e86703
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/spg/UI/Main.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="189">
           <caret line="14" column="68" lean-forward="true" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+=======
+        <state relative-caret-position="304">
+          <caret line="52" column="97" selection-start-line="52" selection-start-column="97" selection-end-line="52" selection-end-column="97" />
+>>>>>>> 623b91d7bf187fd34286cb2651b9116026e86703
         </state>
       </provider>
     </entry>

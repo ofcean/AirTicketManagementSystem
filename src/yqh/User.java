@@ -50,12 +50,14 @@ public class User {
         return r;
     }
 
-    public void buyDB(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，并更新数据库
+    public boolean buyDB(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，并更新数据库，成功返回true，失败返回false
         try{
             Connection conn=DatabaseConnection.getCon();
             conn.setAutoCommit(false);
             Statement s=conn.createStatement();
             Order r=buy(x,t);
+            if(r.getFlightId()==null&&r.getPassengerId()==null)
+                return false;
             s.execute("update flight set ticket1="+x.getTicket1()+",ticket2="+x.getTicket2()+" where flight_id="+x.getFlightId()+";");
             s.execute("insert into ORDER values ('"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
             s.close();
@@ -64,6 +66,7 @@ public class User {
         }catch (Exception e){
 
         }
+        return true;
     }
 
     /*public void reservation(Flight x, Type.PlaceEnum t){//预约抢票，参数为航班x和上下机情况t
