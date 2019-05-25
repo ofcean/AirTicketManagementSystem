@@ -3,7 +3,7 @@ package spg.function;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
 public class Order {
-
+    private int index;
     private String passengerId;
     private String flightId;
     private String orderStatus;
@@ -14,6 +14,14 @@ public class Order {
         this.flightId = flightId;
         this.orderStatus = orderStatus;//The ticket has been issued and the reservation is in process
         this.leg = leg;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     public void setFlightId(String flightId) {
