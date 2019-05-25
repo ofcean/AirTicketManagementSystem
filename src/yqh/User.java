@@ -1,12 +1,12 @@
 package yqh;
 
+//import com.sun.org.apache.xpath.internal.operations.String;
 import spg.function.*;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import  java.sql.SQLException;
-import java.util.Queue;
 
 
 public class User {
@@ -30,18 +30,21 @@ public class User {
                 p[1]--;
                 x.setTicket1(p[0]);
                 x.setTicket2(p[1]);
+                r.setLeg(3);
                 break;
             case FIRST:
                 if(p[0]==0)
                     return r;
                 p[0]--;
                 x.setTicket1(p[0]);
+                r.setLeg(1);
                 break;
             case SECOND:
                 if(p[1]==0)
                     return r;
                 p[1]--;
                 x.setTicket2(p[1]);
+                r.setLeg(2);
                 break;
         }
         r.setFlightId(x.getFlightId());
@@ -58,8 +61,8 @@ public class User {
             Order r=buy(x,t);
             if(r.getFlightId()==null&&r.getPassengerId()==null)
                 return false;
-            s.execute("update flight set ticket1="+x.getTicket1()+",ticket2="+x.getTicket2()+" where flight_id="+x.getFlightId()+";");
-            s.execute("insert into ORDER values ('"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
+            s.execute("update flight.flight set ticket1="+x.getTicket1()+",ticket2="+x.getTicket2()+" where flight_id="+x.getFlightId()+";");
+            s.execute("insert into flight.order values ('"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
             s.close();
             conn.commit();
             conn.close();
@@ -69,36 +72,76 @@ public class User {
         return true;
     }
 
-    /*public void reservation(Flight x, Type.PlaceEnum t){//预约抢票，参数为航班x和上下机情况t
+    public boolean reservationDB(Flight x, Type.PlaceEnum t){//预约抢票，参数为航班x和上下机情况t,购票成功返回true，并更新数据库,失败返回false
+        Order r=new Order(null,null,null,0);
         switch (t){
             case FULL:
-                Queue<String> q = x.getAppointList();
-                q.add(String.valueOf(id));
-                String qt[]=new String[q.size()];
-                for(int i=0;i<q.size();i++)
-                    qt[i]=q.poll();
-                x.setAppointList(qt);
+                r.setLeg(3);
                 break;
             case FIRST:
-                Queue<String> q1 = x.getAppointList1();
-                q1.add(String.valueOf(id));
-                String qt1[]=new String[q1.size()];
-                for(int i=0;i<q1.size();i++)
-                    qt1[i]=q1.poll();
-                x.setAppointList1(qt1);
+                r.setLeg(1);
                 break;
             case SECOND:
-                Queue<String> q2 = x.getAppointList2();
-                q2.add(String.valueOf(id));
-                String qt2[]=new String[q2.size()];
-                for(int i=0;i<q2.size();i++)
-                    qt2[i]=q2.poll();
-                x.setAppointList2(qt2);
+                r.setLeg(2);
                 break;
         }
+        r.setFlightId(x.getFlightId());
+        r.setPassengerId(id);
+        r.setOrderStatus("预约中");
+        try{
+            Connection conn=DatabaseConnection.getCon();
+            conn.setAutoCommit(false);
+            Statement s=conn.createStatement();
+            if(r.getFlightId()==null&&r.getPassengerId()==null)
+                return false;
+            s.execute("insert into flight.order values ('"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
+            s.close();
+            conn.commit();
+            conn.close();
+        }catch (Exception e){
+
+        }
+        return true;
     }
 
-    public void refund(Flight x, Ticket rt){//退票，参数为航班x和要退的票t
+    public int buyres(String flightId,Type.PlaceEnum t){//购票与预约功能，需要参数航班ID和航程类型t，普通购票成功返回1，没有余票自动预约并返回2，都失败返回0
+        Flight x=new Flight();
+        try{
+            Connection conn=DatabaseConnection.getCon();
+            conn.setAutoCommit(false);
+            Statement s=conn.createStatement();
+            ResultSet rs = s.executeQuery("select * from flight.flight where flight_id="+flightId+";");
+            String place[]=new String[3];
+            place[0]=rs.getString(4);
+            place[1]=rs.getString(5);
+            place[2]=rs.getString(6);
+            String time[]=new String[4];
+            time[0]=rs.getString(7);
+            time[1]=rs.getString(8);
+            time[2]=rs.getString(9);
+            time[3]=rs.getString(10);
+            int ticket[]=new int[2];
+            ticket[0]=rs.getInt(12);
+            ticket[0]=rs.getInt(13);
+            int price[]=new int[2];
+            ticket[0]=rs.getInt(14);
+            ticket[0]=rs.getInt(15);
+            x.addFlight(rs.getString(1),rs.getString(2), place,time, rs.getBoolean(11),ticket,price);
+            s.close();
+            conn.commit();
+            conn.close();
+        }catch (Exception e){
+
+        }
+        if (buyDB(x,t))
+            return 1;
+        else if (reservationDB(x,t))
+            return 2;
+        else
+            return 0;
+    }
+
+    /*public void refund(Flight x, Ticket rt){//退票，参数为航班x和要退的票t
         Type.PlaceEnum t=rt.placetype;
         int[] p=x.getResTicket();
         String uid;
