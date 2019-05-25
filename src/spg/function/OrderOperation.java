@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class OrderOperation {
 
-    public boolean buyTicket(String passengerId, String flightId, int ticket, int leg) {
+    /*public boolean buyTicket(String passengerId, String flightId, int ticket, int leg) {
         boolean result = false;
         Connection conn = null;
         try {
@@ -33,5 +33,5 @@ public class OrderOperation {
             }
         }
         return result;
-    }
+    }*/
 }

@@ -25,8 +25,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import spg.function.*;
+import yqh.Type;
+import yqh.User;
 
 public class PassengerInterface implements Tool {
+
+    User us = new User();
 
     FlightOperation fop = new FlightOperation();
 
@@ -380,12 +384,11 @@ public class PassengerInterface implements Tool {
                             Flight clickedFli = this.getTableView().getItems().get(this.getIndex());
                             if (comboCity13.getValue() != null && comboCity23.getValue() != null) {
                                 if (comboCity13.getValue().equals(clickedFli.getPlace1()) && comboCity23.getValue().equals(clickedFli.getPlace2()))
-                                    oop.buyTicket(textUserId1.getText(), clickedFli.getFlightId(), clickedFli.getTicket1(), 1);
+                                    us.buyDB(clickedFli, Type.PlaceEnum.FIRST);
                                 else if (comboCity13.getValue().equals(clickedFli.getPlace2()) && comboCity23.getValue().equals(clickedFli.getPlace3()))
-                                    oop.buyTicket(textUserId1.getText(), clickedFli.getFlightId(), clickedFli.getTicket2(), 2);
+                                    us.buyDB(clickedFli, Type.PlaceEnum.SECOND);
                                 else
-                                    oop.buyTicket(textUserId1.getText(), clickedFli.getFlightId(), ((clickedFli.getTicket2()
-                                            < clickedFli.getTicket2()) || clickedFli.getTicket2() == 0) ? clickedFli.getTicket1() : clickedFli.getTicket2(), 3);
+                                    us.buyDB(clickedFli, Type.PlaceEnum.FULL);
                             } else {
                                 System.out.println("购票失败");
                                 //弹出购票失败窗口
