@@ -17,7 +17,7 @@ public class User {
         Flight x = new Flight();
         return x;
     }
-    public Order buy(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化
+    public Order buy(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化，此方法不改变数据库
         Order r=new Order(null,null,null,0);//初始化为空订单，属性皆为null
         int p[]=new int[2];
         p[0]=x.getTicket1();
@@ -50,13 +50,13 @@ public class User {
         return r;
     }
 
-    public void buyDB(Flight x, Type.PlaceEnum t){
+    public void buyDB(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，并更新数据库
         try{
             Connection conn=DatabaseConnection.getCon();
             conn.setAutoCommit(false);
             Statement s=conn.createStatement();
-            s.execute("create table ORDER (passengerId varchar(11),flightId char(6),orderStatus varchar(6),leg int )");
             Order r=buy(x,t);
+            s.execute("update flight set ticket1="+x.getTicket1()+",ticket2="+x.getTicket2()+" where flight_id="+x.getFlightId()+";");
             s.execute("insert into ORDER values ('"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
             s.close();
             conn.commit();
