@@ -17,7 +17,7 @@ public class User {
         Flight x = new Flight();
         return x;
     }
-    public Order buy(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化
+    public Order buy(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化，此方法不改变数据库
         Order r=new Order(null,null,null,0);//初始化为空订单，属性皆为null
         int p[]=new int[2];
         p[0]=x.getTicket1();
@@ -50,7 +50,7 @@ public class User {
         return r;
     }
 
-    public void buyDB(Flight x, Type.PlaceEnum t){
+    public void buyDB(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，并更新数据库
         try{
             Connection conn=DatabaseConnection.getCon();
             conn.setAutoCommit(false);
