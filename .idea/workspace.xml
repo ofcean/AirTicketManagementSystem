@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="222a34e1-1ed6-45ef-afb0-58a0e483490c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lyh/Delay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lyh/Delay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spg/UI/AppModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/AppModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spg/function/FlightOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/function/FlightOperation.java" afterDir="false" />
+=======
+    <list default="true" id="d18e3d75-294e-46a1-a2a1-bb21716897ae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +21,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/yqh/User.java">
@@ -26,17 +32,34 @@
           </provider>
         </entry>
       </file>
+=======
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/spg/function/FlightOperation.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="355">
               <caret line="334" column="7" selection-start-line="334" selection-start-column="7" selection-end-line="334" selection-end-column="7" />
+=======
+            <state relative-caret-position="323">
+              <caret line="149" column="32" selection-start-line="149" selection-start-column="32" selection-end-line="149" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#353#354#0" expanded="true" />
+                <element signature="e#390#391#0" expanded="true" />
+              </folding>
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/lyh/Delay.java">
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/function/FlightOperation.java">
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
               <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
@@ -48,15 +71,23 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/yqh/Ticket.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
               <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-570">
+              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/yqh/Type.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="42">
@@ -70,19 +101,35 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
               <caret line="12" selection-start-line="12" selection-end-line="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/AppModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/spg/UI/Administrator.fxml">
           <provider selected="true" editor-type-id="text-editor" />
           <provider editor-type-id="JavaFX-Scene-Builder" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/Administrator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+            </state>
+          </provider>
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/spg/UI/PassengerInterface.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="441">
               <caret line="282" column="81" lean-forward="true" selection-start-line="282" selection-start-column="81" selection-end-line="282" selection-end-column="81" />
               <folding>
@@ -91,15 +138,26 @@
                 <element signature="e#19809#19810#0" expanded="true" />
                 <element signature="e#19844#19845#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="-513">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/spg/UI/AppModel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="336">
               <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,10 +166,32 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/spg/UI/Administrator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
               <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/function/Flight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/spg/function/Order.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding>
+                <element signature="e#644#645#0" expanded="true" />
+                <element signature="e#678#679#0" expanded="true" />
+                <element signature="e#707#708#0" expanded="true" />
+                <element signature="e#735#736#0" expanded="true" />
+              </folding>
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
             </state>
           </provider>
         </entry>
@@ -121,6 +201,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -136,12 +217,38 @@
     <option name="width" value="1612" />
     <option name="height" value="876" />
   </component>
+=======
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
   <component name="ProjectView">
     <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+<<<<<<< HEAD
+=======
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -169,19 +276,21 @@
               <item name="AirTicketManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="lyh" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+<<<<<<< HEAD
             </path>
             <path>
               <item name="AirTicketManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="AirTicketManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="spg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+=======
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
             </path>
             <path>
               <item name="AirTicketManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="AirTicketManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="spg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="function" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="AirTicketManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -190,12 +299,6 @@
               <item name="spg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="UI" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
-            <path>
-              <item name="AirTicketManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="AirTicketManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="yqh" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -203,6 +306,12 @@
       <pane id="ProjectPane" />
     </panes>
   </component>
+<<<<<<< HEAD
+=======
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -215,26 +324,6 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="应用程序" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="spg.UI.Main" />
-      <module name="AirTicketManagementSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="spg.UI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="应用程序.Main" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -242,7 +331,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="636000" />
+=======
+    <option name="totallyTimeSpent" value="13000" />
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -255,15 +348,23 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18070363" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Messages" weight="0.32910052" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" />
+=======
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="设计师" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32910052" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32910052" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -281,6 +382,7 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/spg/function/Flight2.java">
@@ -394,6 +496,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="355">
           <caret line="334" column="7" selection-start-line="334" selection-start-column="7" selection-end-line="334" selection-end-column="7" />
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-570">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+>>>>>>> a01be2173a35b1614fb4315691f7492e08f5fdf3
         </state>
       </provider>
     </entry>
