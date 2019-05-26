@@ -75,7 +75,7 @@ public class User {
             conn.commit();
             conn.close();
         }catch (Exception e){
-
+            e.printStackTrace();
         }
         return true;
     }
@@ -114,7 +114,7 @@ public class User {
             conn.commit();
             conn.close();
         }catch (Exception e){
-
+            e.printStackTrace();
         }
         return true;
     }
@@ -147,7 +147,7 @@ public class User {
             conn.commit();
             conn.close();
         }catch (Exception e){
-
+            e.printStackTrace();
         }
         if (buyDB(x,t))
             return 1;
