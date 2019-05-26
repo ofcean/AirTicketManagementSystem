@@ -76,7 +76,7 @@ public class Delay implements Tool {   //date4(1 2 3 4) time4(1 2 3 4)  buttonSe
         operation.deleteFlight(flightNum);
         operation.saveFlight(fli);
     }
-   /* public void DelayTimeUpdate2(String flightNum){  //在UI自己读取time
+    /*public void DelayTimeUpdate2(String flightNum){  //在UI自己读取time
         String[] times=new String[4];
         FlightOperation operation = new FlightOperation();
         ObservableList<Flight> flightList = FXCollections.observableArrayList();
@@ -92,8 +92,8 @@ public class Delay implements Tool {   //date4(1 2 3 4) time4(1 2 3 4)  buttonSe
         fli.setTime4(times[3]);
         operation.deleteFlight(flightNum);
         operation.saveFlight(fli);
-    }
-*/
+    }*/
+
     public void DelayStatusUpdate(String flightNum){
         FlightOperation operation = new FlightOperation();
         ObservableList<Flight> flightList = FXCollections.observableArrayList();
