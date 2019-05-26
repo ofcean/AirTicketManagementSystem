@@ -4,9 +4,7 @@
 
 package spg.UI;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +22,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import spg.function.*;
 import yqh.Type;
 import yqh.User;
@@ -41,6 +44,9 @@ public class PassengerInterface implements Tool {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+
+    @FXML // fx:id="stackpane"
+    private StackPane stackpane; // Value injected by FXMLLoader
 
     @FXML // fx:id="panePassenger"
     private Pane panePassenger; // Value injected by FXMLLoader
@@ -213,6 +219,7 @@ public class PassengerInterface implements Tool {
         // update text area if text in model changes:
         model.textProperty().addListener((obs, oldText, newText) -> textUserId1.setText(newText));
         assert panePassenger != null : "fx:id=\"panePassenger\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert stackpane != null : "fx:id=\"stackpane\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert textUserId1 != null : "fx:id=\"textUserId1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert tableFlight1 != null : "fx:id=\"tableFlight1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colId1 != null : "fx:id=\"colId1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
@@ -360,6 +367,21 @@ public class PassengerInterface implements Tool {
             System.out.println("预约成功");
         else if (b == 0)
             System.out.println("购票失败");
+    }
+
+    private void showMsgDialog(String heading, String msg) {
+        JFXDialogLayout content = new JFXDialogLayout();
+        Text t = new Text(heading);
+        t.setFont(Font.font("Microsoft YaHei", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        Text m = new Text(msg);
+        m.setFont(Font.font("Microsoft YaHei", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        content.setHeading(t);
+        content.setBody(m);
+        JFXButton btn = new JFXButton("确定");
+        JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+        btn.setOnAction(event -> dialog.close());
+        content.setActions(btn);
+        dialog.show();
     }
 
     //A function that passes data between two controllers

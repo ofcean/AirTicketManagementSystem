@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="222a34e1-1ed6-45ef-afb0-58a0e483490c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AirTicketManagementSystem/spg/UI/Administrator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirTicketManagementSystem/spg/UI/Administrator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AirTicketManagementSystem/spg/UI/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirTicketManagementSystem/spg/UI/Login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lyh/Delay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lyh/Delay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spg/UI/Administrator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/Administrator.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spg/UI/Administrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/Administrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spg/UI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spg/UI/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spg/UI/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spg/UI/PassengerInterface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/PassengerInterface.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spg/UI/PassengerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/PassengerInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,50 +35,50 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/spg/UI/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/spg/UI/Login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/spg/UI/Administrator.fxml">
-          <provider selected="true" editor-type-id="text-editor" />
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/spg/UI/PassengerInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="361" column="39" selection-start-line="361" selection-start-column="39" selection-end-line="361" selection-end-column="39" />
+            <state relative-caret-position="378">
+              <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
               <folding>
-                <element signature="e#17426#19155#0" expanded="true" />
-                <element signature="e#19154#19155#0" expanded="true" />
-                <element signature="e#19809#19810#0" expanded="true" />
-                <element signature="e#19844#19845#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#initialize#0;class#Login#0" />
+                <element signature="method#login#0;class#Login#0" />
+                <element signature="method#showMsgDialog#0;class#Login#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/PassengerInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="48" column="64" lean-forward="true" selection-start-line="48" selection-start-column="64" selection-end-line="48" selection-end-column="64" />
+              <folding>
+                <element signature="e#17426#19155#0" expanded="true" />
+                <element signature="e#19154#19155#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/PassengerInterface.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="18" column="72" lean-forward="true" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lyh/Delay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="188" selection-end-column="1" />
+            <state relative-caret-position="427">
+              <caret line="389" selection-start-line="389" selection-end-line="390" />
               <folding>
+                <element signature="e#0#7990#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -82,31 +86,39 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/spg/function/Flight.java">
+        <entry file="file://$PROJECT_DIR$/src/spg/function/Tool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-84">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="42">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/spg/UI/AppModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/Login.fxml">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/spg/UI/Administrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="447" column="79" selection-start-line="447" selection-start-column="79" selection-end-line="447" selection-end-column="79" />
+            <state relative-caret-position="238">
+              <caret line="272" column="22" selection-start-line="272" selection-start-column="22" selection-end-line="272" selection-end-column="22" />
+              <folding>
+                <element signature="e#9079#27448#0" />
+                <element signature="e#19024#20408#0" />
+                <element signature="e#20476#20767#0" />
+                <element signature="e#21177#23401#0" />
+                <element signature="e#22916#24352#0" />
+                <element signature="e#24918#26089#0" />
+                <element signature="e#25454#25489#0" />
+                <element signature="e#24420#24691#0" />
+                <element signature="e#24757#24810#0" />
+                <element signature="e#27455#28188#0" />
+                <element signature="e#28194#30230#0" />
+                <element signature="e#30236#30914#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,6 +132,15 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/spg/function/Order.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -129,14 +150,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/yqh/User.java" />
-        <option value="$PROJECT_DIR$/src/spg/UI/PassengerInterface.java" />
         <option value="$PROJECT_DIR$/src/spg/UI/Main.java" />
-        <option value="$PROJECT_DIR$/src/spg/UI/Administrator.java" />
         <option value="$PROJECT_DIR$/src/lyh/Delay.java" />
+        <option value="$PROJECT_DIR$/src/spg/UI/Login.java" />
+        <option value="$PROJECT_DIR$/src/spg/UI/Administrator.java" />
+        <option value="$PROJECT_DIR$/src/spg/UI/PassengerInterface.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="38" />
     <option name="y" value="102" />
     <option name="width" value="1612" />
@@ -248,7 +270,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4784000" />
+    <option name="totallyTimeSpent" value="8164000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -315,19 +337,6 @@
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/spg/UI/PassengerInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="361" column="39" selection-start-line="361" selection-start-column="39" selection-end-line="361" selection-end-column="39" />
-          <folding>
-            <element signature="e#17426#19155#0" expanded="true" />
-            <element signature="e#19154#19155#0" expanded="true" />
-            <element signature="e#19809#19810#0" expanded="true" />
-            <element signature="e#19844#19845#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/spg/UI/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -342,10 +351,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/spg/UI/Login.java">
+    <entry file="file://$PROJECT_DIR$/src/spg/function/Flight.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        <state relative-caret-position="-84">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -359,12 +368,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/spg/function/Flight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-84">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/spg/UI/Login.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/spg/function/FlightOperation.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -376,6 +382,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/lyh/Delay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="389" selection-start-line="389" selection-end-line="390" />
+          <folding>
+            <element signature="e#0#7990#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/spg/function/Tool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/spg/function/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -383,19 +407,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/spg/UI/Administrator.java">
+    <entry file="file://$PROJECT_DIR$/src/spg/function/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="447" column="79" selection-start-line="447" selection-start-column="79" selection-end-line="447" selection-end-column="79" />
+        <state relative-caret-position="84">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lyh/Delay.java">
+    <entry file="file://$PROJECT_DIR$/src/spg/UI/Administrator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="188" selection-end-column="1" />
+        <state relative-caret-position="238">
+          <caret line="272" column="22" selection-start-line="272" selection-start-column="22" selection-end-line="272" selection-end-column="22" />
+          <folding>
+            <element signature="e#9079#27448#0" />
+            <element signature="e#19024#20408#0" />
+            <element signature="e#20476#20767#0" />
+            <element signature="e#21177#23401#0" />
+            <element signature="e#22916#24352#0" />
+            <element signature="e#24918#26089#0" />
+            <element signature="e#25454#25489#0" />
+            <element signature="e#24420#24691#0" />
+            <element signature="e#24757#24810#0" />
+            <element signature="e#27455#28188#0" />
+            <element signature="e#28194#30230#0" />
+            <element signature="e#30236#30914#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/spg/UI/PassengerInterface.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="72" lean-forward="true" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/spg/UI/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#initialize#0;class#Login#0" />
+            <element signature="method#login#0;class#Login#0" />
+            <element signature="method#showMsgDialog#0;class#Login#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/spg/UI/PassengerInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="48" column="64" lean-forward="true" selection-start-line="48" selection-start-column="64" selection-end-line="48" selection-end-column="64" />
+          <folding>
+            <element signature="e#17426#19155#0" expanded="true" />
+            <element signature="e#19154#19155#0" expanded="true" />
           </folding>
         </state>
       </provider>

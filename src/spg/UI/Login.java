@@ -6,15 +6,12 @@ package spg.UI;
 
 import com.jfoenix.controls.JFXButton;
 
-import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import javafx.scene.input.MouseEvent;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -22,9 +19,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import spg.function.DatabaseConnection;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import spg.function.LoginOperation;
 
 public class Login {
@@ -40,6 +40,9 @@ public class Login {
     @FXML // fx:id="paneLogin"
     private Pane paneLogin; // Value injected by FXMLLoader
 
+    @FXML // fx:id="stackpane"
+    private StackPane stackpane; // Value injected by FXMLLoader
+
     @FXML // fx:id="textId"
     private TextField textId; // Value injected by FXMLLoader
 
@@ -53,6 +56,7 @@ public class Login {
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert paneLogin != null : "fx:id=\"paneLogin\" was not injected: check your FXML file 'Login.fxml'.";
+        assert stackpane != null : "fx:id=\"stackpane\" was not injected: check your FXML file 'Login.fxml'.";
         assert textId != null : "fx:id=\"textId\" was not injected: check your FXML file 'Login.fxml'.";
         assert buttonLogin != null : "fx:id=\"buttonLogin\" was not injected: check your FXML file 'Login.fxml'.";
         assert textPassword != null : "fx:id=\"textPassword\" was not injected: check your FXML file 'Login.fxml'.";
@@ -60,9 +64,9 @@ public class Login {
         buttonLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> login());
     }
 
-    public void login() {
+    private void login() {
         if (!op.isUser(textId.getText(), textPassword.getText()))
-            System.out.println("账号或密码错误");//后期改成弹窗
+            showMsgDialog("登录出错","账号或密码错误，请重试");
         else if (op.isAdmin(textId.getText(), textPassword.getText())) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("Administrator.fxml"));
@@ -88,4 +92,18 @@ public class Login {
         }
     }
 
+    private void showMsgDialog(String heading, String msg) {
+        JFXDialogLayout content = new JFXDialogLayout();
+        Text t = new Text(heading);
+        t.setFont(Font.font("Microsoft YaHei", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        Text m = new Text(msg);
+        m.setFont(Font.font("Microsoft YaHei", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        content.setHeading(t);
+        content.setBody(m);
+        JFXButton btn = new JFXButton("确定");
+        JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+        btn.setOnAction(event -> dialog.close());
+        content.setActions(btn);
+        dialog.show();
+    }
 }

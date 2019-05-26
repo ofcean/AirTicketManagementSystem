@@ -4,13 +4,7 @@
 
 package spg.UI;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTabPane;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTimePicker;
-import com.jfoenix.controls.JFXToggleButton;
+import com.jfoenix.controls.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +22,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import lyh.Delay;
 import spg.function.Flight;
 import spg.function.FlightOperation;
@@ -43,6 +42,9 @@ public class Administrator implements Tool {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+
+    @FXML // fx:id="stackpane"
+    private StackPane stackpane; // Value injected by FXMLLoader
 
     @FXML // fx:id="paneAdmin"
     private Pane paneAdmin; // Value injected by FXMLLoader
@@ -269,6 +271,7 @@ public class Administrator implements Tool {
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
+        assert stackpane != null : "fx:id=\"stackpane\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert paneAdmin != null : "fx:id=\"paneAdmin\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert time11 != null : "fx:id=\"time11\" was not injected: check your FXML file 'Administrator.fxml'.";
         assert comboAirway1 != null : "fx:id=\"comboAirway1\" was not injected: check your FXML file 'Administrator.fxml'.";
@@ -381,7 +384,11 @@ public class Administrator implements Tool {
             ticket[0] = Integer.valueOf(textTicket11.getText());
             price[0] = Integer.valueOf(textPrice11.getText());
             newFlight.addFlight(textFlightId1.getText(), comboAirway1.getValue(), place, time, toggleIsStop1.isSelected(), ticket, price);
-            op.saveFlight(newFlight);//Save the data in the database
+            boolean result = op.saveFlight(newFlight);//Save the data in the database
+            if (result)
+                showMsgDialog("成功", "新增航班成功");
+            else
+                showMsgDialog("失败", "新增航班失败，请重试");
         });
 
         buttonSearch2.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
@@ -391,27 +398,31 @@ public class Administrator implements Tool {
 
         buttonSearch3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             ObservableList<Flight> flight = op.seekFlight(textFlight31.getText(), "不限", "不限");
-            for (Flight btn : flight) {
-                toggleIsStop3.setSelected(btn.getIsStop());
-                setMyDisable(toggleIsStop3, comboCity32, date32, time32, date33, time33, textPrice32, textTicket32);
-                textFlight32.setText(btn.getFlightId());
-                comboAirway3.setValue(btn.getAirway());
-                comboCity31.setValue(btn.getPlace1());
-                comboCity33.setValue(btn.getPlace3());
-                date31.setValue(LocalDate.parse(btn.getTime1().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-                date34.setValue(LocalDate.parse(btn.getTime4().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-                time31.setValue(LocalTime.parse(btn.getTime1().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
-                time34.setValue(LocalTime.parse(btn.getTime4().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
-                textPrice31.setText(String.valueOf(btn.getPrice1()));
-                textTicket31.setText(String.valueOf(btn.getTicket1()));
-                if (toggleIsStop3.isSelected()) {
-                    comboCity32.setValue(btn.getPlace2());
-                    date32.setValue(LocalDate.parse(btn.getTime2().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-                    date33.setValue(LocalDate.parse(btn.getTime3().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-                    time32.setValue(LocalTime.parse(btn.getTime2().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
-                    time33.setValue(LocalTime.parse(btn.getTime3().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
-                    textPrice32.setText(String.valueOf(btn.getPrice2()));
-                    textTicket32.setText(String.valueOf(btn.getTicket2()));
+            if (flight.isEmpty())
+                showMsgDialog("失败", "查找航班失败，无此航班");
+            else {
+                for (Flight btn : flight) {
+                    toggleIsStop3.setSelected(btn.getIsStop());
+                    setMyDisable(toggleIsStop3, comboCity32, date32, time32, date33, time33, textPrice32, textTicket32);
+                    textFlight32.setText(btn.getFlightId());
+                    comboAirway3.setValue(btn.getAirway());
+                    comboCity31.setValue(btn.getPlace1());
+                    comboCity33.setValue(btn.getPlace3());
+                    date31.setValue(LocalDate.parse(btn.getTime1().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                    date34.setValue(LocalDate.parse(btn.getTime4().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                    time31.setValue(LocalTime.parse(btn.getTime1().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
+                    time34.setValue(LocalTime.parse(btn.getTime4().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
+                    textPrice31.setText(String.valueOf(btn.getPrice1()));
+                    textTicket31.setText(String.valueOf(btn.getTicket1()));
+                    if (toggleIsStop3.isSelected()) {
+                        comboCity32.setValue(btn.getPlace2());
+                        date32.setValue(LocalDate.parse(btn.getTime2().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        date33.setValue(LocalDate.parse(btn.getTime3().substring(0, 10), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        time32.setValue(LocalTime.parse(btn.getTime2().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
+                        time33.setValue(LocalTime.parse(btn.getTime3().substring(11, 19), DateTimeFormatter.ofPattern("HH:mm:ss")));
+                        textPrice32.setText(String.valueOf(btn.getPrice2()));
+                        textTicket32.setText(String.valueOf(btn.getTicket2()));
+                    }
                 }
             }
         });
@@ -440,31 +451,39 @@ public class Administrator implements Tool {
             price[0] = Integer.valueOf(textPrice31.getText());
             op.deleteFlight(textFlight31.getText());
             newFlight.addFlight(textFlight32.getText(), comboAirway3.getValue(), place, time, toggleIsStop3.isSelected(), ticket, price);
-            op.saveFlight(newFlight);//Save the data in the database
+            boolean result = op.saveFlight(newFlight);//Save the data in the database
+            if (result)
+                showMsgDialog("成功", "更新航班信息成功");
+            else
+                showMsgDialog("失败", "更新航班信息失败，请重试");
         });
 
         buttonSearch4.addEventHandler(MouseEvent.MOUSE_CLICKED, mouse -> {
             LocalDate[] dates = deop.DelayFlighTDates(textFlightId4.getText());
             LocalTime[] times = deop.DelayFlighTtimes(textFlightId4.getText());
-            if (dates[1] == null) {
-                date42.setDisable(true);
-                date43.setDisable(true);
-                time42.setDisable(true);
-                time43.setDisable(true);
-            } else {
-                date42.setDisable(false);
-                date43.setDisable(false);
-                time42.setDisable(false);
-                time43.setDisable(false);
-                date42.setValue(dates[1]);
-                date43.setValue(dates[2]);
-                time42.setValue(times[1]);
-                time43.setValue(times[2]);
+            if (dates[0].toString().equals("2019-01-01"))
+                showMsgDialog("失败", "查找航班失败，无此航班");
+            else {
+                if (dates[1] == null) {
+                    date42.setDisable(true);
+                    date43.setDisable(true);
+                    time42.setDisable(true);
+                    time43.setDisable(true);
+                } else {
+                    date42.setDisable(false);
+                    date43.setDisable(false);
+                    time42.setDisable(false);
+                    time43.setDisable(false);
+                    date42.setValue(dates[1]);
+                    date43.setValue(dates[2]);
+                    time42.setValue(times[1]);
+                    time43.setValue(times[2]);
+                }
+                date41.setValue(dates[0]);
+                date44.setValue(dates[3]);
+                time41.setValue(times[0]);
+                time44.setValue(times[3]);
             }
-            date41.setValue(dates[0]);
-            date44.setValue(dates[3]);
-            time41.setValue(times[0]);
-            time44.setValue(times[3]);
         });
 
         buttonDelay4.addEventHandler(MouseEvent.MOUSE_CLICKED, mouse -> {
@@ -472,6 +491,7 @@ public class Administrator implements Tool {
                             "00:00" : time42.getValue().toString(), time43.getValue() == null ? "00:00" : time43.getValue().toString(),
                     time44.getValue().toString(), date41.getValue().toString(), date42.getValue() == null ? "0000-00-00" :
                             date42.getValue().toString(), date43.getValue() == null ? "0000-00-00" : date43.getValue().toString(), date44.getValue().toString());
+            showMsgDialog("成功", "发布延误成功，已通知此航班乘客");
         });
 
         buttonReturn5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
@@ -547,6 +567,21 @@ public class Administrator implements Tool {
             return cell;
         });
         tableFlight.setItems(flightList);
+    }
+
+    private void showMsgDialog(String heading, String msg) {
+        JFXDialogLayout content = new JFXDialogLayout();
+        Text t = new Text(heading);
+        t.setFont(Font.font("Microsoft YaHei", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        Text m = new Text(msg);
+        m.setFont(Font.font("Microsoft YaHei", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        content.setHeading(t);
+        content.setBody(m);
+        JFXButton btn = new JFXButton("确定");
+        JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+        btn.setOnAction(event -> dialog.close());
+        content.setActions(btn);
+        dialog.show();
     }
 
 }
