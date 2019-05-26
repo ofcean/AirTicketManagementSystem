@@ -5,14 +5,14 @@ import javafx.beans.property.StringProperty;
 
 public class AppModel
 {
-    private StringProperty text = new SimpleStringProperty();
+    private StringProperty text;
 
-    public AppModel()
+    private AppModel()
     {
         this.text = new SimpleStringProperty();
     }
 
-    public StringProperty textProperty() {
+    private StringProperty textProperty() {
         return text;
     }
 
