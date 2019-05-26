@@ -1,10 +1,49 @@
 package spg.function;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import com.sun.org.apache.xpath.internal.operations.Or;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.sql.*;
 
 public class OrderOperation {
+    /*public Order seekOrder(String passengerId, String flightId) {//Query the required data from the database
+        Connection conn = null;
+        try {
+            conn = DatabaseConnection.getCon();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from flight.order where passenger_id='" + passengerId + "'" +
+                    " and flight_id='" + flightId + "'");
+            while (rs.next()) {
+                Order order=new Order(rs.getString(""));
+                flight.setFlightId(rs.getString("flight_id"));
+                flight.setAirway(rs.getString("airway"));
+                flight.setStatus(rs.getString("status"));
+                flight.setPlace1(rs.getString("place1"));
+                flight.setPlace2(rs.getString("place2"));
+                flight.setPlace3(rs.getString("place3"));
+                flight.setTime1(rs.getString("time1"));
+                flight.setTime2(rs.getString("time2"));
+                flight.setTime3(rs.getString("time3"));
+                flight.setTime4(rs.getString("time4"));
+                flight.setIsStop(rs.getBoolean("is_stop"));
+                flight.setTicket1(rs.getInt("ticket1"));
+                flight.setTicket2(rs.getInt("ticket2"));
+                flight.setPrice1(rs.getInt("price1"));
+                flight.setPrice2(rs.getInt("price2"));
+                flightList.add(flight);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();//Close the connection
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return flightList;//Returns the result
+    }*/
 
     /*public boolean buyTicket(String passengerId, String flightId, int ticket, int leg) {
         boolean result = false;
