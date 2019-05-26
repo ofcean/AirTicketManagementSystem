@@ -13,10 +13,10 @@ public class User {
     public String id;//ID
     public ArrayList ticketlist = new ArrayList();//已购航班
 
-    public Flight getflight(String flightNum) {//参数为航班号，返回指定航班，未完成
-        Flight x = new Flight();
-        return x;
+    public void setId(String userid) {//参数为航班号，返回指定航班，未完成
+        id=userid;
     }
+    
     public Order buy(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化，此方法不改变数据库
         Order r=new Order(null,null,null,0);//初始化为空订单，属性皆为null
         r.setIndex(0);
