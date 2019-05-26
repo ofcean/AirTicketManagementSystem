@@ -71,19 +71,19 @@ public class FlightOperation implements Tool {
             conn = DatabaseConnection.getCon();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select * from flight.flight");//Execute the SQL and return the result set
-            if (!a.equals("不限制") && b.equals("不限制") && c.equals("不限制"))
+            if (!a.equals("不限") && b.equals("不限") && c.equals("不限"))
                 rs = stmt.executeQuery("select * from flight.flight where flight_id = '" + a + "'");
-            else if (a.equals("不限制") && !b.equals("不限制") && c.equals("不限制"))
+            else if (a.equals("不限") && !b.equals("不限") && c.equals("不限"))
                 rs = stmt.executeQuery("select * from flight.flight where place1 = '" + b + "'");
-            else if (a.equals("不限制") && b.equals("不限制") && !c.equals("不限制"))
+            else if (a.equals("不限") && b.equals("不限") && !c.equals("不限"))
                 rs = stmt.executeQuery("select * from flight.flight where place3 = '" + c + "'");
-            else if (!a.equals("不限制") && !b.equals("不限制") && c.equals("不限制"))
+            else if (!a.equals("不限") && !b.equals("不限") && c.equals("不限"))
                 rs = stmt.executeQuery("select * from flight.flight where flight_id = '" + a + "' and place1 = '" + b + "'");
-            else if (!a.equals("不限制") && b.equals("不限制"))
+            else if (!a.equals("不限") && b.equals("不限"))
                 rs = stmt.executeQuery("select * from flight.flight where flight_id = '" + a + "' and place3 = '" + c + "'");
-            else if (a.equals("不限制") && !b.equals("不限制"))
+            else if (a.equals("不限") && !b.equals("不限"))
                 rs = stmt.executeQuery("select * from flight.flight where place1 = '" + b + "' and place3 = '" + c + "'");
-            else if (!a.equals("不限制"))
+            else if (!a.equals("不限"))
                 rs = stmt.executeQuery("select * from flight.flight where flight_id = '" + a + "' and place1 = '" + b + "' and place3 = '" + c + "'");
             while (rs.next()) {
                 Flight flight = new Flight();

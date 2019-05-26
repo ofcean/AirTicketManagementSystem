@@ -382,12 +382,12 @@ public class Administrator implements Tool {
         });
 
         buttonSearch2.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            this.showFlightTable(op.seekFlight(textFlightId2.getText().equals("") ? "不限制" : textFlightId2.getText(),
-                    comboCity21.getValue() == null ? "不限制" : comboCity21.getValue(), comboCity23.getValue() == null ? "不限制" : comboCity23.getValue()));
+            this.showFlightTable(op.seekFlight(textFlightId2.getText().equals("") ? "不限" : textFlightId2.getText(),
+                    comboCity21.getValue() == null ? "不限" : comboCity21.getValue(), comboCity23.getValue() == null ? "不限" : comboCity23.getValue()));
         });
 
         buttonSearch3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            ObservableList<Flight> flight = op.seekFlight(textFlight31.getText(), "不限制", "不限制");
+            ObservableList<Flight> flight = op.seekFlight(textFlight31.getText(), "不限", "不限");
             for (Flight btn : flight) {
                 toggleIsStop3.setSelected(btn.getIsStop());
                 setMyDisable(toggleIsStop3, comboCity32, date32, time32, date33, time33, textPrice32, textTicket32);

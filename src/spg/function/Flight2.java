@@ -1,5 +1,6 @@
 package spg.function;
 
+
 public class Flight2 implements spg.function.Tool {
 
     private String flightId, airway, status, place1, place2, time1, time2;
