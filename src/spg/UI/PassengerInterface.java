@@ -306,8 +306,9 @@ public class PassengerInterface implements Tool {
 
         buttonRecommend4.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             RecommendByPrice rbp = new RecommendByPrice();
-            this.showFlightTable(rbp.PriceRecommend(comboCity14.getValue(), comboCity24.getValue()), colId4,
-                    colAirway4, colCity14, colCity24, colTime14, colTime24, colTicket4, colPrice4, colStatus4, colBuy4, tableFlight4);
+            this.showFlightTable(rbp.PriceRecommend(comboCity14.getValue() == null ? "北京" : comboCity14.getValue(),
+                    comboCity24.getValue() == null ? "北京" : comboCity24.getValue()), colId4, colAirway4, colCity14,
+                    colCity24, colTime14, colTime24, colTicket4, colPrice4, colStatus4, colBuy4, tableFlight4);
         });
 
         buttonReturn5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
