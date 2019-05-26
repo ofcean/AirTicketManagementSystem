@@ -7,12 +7,12 @@ public class AppModel
 {
     private StringProperty text;
 
-    private AppModel()
+    public AppModel()
     {
         this.text = new SimpleStringProperty();
     }
 
-    private StringProperty textProperty() {
+    public StringProperty textProperty() {
         return text;
     }
 
