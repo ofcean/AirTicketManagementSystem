@@ -7,7 +7,8 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 
 public class OrderOperation {
-    /*public Order seekOrder(String passengerId, String flightId) {//Query the required data from the database
+    //Query the segment of the specified flight and return
+    /*public int seekOrderLeg(String passengerId, String flightId) {
         Connection conn = null;
         try {
             conn = DatabaseConnection.getCon();

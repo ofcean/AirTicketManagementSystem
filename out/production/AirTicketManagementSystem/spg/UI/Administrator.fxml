@@ -18,7 +18,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane fx:id="paneAdmin" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spg.UI.Administrator">
    <children>
       <JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #dfe4ea;" stylesheets="@tab.css" tabMaxHeight="50.0" tabMaxWidth="200.0">
@@ -159,7 +158,7 @@
                                   <children>
                                       <Pane prefHeight="80.0" prefWidth="1240.0" style="-fx-border-color: #ffffff;">
                                           <children>
-                                              <JFXTextField fx:id="textFlightId2" layoutX="120.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限制">
+                                              <JFXTextField fx:id="textFlightId2" layoutX="120.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限">
                                                   <font>
                                                       <Font name="Microsoft YaHei UI Light" size="24.0" />
                                                   </font>
@@ -174,13 +173,13 @@
                                                       <Font name="Microsoft YaHei UI Light" size="24.0" />
                                                   </font>
                                               </Label>
-                                              <JFXComboBox fx:id="comboCity21" editable="true" layoutX="470.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限制" />
+                                              <JFXComboBox fx:id="comboCity21" editable="true" layoutX="470.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限" />
                                               <Label layoutX="680.0" layoutY="20.0" prefHeight="40.0" prefWidth="120.0" text="终到城市：">
                                                   <font>
                                                       <Font name="Microsoft YaHei UI Light" size="24.0" />
                                                   </font>
                                               </Label>
-                                              <JFXComboBox fx:id="comboCity23" editable="true" layoutX="800.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限制" />
+                                              <JFXComboBox fx:id="comboCity23" editable="true" layoutX="800.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="不限" />
                                               <JFXButton fx:id="buttonSearch2" layoutX="1050.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="查询" textFill="WHITE">
                                                   <font>
                                                       <Font name="Microsoft YaHei UI Light" size="24.0" />

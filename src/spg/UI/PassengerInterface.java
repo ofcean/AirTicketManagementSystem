@@ -288,8 +288,9 @@ public class PassengerInterface implements Tool {
         });
 
         buttonSearch3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            this.showFlightTable(fop.seekFlightWithSort(textFlightId3.getText().equals("") ? "不限" : textFlightId3.getText(), comboCity13.getValue() == null ? "北" +
-                    "京" : comboCity13.getValue(), comboCity23.getValue() == null ? "北京" : comboCity23.getValue(), comboSort3.getValue() == null ? "不限制" : comboSort3.getValue()));
+            this.showFlightTable(fop.seekFlightWithSort(textFlightId3.getText().equals("") ? "不限" : textFlightId3.getText(),
+                    comboCity13.getValue() == null ? "北京" : comboCity13.getValue(), comboCity23.getValue() == null ? "北京"
+                            : comboCity23.getValue(), comboSort3.getValue() == null ? "不限" : comboSort3.getValue()));
         });
 
         buttonReturn5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
@@ -306,6 +307,7 @@ public class PassengerInterface implements Tool {
         });
     }
 
+    //The user purchase interface displays information about each flight
     private void showFlightTable(ObservableList<Flight2> flightList) {
         colId3.setCellValueFactory(new PropertyValueFactory<>("flightId"));
         colAirway3.setCellValueFactory(new PropertyValueFactory<>("airway"));
@@ -325,21 +327,19 @@ public class PassengerInterface implements Tool {
                     this.setText(null);
                     this.setGraphic(null);
                     if (!empty) {
-                        JFXButton delBtn = new JFXButton("购票");
+                        JFXButton delBtn = new JFXButton("购票");//Add the buy tickets button
                         this.setGraphic(delBtn);
-                        delBtn.setOnMouseClicked((me) -> {
+                        delBtn.setOnMouseClicked((me) -> {//Tickets are purchased and the results are displayed
                             Flight2 clickedFli = this.getTableView().getItems().get(this.getIndex());
-                            /*if (comboCity13.getValue() != null && comboCity23.getValue() != null) {
-                                if (comboCity13.getValue().equals(clickedFli.getPlace1()) && comboCity23.getValue().equals(clickedFli.getPlace2()))
-                                    //购票函数us.buyDB(clickedFli, Type.PlaceEnum.FIRST);
-                                else if (comboCity13.getValue().equals(clickedFli.getPlace2()) && comboCity23.getValue().equals(clickedFli.getPlace3()))
-                                    us.buyDB(clickedFli, Type.PlaceEnum.SECOND);
-                                else
-                                    us.buyDB(clickedFli, Type.PlaceEnum.FULL);
-                            } else {
-                                System.out.println("购票失败");
-                                //弹出购票失败窗口
-                            }*/
+                            ObservableList<Flight> flights = fop.seekFlight(clickedFli.getFlightId(), "不限", "不限");
+                            for (Flight btn : flights) {//Three cases of ticket purchase, and three results of ticket purchase
+                                if (clickedFli.getPlace1().equals(btn.getPlace1()) && clickedFli.getPlace2().equals(btn.getPlace2()))
+                                    showTicketResults(clickedFli.getFlightId(), Type.PlaceEnum.FIRST);
+                                else if (clickedFli.getPlace1().equals(btn.getPlace2()) && clickedFli.getPlace2().equals(btn.getPlace3()))
+                                    showTicketResults(clickedFli.getFlightId(), Type.PlaceEnum.SECOND);
+                                else if (clickedFli.getPlace1().equals(btn.getPlace1()) && clickedFli.getPlace2().equals(btn.getPlace3()))
+                                    showTicketResults(clickedFli.getFlightId(), Type.PlaceEnum.FULL);
+                            }
                         });
                     }
                 }
@@ -350,6 +350,17 @@ public class PassengerInterface implements Tool {
         tableFlight3.setItems(flightList);
     }
 
+    //A function that displays the result of a ticket purchase
+    public void showTicketResults(String flightId, Type.PlaceEnum a) {
+        if (us.buyres(flightId, a) == 1)
+            System.out.println("购票成功");
+        else if (us.buyres(flightId, a) == 2)
+            System.out.println("预约成功");
+        else if (us.buyres(flightId, a) == 0)
+            System.out.println("购票失败");
+    }
+
+    //A function that passes data between two controllers
     public static void setText(String text) {
         model.setText(text);
     }
