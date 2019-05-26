@@ -34,8 +34,6 @@ public class PassengerInterface implements Tool {
 
     FlightOperation fop = new FlightOperation();
 
-    OrderOperation oop = new OrderOperation();
-
     public static AppModel model = new AppModel();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -278,9 +276,11 @@ public class PassengerInterface implements Tool {
 
         buttonCheck1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             String delayFlightId;
+            String[] city = new String[2];
             if ((delayFlightId = fop.seekDelayFlight(textUserId1.getText())) != null) {
                 textMessage1.setText("我们抱歉地通知您，航班" + delayFlightId + "延误。");
             }
+            city = fop.seekDelayFlightCity(textUserId1.getText(), delayFlightId);
         });
 
         buttonSearch1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
@@ -352,12 +352,15 @@ public class PassengerInterface implements Tool {
 
     //A function that displays the result of a ticket purchase
     public void showTicketResults(String flightId, Type.PlaceEnum a) {
-        if (us.buyres(flightId, a) == 1)
+        us.setId(textUserId1.getText());
+        int b = us.buyres(flightId, a);
+        if (b == 1)
             System.out.println("购票成功");
-        else if (us.buyres(flightId, a) == 2)
+        else if (b == 2)
             System.out.println("预约成功");
-        else if (us.buyres(flightId, a) == 0)
+        else if (b == 0)
             System.out.println("购票失败");
+        System.out.println(textUserId1.getText());
     }
 
     //A function that passes data between two controllers
