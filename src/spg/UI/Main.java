@@ -6,7 +6,9 @@ import javafx.scene.image.Image;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import spg.function.*;//
+import yqh.Type;
+import yqh.User;
 
 public class Main extends Application {
 
@@ -18,6 +20,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1280, 800));
         primaryStage.getIcons().add(new Image("/spg/image/plane.jpg"));
         primaryStage.show();
+
     }
 
 

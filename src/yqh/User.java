@@ -68,9 +68,10 @@ public class User {
                 rs.previous();
                 orderid=rs.getInt(1)+1;
             }
-            s.execute("update flight.flight set ticket1="+x.getTicket1()+",ticket2="+x.getTicket2()+" where flight_id="+x.getFlightId()+";");
-            s.execute("insert into flight.order values ("+orderid+",'"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
+            s.execute("update flight.flight set ticket1="+x.getTicket1()+",ticket2="+x.getTicket2()+" where flight_id='"+x.getFlightId()+"';");
+            s.execute("insert into flight.order values ("+orderid+",'"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"',"+r.getLeg()+")");
             s.close();
+            rs.close();
             conn.commit();
             conn.close();
         }catch (Exception e){
@@ -107,8 +108,9 @@ public class User {
                 rs.previous();
                 orderid=rs.getInt(1)+1;
             }
-            s.execute("insert into flight.order values ("+orderid+",'"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"','"+r.getLeg()+"')");
+            s.execute("insert into flight.order values ("+orderid+",'"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"',"+r.getLeg()+")");
             s.close();
+            rs.close();
             conn.commit();
             conn.close();
         }catch (Exception e){
@@ -123,7 +125,7 @@ public class User {
             Connection conn=DatabaseConnection.getCon();
             conn.setAutoCommit(false);
             Statement s=conn.createStatement();
-            ResultSet rs = s.executeQuery("select * from flight.flight where flight_id="+flightId+";");
+            ResultSet rs = s.executeQuery("select * from flight.flight where flight_id='"+flightId+"';");
             String place[]=new String[3];
             place[0]=rs.getString("place1");
             place[1]=rs.getString("place2");
@@ -135,10 +137,10 @@ public class User {
             time[3]=rs.getString("time4");
             int ticket[]=new int[2];
             ticket[0]=rs.getInt("ticket1");
-            ticket[0]=rs.getInt("ticket2");
+            ticket[1]=rs.getInt("ticket2");
             int price[]=new int[2];
-            ticket[0]=rs.getInt("price1");
-            ticket[0]=rs.getInt("price2");
+            price[0]=rs.getInt("price1");
+            price[1]=rs.getInt("price2");
             x.addFlight(rs.getString("flight_id"),rs.getString("airway"), place,time, rs.getBoolean("is_stop"),ticket,price);
             s.close();
             rs.close();
