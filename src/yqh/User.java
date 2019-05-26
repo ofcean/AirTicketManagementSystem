@@ -129,8 +129,8 @@ public class User {
             conn.setAutoCommit(false);
             Statement s = conn.createStatement();
             ResultSet rs = s.executeQuery("select * from flight.flight where flight_id='" + flightId + "'");
-            String place[] = new String[3];
             while (rs.next()) {
+                String place[] = new String[3];
                 place[0] = rs.getString("place1");
                 place[1] = rs.getString("place2");
                 place[2] = rs.getString("place3");
@@ -160,63 +160,55 @@ public class User {
             return 0;
     }
 
-    /*public void refund(Flight x, Ticket rt){//退票，参数为航班x和要退的票t
-        Type.PlaceEnum t=rt.placetype;
-        int[] p=x.getResTicket();
-        String uid;
-        for(int i=0;i<x.getWaybill().length;i++)//更新x的乘客列表
-            if(x.getWaybill()[i]==id){
-                int[] item = new int[MAXCAPACITY];
-                item=x.getWaybill();
-                item[i]=0;
-                x.setWaybill(item);
-                break;
+    public void refundDB(int orderid){//退票，参数为航班x和要退的票t
+        Order n=new Order(null,null,null,0);
+        n.setIndex(orderid);
+        try {
+            Connection conn = DatabaseConnection.getCon();
+            conn.setAutoCommit(false);
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("select * from flight.order_list where index=" + orderid + "");
+            String place[] = new String[3];
+            while (rs.next()) {
+                n.setOrderStatus(rs.getString("status"));
+                n.setLeg(rs.getInt("leg"));
+                n.setFlightId(rs.getString("flight_id"));
             }
-        switch (t){
-            case FULL:
-                Queue<String> q = x.getAppointList();
-                p[0]++;
-                p[1]++;
-                x.setResTicket(p);
-                if(q.size()!=0){
-                    uid=q.poll();
-                    String qt[]=new String[q.size()];
-                    for(int i=0;i<q.size();i++)
-                        qt[i]=q.poll();
-                    x.setAppointList(qt);
-                    //User y=search(uid);           //search方法通过乘客ID搜索乘客，并返回乘客对象，未实现
-                    //y.buy(x,FULL);
+            s.execute("delete from flight.order_list where index=" + orderid + "");
+            if(n.getOrderStatus()=="已出票") {
+                rs=s.executeQuery("select * from flight.order");
+                int minid=9999;
+                while (rs.next()) {
+                    if (rs.getInt("index") < minid&&rs.getString("status")=="预约中")
+                        minid = rs.getInt("index");
                 }
-                break;
-            case FIRST:
-                Queue<String> q1 = x.getAppointList1();
-                p[0]++;
-                x.setResTicket(p);
-                if(q1.size()!=0){
-                    uid=q1.poll();
-                    String qt[]=new String[q1.size()];
-                    for(int i=0;i<q1.size();i++)
-                        qt[i]=q1.poll();
-                    x.setAppointList1(qt);
-                    //User y=search(uid);
-                    //y.buy(x,FIRST);
+                if(minid==9999){
+                    rs=s.executeQuery("select * from flight.flight where flight_id='"+n.getFlightId()+"'");
+                    int ticket[]=new int[2];
+                    ticket[0]=rs.getInt("ticket1");
+                    ticket[1]=rs.getInt("ticket2");
+                    switch (n.getLeg()){
+                        case 1:
+                            ticket[0]++;
+                            break;
+                        case 2:
+                            ticket[1]++;
+                            break;
+                        case 3:
+                            ticket[0]++;
+                            ticket[1]++;
+                            break;
+                    }
+                    s.executeUpdate("update flight.flight set ticket1=" + ticket[0] + " and ticket2=" + ticket[1] + " where flight_id='" + n.getFlightId() + "'");
                 }
-                break;
-            case SECOND:
-                Queue<String> q2 = x.getAppointList2();
-                p[1]++;
-                x.setResTicket(p);
-                if(q2.size()!=0){
-                    uid=q2.poll();
-                    String qt[]=new String[q2.size()];
-                    for(int i=0;i<q2.size();i++)
-                        qt[i]=q2.poll();
-                    x.setAppointList2(qt);
-                    //User y=search(uid);
-                    //y.buy(x,SECOND);
+                else{
+                    s.executeUpdate("update flight.order set status='已出票' where index="+minid+"");
                 }
-                break;
+            }
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return;
-    }*/
+    }
 }
