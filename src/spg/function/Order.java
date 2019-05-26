@@ -1,6 +1,12 @@
 package spg.function;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Order {
     private int index;
@@ -9,7 +15,11 @@ public class Order {
     private String orderStatus;
     private int leg;//One of the first half,two for the second half,and three for the second half
 
-    public Order(String passengerId, String flightId, String orderStatus, int leg) {
+    public Order() {
+    }
+
+    public Order(int index, String passengerId, String flightId, String orderStatus, int leg) {
+        this.index = index;
         this.passengerId = passengerId;
         this.flightId = flightId;
         this.orderStatus = orderStatus;//The ticket has been issued and the reservation is in process

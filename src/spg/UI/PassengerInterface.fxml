@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane fx:id="stackpane" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spg.UI.PassengerInterface">
    <children>
       <Pane fx:id="panePassenger" prefHeight="800.0" prefWidth="1280.0">
@@ -66,12 +65,7 @@
                                                               <Font name="Microsoft YaHei UI Light" size="48.0" />
                                                           </font>
                                                       </Label>
-                                                      <JFXButton fx:id="buttonSearch1" layoutX="1100.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="推荐" textFill="WHITE">
-                                                          <font>
-                                                              <Font name="Microsoft YaHei UI Light" size="24.0" />
-                                                          </font>
-                                                      </JFXButton>
-                                          <JFXButton fx:id="buttonCheck1" layoutX="40.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="查看" textFill="WHITE">
+                                          <JFXButton fx:id="buttonCheck1" layoutX="1100.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="查看" textFill="WHITE">
                                              <font>
                                                 <Font name="Microsoft YaHei UI Light" size="24.0" />
                                              </font>
@@ -106,9 +100,10 @@
                                               </Pane>
                                               <TableView fx:id="tableOrder2" layoutY="80.0" prefHeight="600.0" prefWidth="1240.0">
                                                   <columns>
-                                                      <TableColumn fx:id="colPassengerId2" prefWidth="390.0" text="我的用户名" />
-                                                      <TableColumn fx:id="colFlightId2" prefWidth="400.0" text="航班号" />
-                                                      <TableColumn fx:id="colOrderStatus2" prefWidth="400.0" text="订单状态" />
+                                          <TableColumn fx:id="colOrder2" prefWidth="300.0" text="订单号" />
+                                                      <TableColumn fx:id="colPassengerId2" prefWidth="300.0" text="我的用户名" />
+                                                      <TableColumn fx:id="colFlightId2" prefWidth="300.0" text="航班号" />
+                                                      <TableColumn fx:id="colOrderStatus2" prefWidth="290.0" text="订单状态" />
                                                       <TableColumn fx:id="colRefund2" prefWidth="50.0" text="退票" />
                                                   </columns>
                                               </TableView>
@@ -208,7 +203,7 @@
                                               </Label>
                                               <Pane prefHeight="80.0" prefWidth="1240.0" style="-fx-border-color: white;">
                                                   <children>
-                                                      <JFXButton fx:id="butttonRecommend4" layoutX="1120.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="推荐" textFill="WHITE">
+                                                      <JFXButton fx:id="buttonRecommend4" layoutX="1120.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #5352ed;" text="推荐" textFill="WHITE">
                                                           <font>
                                                               <Font name="Microsoft YaHei UI Light" size="24.0" />
                                                           </font>

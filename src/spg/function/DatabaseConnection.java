@@ -7,6 +7,7 @@ public class DatabaseConnection {
 
     private static Connection conn = null;
 
+    //Connect to database
     public static Connection getCon() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");//Load the database connection driver

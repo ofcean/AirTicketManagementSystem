@@ -10,15 +10,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.mysql.cj.xdevapi.Table;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -27,6 +26,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import lyh.RecommendByPrice;
 import spg.function.*;
 import yqh.Type;
 import yqh.User;
@@ -90,9 +90,6 @@ public class PassengerInterface implements Tool {
     @FXML // fx:id="textMessage1"
     private Label textMessage1; // Value injected by FXMLLoader
 
-    @FXML // fx:id="buttonSearch1"
-    private JFXButton buttonSearch1; // Value injected by FXMLLoader
-
     @FXML // fx:id="buttonSearch211"
     private JFXButton buttonCheck1; // Value injected by FXMLLoader
 
@@ -100,19 +97,22 @@ public class PassengerInterface implements Tool {
     private JFXButton buttonSearch2; // Value injected by FXMLLoader
 
     @FXML // fx:id="tableOrder2"
-    private TableView<Order> tableOrder2; // Value injected by FXMLLoader
+    private TableView<Order2> tableOrder2; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colOrder2"
+    private TableColumn<Order2, String> colOrder2; // Value injected by FXMLLoader
 
     @FXML // fx:id="passenger_id2"
-    private TableColumn<Flight2, String> colPassengerId2; // Value injected by FXMLLoader
+    private TableColumn<Order2, String> colPassengerId2; // Value injected by FXMLLoader
 
     @FXML // fx:id="flight_id2"
-    private TableColumn<Flight2, String> colFlightId2; // Value injected by FXMLLoader
+    private TableColumn<Order2, String> colFlightId2; // Value injected by FXMLLoader
 
     @FXML // fx:id="order_status2"
-    private TableColumn<Flight2, String> colOrderStatus2; // Value injected by FXMLLoader
+    private TableColumn<Order2, String> colOrderStatus2; // Value injected by FXMLLoader
 
     @FXML // fx:id="order_status2"
-    private TableColumn<Flight2, String> colRefund2; // Value injected by FXMLLoader
+    private TableColumn<Order2, String> colRefund2; // Value injected by FXMLLoader
 
     @FXML // fx:id="textFlightId3"
     private JFXTextField textFlightId3; // Value injected by FXMLLoader
@@ -195,8 +195,8 @@ public class PassengerInterface implements Tool {
     @FXML // fx:id="colBuy4"
     private TableColumn<Flight2, String> colBuy4; // Value injected by FXMLLoader
 
-    @FXML // fx:id="butttonRecommend4"
-    private JFXButton butttonRecommend4; // Value injected by FXMLLoader
+    @FXML // fx:id="buttonRecommend4"
+    private JFXButton buttonRecommend4; // Value injected by FXMLLoader
 
     @FXML // fx:id="comboCity24"
     private JFXComboBox<String> comboCity24; // Value injected by FXMLLoader
@@ -233,10 +233,10 @@ public class PassengerInterface implements Tool {
         assert colStatus1 != null : "fx:id=\"colStatus1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colBuy1 != null : "fx:id=\"colBuy1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert textMessage1 != null : "fx:id=\"textMessage1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert buttonSearch1 != null : "fx:id=\"buttonSearch1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert buttonCheck1 != null : "fx:id=\"buttonCheck1\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert buttonSearch2 != null : "fx:id=\"buttonSearch2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert tableOrder2 != null : "fx:id=\"tableOrder2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert colOrder2 != null : "fx:id=\"colOrder2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colPassengerId2 != null : "fx:id=\"colPassengerId2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colFlightId2 != null : "fx:id=\"colFlightId2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colOrderStatus2 != null : "fx:id=\"colOrderStatus2\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
@@ -268,7 +268,7 @@ public class PassengerInterface implements Tool {
         assert colTicket4 != null : "fx:id=\"colTicket4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colStatus4 != null : "fx:id=\"colStatus4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert colBuy4 != null : "fx:id=\"colBuy4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
-        assert butttonRecommend4 != null : "fx:id=\"butttonRecommend4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
+        assert buttonRecommend4 != null : "fx:id=\"buttonRecommend4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert comboCity24 != null : "fx:id=\"comboCity24\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert comboCity14 != null : "fx:id=\"comboCity14\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
         assert comboRecommend4 != null : "fx:id=\"comboRecommend4\" was not injected: check your FXML file 'PassengerInterface.fxml'.";
@@ -279,7 +279,7 @@ public class PassengerInterface implements Tool {
         JFXComboBox[] comboPLACE = {comboCity13, comboCity23, comboCity13, comboCity14, comboCity24};
         for (JFXComboBox btn : comboPLACE) btn.setItems(FXCollections.observableArrayList(PLACE));
         comboSort3.setItems(FXCollections.observableArrayList(SORT));
-        comboRecommend4.setItems(FXCollections.observableArrayList(RECOMMAND));
+        comboRecommend4.setItems(FXCollections.observableArrayList(RECOMMEND));
 
         buttonCheck1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             String delayFlightId;
@@ -288,16 +288,26 @@ public class PassengerInterface implements Tool {
                 textMessage1.setText("我们抱歉地通知您，航班" + delayFlightId + "延误。");
             }
             city = fop.seekDelayFlightCity(textUserId1.getText(), delayFlightId);
+            this.showFlightTable(fop.seekFlightWithoutDelay(city[0], city[1]), colId1, colAirway1, colCity11, colCity21,
+                    colTime11, colTime21, colTicket1, colPrice1, colStatus1, colBuy1, tableFlight1);
         });
 
-        buttonSearch1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-
+        buttonSearch2.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            Order2 or = new Order2();
+            this.showOrderTable(or.seekOrder(textUserId1.getText()));
         });
 
         buttonSearch3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             this.showFlightTable(fop.seekFlightWithSort(textFlightId3.getText().equals("") ? "不限" : textFlightId3.getText(),
                     comboCity13.getValue() == null ? "北京" : comboCity13.getValue(), comboCity23.getValue() == null ? "北京"
-                            : comboCity23.getValue(), comboSort3.getValue() == null ? "不限" : comboSort3.getValue()));
+                            : comboCity23.getValue(), comboSort3.getValue() == null ? "不限" : comboSort3.getValue()), colId3,
+                    colAirway3, colCity13, colCity23, colTime13, colTime23, colTicket3, colPrice3, colStatus3, colBuy3, tableFlight3);
+        });
+
+        buttonRecommend4.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            RecommendByPrice rbp = new RecommendByPrice();
+            this.showFlightTable(rbp.PriceRecommend(comboCity14.getValue(), comboCity24.getValue()), colId4,
+                    colAirway4, colCity14, colCity24, colTime14, colTime24, colTicket4, colPrice4, colStatus4, colBuy4, tableFlight4);
         });
 
         buttonReturn5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
@@ -315,17 +325,20 @@ public class PassengerInterface implements Tool {
     }
 
     //The user purchase interface displays information about each flight
-    private void showFlightTable(ObservableList<Flight2> flightList) {
-        colId3.setCellValueFactory(new PropertyValueFactory<>("flightId"));
-        colAirway3.setCellValueFactory(new PropertyValueFactory<>("airway"));
-        colCity13.setCellValueFactory((new PropertyValueFactory<>("place1")));
-        colCity23.setCellValueFactory(new PropertyValueFactory<>("place2"));
-        colTime13.setCellValueFactory(new PropertyValueFactory<>("time1"));
-        colTime23.setCellValueFactory(new PropertyValueFactory<>("time2"));
-        colTicket3.setCellValueFactory(new PropertyValueFactory<>("ticket"));
-        colPrice3.setCellValueFactory(new PropertyValueFactory<>("price"));
-        colStatus3.setCellValueFactory(new PropertyValueFactory<>("status"));
-        colBuy3.setCellFactory((col) -> {
+    private void showFlightTable(ObservableList<Flight2> flightList, TableColumn<Flight2, String> id, TableColumn<Flight2, String> airway,
+                                 TableColumn<Flight2, String> city1, TableColumn<Flight2, String> city2, TableColumn<Flight2, String> time1,
+                                 TableColumn<Flight2, String> time2, TableColumn<Flight2, String> ticket, TableColumn<Flight2, String> price,
+                                 TableColumn<Flight2, String> status, TableColumn<Flight2, String> buy, TableView<Flight2> tableflight) {
+        id.setCellValueFactory(new PropertyValueFactory<>("flightId"));
+        airway.setCellValueFactory(new PropertyValueFactory<>("airway"));
+        city1.setCellValueFactory((new PropertyValueFactory<>("place1")));
+        city2.setCellValueFactory(new PropertyValueFactory<>("place2"));
+        time1.setCellValueFactory(new PropertyValueFactory<>("time1"));
+        time2.setCellValueFactory(new PropertyValueFactory<>("time2"));
+        ticket.setCellValueFactory(new PropertyValueFactory<>("ticket"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        buy.setCellFactory((col) -> {
             TableCell<Flight2, String> cell = new TableCell<Flight2, String>() {
 
                 @Override
@@ -334,9 +347,9 @@ public class PassengerInterface implements Tool {
                     this.setText(null);
                     this.setGraphic(null);
                     if (!empty) {
-                        JFXButton delBtn = new JFXButton("购票");//Add the buy tickets button
-                        this.setGraphic(delBtn);
-                        delBtn.setOnMouseClicked((me) -> {//Tickets are purchased and the results are displayed
+                        JFXButton buyBtn = new JFXButton("购票");//Add the buy tickets button
+                        this.setGraphic(buyBtn);
+                        buyBtn.setOnMouseClicked((me) -> {//Tickets are purchased and the results are displayed
                             Flight2 clickedFli = this.getTableView().getItems().get(this.getIndex());
                             ObservableList<Flight> flights = fop.seekFlight(clickedFli.getFlightId(), "不限", "不限");
                             for (Flight btn : flights) {//Three cases of ticket purchase, and three results of ticket purchase
@@ -354,7 +367,7 @@ public class PassengerInterface implements Tool {
             };
             return cell;
         });
-        tableFlight3.setItems(flightList);
+        tableflight.setItems(flightList);
     }
 
     //A function that displays the result of a ticket purchase
@@ -362,19 +375,49 @@ public class PassengerInterface implements Tool {
         us.setId(textUserId1.getText());
         int b = us.buyres(flightId, a);
         if (b == 1)
-            System.out.println("购票成功");
+            showMsgDialog("成功", "购票成功");
         else if (b == 2)
-            System.out.println("预约成功");
+            showMsgDialog("成功", "票已售空，已预约");
         else if (b == 0)
-            System.out.println("购票失败");
+            showMsgDialog("失败", "购票失败，请重试");
+    }
+
+    //Displays all user orders
+    private void showOrderTable(ObservableList<Order2> orderList) {
+        colOrder2.setCellValueFactory(new PropertyValueFactory<>("index"));
+        colPassengerId2.setCellValueFactory(new PropertyValueFactory<>("passengerId"));
+        colFlightId2.setCellValueFactory((new PropertyValueFactory<>("flightId")));
+        colOrderStatus2.setCellValueFactory(new PropertyValueFactory<>("orderStatus"));
+        colRefund2.setCellFactory((col) -> {
+            TableCell<Order2, String> cell = new TableCell<Order2, String>() {
+
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    this.setText(null);
+                    this.setGraphic(null);
+                    if (!empty) {
+                        JFXButton delBtn = new JFXButton("退票");//Add the buy tickets button
+                        this.setGraphic(delBtn);
+                        delBtn.setOnMouseClicked((me) -> {//Tickets are purchased and the results are displayed
+                            Order2 clickedOrd = this.getTableView().getItems().get(this.getIndex());
+                            us.refundDB(clickedOrd.getIndex());
+                            showMsgDialog("成功", "退票成功，请刷新");
+                        });
+                    }
+                }
+            };
+            return cell;
+        });
+        tableOrder2.setItems(orderList);
     }
 
     private void showMsgDialog(String heading, String msg) {
         JFXDialogLayout content = new JFXDialogLayout();
         Text t = new Text(heading);
-        t.setFont(Font.font("Microsoft YaHei", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        t.setFont(Font.font("Microsoft YaHei UI Light", FontWeight.BOLD, FontPosture.REGULAR, 20));
         Text m = new Text(msg);
-        m.setFont(Font.font("Microsoft YaHei", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        m.setFont(Font.font("Microsoft YaHei UI Light", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         content.setHeading(t);
         content.setBody(m);
         JFXButton btn = new JFXButton("确定");

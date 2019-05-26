@@ -22,9 +22,7 @@ public class FlightOperation implements Tool {
         return instance;
     }
 
-    public FlightOperation() {
-    }
-
+    //Save the flight information to the database
     public boolean saveFlight(Flight fli) {//Add data to the database
         boolean result = false;
         Connection conn = null;
@@ -64,7 +62,10 @@ public class FlightOperation implements Tool {
         return result;
     }
 
-    public ObservableList<Flight> seekFlight(String a, String b, String c) {//Query the required data from the database
+    //Find the specified flight number, or all flight information between the city of origin and the city of destination.
+    // In the following function, a represents the flight number, b represents the departure city of the flight,
+    // and c represents the destination city of the flight
+    public ObservableList<Flight> seekFlight(String a, String b, String c) {
         ObservableList<Flight> flightList = FXCollections.observableArrayList();
         Connection conn = null;
         try {
@@ -116,6 +117,7 @@ public class FlightOperation implements Tool {
         return flightList;//Returns the result
     }
 
+    //A flight with a designated flight number deleted
     public boolean deleteFlight(String flightNum) {//Cancellation of flights
         boolean result = false;
         Connection conn = null;
@@ -140,12 +142,13 @@ public class FlightOperation implements Tool {
         return result;
     }
 
+    //Find the delayed flight number for this user and return null if none
     public String seekDelayFlight(String passengerId) {//Query the required data from the database
         Connection conn = null;
         try {
             conn = DatabaseConnection.getCon();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from flight.order where passenger_id='" + passengerId + "'");//Execute the SQL and return the result set
+            ResultSet rs = stmt.executeQuery("select * from flight.order_list where passenger_id='" + passengerId + "'");//Execute the SQL and return the result set
             while (rs.next()) {
                 String flightId = rs.getString("flight_id");
                 ResultSet rt = stmt.executeQuery("select * from flight.flight where flight_id='" + flightId + "' and status='延误'");
@@ -163,27 +166,30 @@ public class FlightOperation implements Tool {
         return null;//Returns the result
     }
 
+    //Find two cities where a given order has delayed a flight
     public String[] seekDelayFlightCity(String passengerId, String flightId) {
         Connection conn = null;
         String[] city = new String[2];
         try {
             conn = DatabaseConnection.getCon();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from flight.order where passenger_id='" + passengerId + "' and flight_id='" + flightId + "'");//Execute the SQL and return the result set
+            ResultSet rs = stmt.executeQuery("select * from flight.order_list where passenger_id='" + passengerId + "' and flight_id='" + flightId + "'");//Execute the SQL and return the result set
             while (rs.next()) {
                 int leg = rs.getInt("leg");
                 ResultSet rt = stmt.executeQuery("select * from flight.flight where flight_id='" + flightId + "'");
-                if (leg == 1) {
-                    city[0] = rt.getString("place1");
-                    city[1] = rt.getString("place2");
-                } else if (leg == 2) {
-                    city[0] = rt.getString("place2");
-                    city[1] = rt.getString("place3");
-                } else {
-                    city[0] = rt.getString("place1");
-                    city[1] = rt.getString("place3");
+                while (rt.next()) {
+                    if (leg == 1) {
+                        city[0] = rt.getString("place1");
+                        city[1] = rt.getString("place2");
+                    } else if (leg == 2) {
+                        city[0] = rt.getString("place2");
+                        city[1] = rt.getString("place3");
+                    } else {
+                        city[0] = rt.getString("place1");
+                        city[1] = rt.getString("place3");
+                    }
                 }
-                return city;
+                break;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -194,10 +200,13 @@ public class FlightOperation implements Tool {
                 e.printStackTrace();
             }
         }
-        return null;//Returns the result
+        return city;
     }
 
-    public ObservableList<Flight2> seekFlightWithSort(String a, String b, String c, String d) {//Query the required data from the database
+    //To find flight information for a given flight number, or for all flights between the two locations, choose a ranking:
+    // price, remaining tickets, time.The following function, a represents the flight number, b and c represent two cities,
+    // and d represents the sorting method
+    public ObservableList<Flight2> seekFlightWithSort(String a, String b, String c, String d) {
         ObservableList<Flight2> flightList = FXCollections.observableArrayList();
         Connection conn = null;
         try {
@@ -211,14 +220,11 @@ public class FlightOperation implements Tool {
                     flight.setIsStop(r1.getBoolean("is_stop"));
                     r1.previous();
                     if (flight.getIsStop()) {
-                        flightList = setFlight2(flightList, r1, "place1", "place2", "time1",
-                                "time2", "ticket1", "price1");
+                        flightList = setFlight2(flightList, r1, "place1", "place2", "time1", "time2", "ticket1", "price1");
                         r2 = stmt.executeQuery("select * from flight.flight where flight_id='" + a + "'");
-                        flightList = setFlight2(flightList, r2, "place2", "place3", "time3",
-                                "time4", "ticket2", "price2");
+                        flightList = setFlight2(flightList, r2, "place2", "place3", "time3", "time4", "ticket2", "price2");
                     } else {
-                        flightList = setFlight2(flightList, r1, "place1", "place3", "time1",
-                                "time4", "ticket1", "price1");
+                        flightList = setFlight2(flightList, r1, "place1", "place3", "time1", "time4", "ticket1", "price1");
                     }
                     break;
                 }
@@ -240,7 +246,7 @@ public class FlightOperation implements Tool {
                     flight.setPlace2(r5.getString("place3"));
                     flight.setTime1(r5.getString("time1"));
                     flight.setTime2(r5.getString("time4"));
-                    flight.setTicket(r5.getInt("ticket1") + r5.getInt("ticket2"));
+                    flight.setTicket((r5.getInt("ticket1") < r5.getInt("ticket2") || r5.getInt("ticket2") == 0) ? r5.getInt("ticket1") : r5.getInt("ticket2"));
                     flight.setPrice(r5.getInt("price1") + r5.getInt("price2"));
                     flightList.add(flight);
                 }
@@ -260,8 +266,7 @@ public class FlightOperation implements Tool {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             FXCollections.sort(flightList, Comparator.comparing((Flight2 s) -> {
                 try {
-                    return (int) (sdf.parse(s.getTime2()).getTime() -
-                            sdf.parse(s.getTime1()).getTime()) / (1000 * 60);
+                    return (int) (sdf.parse(s.getTime2()).getTime() - sdf.parse(s.getTime1()).getTime()) / (1000 * 60);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -274,53 +279,30 @@ public class FlightOperation implements Tool {
     }
 
     //Searches for flights between specified cities without delays
-    /*public ObservableList<Flight2> seekFlightWithoutDelay(String c, String d) {
+    public ObservableList<Flight2> seekFlightWithoutDelay(String a, String b) {
         ObservableList<Flight2> flightList = FXCollections.observableArrayList();
         Connection conn = null;
         try {
             conn = DatabaseConnection.getCon();
             Statement stmt = conn.createStatement();
-            ResultSet r1, r2, r3, r4, r5;
-            if (!a.equals("不限")) {
-                r1 = stmt.executeQuery("select * from flight.flight where flight_id='" + a + "'");
-                while (r1.next()) {
-                    Flight flight = new Flight();
-                    flight.setIsStop(r1.getBoolean("is_stop"));
-                    r1.previous();
-                    if (flight.getIsStop()) {
-                        flightList = setFlight2(flightList, r1, "place1", "place2", "time1",
-                                "time2", "ticket1", "price1");
-                        r2 = stmt.executeQuery("select * from flight.flight where flight_id='" + a + "'");
-                        flightList = setFlight2(flightList, r2, "place2", "place3", "time3",
-                                "time4", "ticket2", "price2");
-                    } else {
-                        flightList = setFlight2(flightList, r1, "place1", "place3", "time1",
-                                "time4", "ticket1", "price1");
-                    }
-                    break;
-                }
-                return flightList;
-            } else {
-                r3 = stmt.executeQuery("select * from flight.flight where place1='" + b + "' and place2='" + c + "'");
-                flightList = setFlight2(flightList, r3, "place1", "place2", "time1",
-                        "time2", "ticket1", "price1");
-                r4 = stmt.executeQuery("select * from flight.flight where place2='" + b + "' and place3='" + c + "'");
-                flightList = setFlight2(flightList, r4, "place2", "place3", "time3",
-                        "time4", "ticket2", "price2");
-                r5 = stmt.executeQuery("select * from flight.flight where place1='" + b + "' and place3='" + c + "'");
-                while (r5.next()) {
-                    Flight2 flight = new Flight2();
-                    flight.setFlightId(r5.getString("flight_id"));
-                    flight.setAirway(r5.getString("airway"));
-                    flight.setStatus(r5.getString("status"));
-                    flight.setPlace1(r5.getString("place1"));
-                    flight.setPlace2(r5.getString("place3"));
-                    flight.setTime1(r5.getString("time1"));
-                    flight.setTime2(r5.getString("time4"));
-                    flight.setTicket(r5.getInt("ticket1") + r5.getInt("ticket2"));
-                    flight.setPrice(r5.getInt("price1") + r5.getInt("price2"));
-                    flightList.add(flight);
-                }
+            ResultSet r1, r2, r3;
+            r1 = stmt.executeQuery("select * from flight.flight where place1='" + a + "' and place2='" + b + "' and status='正常'");
+            flightList = setFlight2(flightList, r1, "place1", "place2", "time1", "time2", "ticket1", "price1");
+            r2 = stmt.executeQuery("select * from flight.flight where place2='" + a + "' and place3='" + b + "' and status='正常'");
+            flightList = setFlight2(flightList, r2, "place2", "place3", "time3", "time4", "ticket2", "price2");
+            r3 = stmt.executeQuery("select * from flight.flight where place1='" + a + "' and place3='" + b + "' and status='正常'");
+            while (r3.next()) {
+                Flight2 flight = new Flight2();
+                flight.setFlightId(r3.getString("flight_id"));
+                flight.setAirway(r3.getString("airway"));
+                flight.setStatus(r3.getString("status"));
+                flight.setPlace1(r3.getString("place1"));
+                flight.setPlace2(r3.getString("place3"));
+                flight.setTime1(r3.getString("time1"));
+                flight.setTime2(r3.getString("time4"));
+                flight.setTicket((r3.getInt("ticket1") < r3.getInt("ticket2") || r3.getInt("ticket2") == 0) ? r3.getInt("ticket1") : r3.getInt("ticket2"));
+                flight.setPrice(r3.getInt("price1") + r3.getInt("price2"));
+                flightList.add(flight);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -332,7 +314,7 @@ public class FlightOperation implements Tool {
             }
         }
         return flightList;
-    }*/
+    }
 
     private ObservableList<Flight2> setFlight2(ObservableList<Flight2> flightList, ResultSet rs, String place1, String
             place2, String time1, String time2, String ticket, String price) {

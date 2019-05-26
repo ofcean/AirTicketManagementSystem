@@ -13,10 +13,11 @@ import java.sql.Statement;
 
 public class LoginOperation {
 
-    public boolean isUser(String textId, String textPassword) {//返回是否存在该用户
+    //Returns whether the user exists
+    public boolean isUser(String textId, String textPassword) {
         Connection conn = null;
         conn = DatabaseConnection.getCon();
-        ResultSet rs = null;//Execute the SQL and return the result set
+        ResultSet rs = null;
         try {
             Statement stmt = conn.createStatement();
             rs = stmt.executeQuery("select * from flight.user where id='" + textId + "' and password='" + textPassword + "'");
@@ -24,9 +25,9 @@ public class LoginOperation {
                 return true;
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {//The use of finally is to execute the finally statement regardless of whether the program has an exception, so close the connection here
+        } finally {
             try {
-                conn.close(); //When a Connection is opened, its close () method must finally be called to close the Connection to free system and database resources
+                conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -34,7 +35,8 @@ public class LoginOperation {
         return false;
     }
 
-    public boolean isAdmin(String id, String password) {//返回是否是管理员
+    //Returns whether this user is an administrator
+    public boolean isAdmin(String id, String password) {
         Connection conn = null;
         conn = DatabaseConnection.getCon();
         ResultSet rs = null;//Execute the SQL and return the result set

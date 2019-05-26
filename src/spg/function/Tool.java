@@ -9,5 +9,5 @@ public interface Tool {
 
     String[] SORT = {"票价", "飞行时间", "余票数量"};
 
-    String []RECOMMAND={"价格","用时","余票数量"};
+    String[] RECOMMEND = {"价格", "用时"};
 }

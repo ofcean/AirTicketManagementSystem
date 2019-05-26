@@ -6,18 +6,6 @@ public class Flight2 implements spg.function.Tool {
     private String flightId, airway, status, place1, place2, time1, time2;
     private int ticket, price;
 
-    //Increase the flight
-    public void addFlight(String flightId, String airway, String status, String[] place, String[] time, int ticket, int price) {
-        this.flightId = flightId;
-        this.airway = airway;
-        this.status = status;
-        this.place1 = place[0];
-        this.place2 = place[1];
-        this.time1 = time[0];
-        this.time2 = time[1];
-        this.ticket = ticket;
-    }
-
     public String getFlightId() {
         return flightId;
     }

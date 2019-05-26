@@ -19,7 +19,7 @@ public class User {
     }
 
     public Order buy(Flight x, Type.PlaceEnum t) {//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化，此方法不改变数据库
-        Order r = new Order(null, null, null, 0);//初始化为空订单，属性皆为null
+        Order r = new Order(0, null, null, null, 0);//初始化为空订单，属性皆为null
         r.setIndex(0);
         int p[] = new int[2];
         p[0] = x.getTicket1();
@@ -83,7 +83,7 @@ public class User {
     }
 
     public boolean reservationDB(Flight x, Type.PlaceEnum t) {//预约抢票，参数为航班x和上下机情况t,购票成功返回true，并更新数据库,失败返回false
-        Order r = new Order(null, null, null, 0);
+        Order r = new Order(0, null, null, null, 0);
         switch (t) {
             case FULL:
                 r.setLeg(3);
@@ -160,14 +160,14 @@ public class User {
             return 0;
     }
 
-    public void refundDB(int orderid){//退票，参数为航班x和要退的票t
-        Order n=new Order(null,null,null,0);
+    public void refundDB(int orderid) {//退票，参数为航班x和要退的票t
+        Order n = new Order(0, null, null, null, 0);
         n.setIndex(orderid);
         try {
             Connection conn = DatabaseConnection.getCon();
             conn.setAutoCommit(false);
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("select * from flight.order_list where index=" + orderid + "");
+            ResultSet rs = s.executeQuery("select * from flight.order_list where index=orderid");
             String place[] = new String[3];
             while (rs.next()) {
                 n.setOrderStatus(rs.getString("status"));
@@ -175,19 +175,19 @@ public class User {
                 n.setFlightId(rs.getString("flight_id"));
             }
             s.execute("delete from flight.order_list where index=" + orderid + "");
-            if(n.getOrderStatus()=="已出票") {
-                rs=s.executeQuery("select * from flight.order");
-                int minid=9999;
+            if (n.getOrderStatus() == "已出票") {
+                rs = s.executeQuery("select * from flight.order");
+                int minid = 9999;
                 while (rs.next()) {
-                    if (rs.getInt("index") < minid && rs.getString("status")=="预约中" && rs.getInt("leg")==n.getLeg())
+                    if (rs.getInt("index") < minid && rs.getString("status") == "预约中" && rs.getInt("leg") == n.getLeg())
                         minid = rs.getInt("index");
                 }
-                if(minid==9999){
-                    rs=s.executeQuery("select * from flight.flight where flight_id='"+n.getFlightId()+"'");
-                    int ticket[]=new int[2];
-                    ticket[0]=rs.getInt("ticket1");
-                    ticket[1]=rs.getInt("ticket2");
-                    switch (n.getLeg()){
+                if (minid == 9999) {
+                    rs = s.executeQuery("select * from flight.flight where flight_id='" + n.getFlightId() + "'");
+                    int ticket[] = new int[2];
+                    ticket[0] = rs.getInt("ticket1");
+                    ticket[1] = rs.getInt("ticket2");
+                    switch (n.getLeg()) {
                         case 1:
                             ticket[0]++;
                             break;
@@ -200,9 +200,8 @@ public class User {
                             break;
                     }
                     s.executeUpdate("update flight.flight set ticket1=" + ticket[0] + " and ticket2=" + ticket[1] + " where flight_id='" + n.getFlightId() + "'");
-                }
-                else{
-                    s.executeUpdate("update flight.order set status='已出票' where index="+minid+"");
+                } else {
+                    s.executeUpdate("update flight.order set status='已出票' where index=" + minid + "");
                 }
             }
             conn.commit();

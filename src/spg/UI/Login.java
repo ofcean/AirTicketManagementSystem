@@ -95,9 +95,9 @@ public class Login {
     private void showMsgDialog(String heading, String msg) {
         JFXDialogLayout content = new JFXDialogLayout();
         Text t = new Text(heading);
-        t.setFont(Font.font("Microsoft YaHei", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        t.setFont(Font.font("Microsoft YaHei UI Light", FontWeight.BOLD, FontPosture.REGULAR, 20));
         Text m = new Text(msg);
-        m.setFont(Font.font("Microsoft YaHei", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        m.setFont(Font.font("Microsoft YaHei UI Light", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         content.setHeading(t);
         content.setBody(m);
         JFXButton btn = new JFXButton("确定");
