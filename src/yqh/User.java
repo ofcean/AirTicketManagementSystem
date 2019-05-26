@@ -1,6 +1,7 @@
 package yqh;
 
 //import com.sun.org.apache.xpath.internal.operations.String;
+
 import spg.function.*;
 
 import java.sql.Connection;
@@ -14,18 +15,18 @@ public class User {
     public ArrayList ticketlist = new ArrayList();//已购航班
 
     public void setId(String userid) {//参数为航班号，返回指定航班，未完成
-        id=userid;
+        id = userid;
     }
 
-    public Order buy(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化，此方法不改变数据库
-        Order r=new Order(null,null,null,0);//初始化为空订单，属性皆为null
+    public Order buy(Flight x, Type.PlaceEnum t) {//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化，此方法不改变数据库
+        Order r = new Order(null, null, null, 0);//初始化为空订单，属性皆为null
         r.setIndex(0);
-        int p[]=new int[2];
-        p[0]=x.getTicket1();
-        p[1]=x.getTicket2();
-        switch (t){ //检查余票，无余票返回r退出。有则余票数减1
+        int p[] = new int[2];
+        p[0] = x.getTicket1();
+        p[1] = x.getTicket2();
+        switch (t) { //检查余票，无余票返回r退出。有则余票数减1
             case FULL:
-                if(p[0]==0||p[1]==0)
+                if (p[0] == 0 || p[1] == 0)
                     return r;
                 p[0]--;
                 p[1]--;
@@ -34,14 +35,14 @@ public class User {
                 r.setLeg(3);
                 break;
             case FIRST:
-                if(p[0]==0)
+                if (p[0] == 0)
                     return r;
                 p[0]--;
                 x.setTicket1(p[0]);
                 r.setLeg(1);
                 break;
             case SECOND:
-                if(p[1]==0)
+                if (p[1] == 0)
                     return r;
                 p[1]--;
                 x.setTicket2(p[1]);
@@ -54,35 +55,36 @@ public class User {
         return r;
     }
 
-    public boolean buyDB(Flight x, Type.PlaceEnum t){//购票，参数为航班x和上下机情况t，并更新数据库，成功返回true，失败返回false
-        try{
-            Connection conn=DatabaseConnection.getCon();
+    public boolean buyDB(Flight x, Type.PlaceEnum t) {//购票，参数为航班x和上下机情况t，并更新数据库，成功返回true，失败返回false
+        try {
+            Connection conn = DatabaseConnection.getCon();
             conn.setAutoCommit(false);
-            Statement s=conn.createStatement();
-            Order r=buy(x,t);
-            if(r.getFlightId()==null&&r.getPassengerId()==null)
+            Statement s = conn.createStatement();
+            Order r = buy(x, t);
+            if (r.getFlightId() == null && r.getPassengerId() == null)
                 return false;
-            ResultSet rs = s.executeQuery("select max(index) from flight.order;");
-            int orderid=0;
-            if(rs.next()) {//目前order中最大ID加1作为新orderID，若目前无order则新ID为0
-                //rs.previous();
-                orderid=rs.getInt("index")+1;
+            ResultSet rs = s.executeQuery("select * from flight.order_list");
+            int orderid = 0;
+            while (rs.next()) {
+                if (rs.getInt("index") > orderid)
+                    orderid = rs.getInt("index");
             }
-            s.execute("update flight.flight set ticket1="+x.getTicket1()+",ticket2="+x.getTicket2()+" where flight_id='"+x.getFlightId()+"';");
-            s.execute("insert into flight.order values ("+orderid+",'"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"',"+r.getLeg()+")");
+            orderid += 1;
+            s.execute("update flight.flight set ticket1=" + x.getTicket1() + " and ticket2=" + x.getTicket2() + " where flight_id='" + x.getFlightId() + "'");
+            s.execute("insert into flight.order_list values (" + orderid + ", '" + r.getPassengerId() + "','" + r.getFlightId() + "','" + r.getOrderStatus() + "'," + r.getLeg() + ")");
             s.close();
             rs.close();
             conn.commit();
             conn.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return true;
     }
 
-    public boolean reservationDB(Flight x, Type.PlaceEnum t){//预约抢票，参数为航班x和上下机情况t,购票成功返回true，并更新数据库,失败返回false
-        Order r=new Order(null,null,null,0);
-        switch (t){
+    public boolean reservationDB(Flight x, Type.PlaceEnum t) {//预约抢票，参数为航班x和上下机情况t,购票成功返回true，并更新数据库,失败返回false
+        Order r = new Order(null, null, null, 0);
+        switch (t) {
             case FULL:
                 r.setLeg(3);
                 break;
@@ -96,62 +98,63 @@ public class User {
         r.setFlightId(x.getFlightId());
         r.setPassengerId(id);
         r.setOrderStatus("预约中");
-        try{
-            Connection conn=DatabaseConnection.getCon();
+        try {
+            Connection conn = DatabaseConnection.getCon();
             conn.setAutoCommit(false);
-            Statement s=conn.createStatement();
-            if(r.getFlightId()==null&&r.getPassengerId()==null)
+            Statement s = conn.createStatement();
+            if (r.getFlightId() == null && r.getPassengerId() == null)
                 return false;
-            ResultSet rs = s.executeQuery("select max(index) from flight.order;");
-            int orderid=0;
-            if(rs.next()) {//目前order中最大ID加1作为新orderID，若目前无order则新ID为0
-                //rs.previous();
-                orderid=rs.getInt(1)+1;
+            ResultSet rs = s.executeQuery("select * from flight.order_list");
+            int orderid = 0;
+            while (rs.next()) {
+                if (rs.getInt("index") > orderid)
+                    orderid = rs.getInt("index");
             }
-            s.execute("insert into flight.order values ("+orderid+",'"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"',"+r.getLeg()+")");
+            orderid += 1;
+            s.execute("insert into flight.order values (" + orderid + ",'" + r.getPassengerId() + "','" + r.getFlightId() + "','" + r.getOrderStatus() + "'," + r.getLeg() + ")");
             s.close();
             rs.close();
             conn.commit();
             conn.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return true;
     }
 
-    public int buyres(String flightId,Type.PlaceEnum t){//购票与预约功能，需要参数航班ID和航程类型t，普通购票成功返回1，没有余票自动预约并返回2，都失败返回0
-        Flight x=new Flight();
-        try{
-            Connection conn=DatabaseConnection.getCon();
+    public int buyres(String flightId, Type.PlaceEnum t) {//购票与预约功能，需要参数航班ID和航程类型t，普通购票成功返回1，没有余票自动预约并返回2，都失败返回0
+        Flight x = new Flight();
+        try {
+            Connection conn = DatabaseConnection.getCon();
             conn.setAutoCommit(false);
-            Statement s=conn.createStatement();
-            ResultSet rs = s.executeQuery("select * from flight.flight where flight_id='"+flightId+"';");
-            String place[]=new String[3];
-            place[0]=rs.getString("place1");
-            place[1]=rs.getString("place2");
-            place[2]=rs.getString("place3");
-            String time[]=new String[4];
-            time[0]=rs.getString("time1");
-            time[1]=rs.getString("time2");
-            time[2]=rs.getString("time3");
-            time[3]=rs.getString("time4");
-            int ticket[]=new int[2];
-            ticket[0]=rs.getInt("ticket1");
-            ticket[1]=rs.getInt("ticket2");
-            int price[]=new int[2];
-            price[0]=rs.getInt("price1");
-            price[1]=rs.getInt("price2");
-            x.addFlight(rs.getString("flight_id"),rs.getString("airway"), place,time, rs.getBoolean("is_stop"),ticket,price);
-            s.close();
-            rs.close();
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("select * from flight.flight where flight_id='" + flightId + "'");
+            String place[] = new String[3];
+            while (rs.next()) {
+                place[0] = rs.getString("place1");
+                place[1] = rs.getString("place2");
+                place[2] = rs.getString("place3");
+                String time[] = new String[4];
+                time[0] = rs.getString("time1");
+                time[1] = rs.getString("time2");
+                time[2] = rs.getString("time3");
+                time[3] = rs.getString("time4");
+                int ticket[] = new int[2];
+                ticket[0] = rs.getInt("ticket1");
+                ticket[1] = rs.getInt("ticket2");
+                int price[] = new int[2];
+                price[0] = rs.getInt("price1");
+                price[1] = rs.getInt("price2");
+                x.addFlight(rs.getString("flight_id"), rs.getString("airway"), place, time, rs.getBoolean("is_stop"), ticket, price);
+            }
             conn.commit();
             conn.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        if (buyDB(x,t))
+        if (buyDB(x, t))
             return 1;
-        else if (reservationDB(x,t))
+        else if (reservationDB(x, t))
             return 2;
         else
             return 0;
