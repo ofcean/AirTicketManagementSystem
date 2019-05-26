@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="222a34e1-1ed6-45ef-afb0-58a0e483490c" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+=======
     <list default="true" id="222a34e1-1ed6-45ef-afb0-58a0e483490c" name="Default Changelist" comment="">
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
@@ -14,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/AirTicketManagementSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AirTicketManagementSystem.iml" afterDir="false" />
 >>>>>>> 96ab676ffa92990a568fc82af7855a2520c02e46
     </list>
+>>>>>>> e1868538948de6175e132bbe1b0a15e7332ae707
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +28,15 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/lyh/Delay.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="95" column="2" selection-start-line="95" selection-start-column="2" selection-end-line="95" selection-end-column="2" />
+=======
 <<<<<<< HEAD
   <component name="FileEditorManager">
     <leaf>
@@ -59,11 +74,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
               <caret line="83" column="35" lean-forward="true" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
+>>>>>>> e1868538948de6175e132bbe1b0a15e7332ae707
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/src/spg/function/Flight2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+=======
         <entry file="file://$PROJECT_DIR$/src/spg/UI/Login.fxml">
           <provider selected="true" editor-type-id="text-editor" />
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -74,32 +96,50 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
               <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+>>>>>>> e1868538948de6175e132bbe1b0a15e7332ae707
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/src/spg/function/FlightOperation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="85" column="34" lean-forward="true" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+=======
         <entry file="file://$PROJECT_DIR$/src/spg/UI/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
               <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+>>>>>>> e1868538948de6175e132bbe1b0a15e7332ae707
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/src/spg/function/Flight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+=======
         <entry file="file://$PROJECT_DIR$/src/spg/UI/Administrator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="756">
               <caret line="514" column="4" selection-start-line="514" selection-start-column="4" selection-end-line="514" selection-end-column="4" />
+>>>>>>> e1868538948de6175e132bbe1b0a15e7332ae707
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 96ab676ffa92990a568fc82af7855a2520c02e46
+>>>>>>> e1868538948de6175e132bbe1b0a15e7332ae707
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -107,18 +147,29 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/spg/function/OrderOperation.java" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/src/lyh/Delay.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="160" />
+    <option name="y" value="45" />
+    <option name="width" value="1615" />
+    <option name="height" value="880" />
+  </component>
+=======
         <option value="$PROJECT_DIR$/src/spg/UI/PassengerInterface.java" />
         <option value="$PROJECT_DIR$/src/spg/UI/Main.java" />
       </list>
     </option>
   </component>
+>>>>>>> e1868538948de6175e132bbe1b0a15e7332ae707
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -140,6 +191,12 @@
               <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lyh" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -178,10 +235,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -221,7 +283,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
+<<<<<<< HEAD
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1802949" />
+=======
 <<<<<<< HEAD
       <window_info id="Image Layers" />
       <window_info id="Capture Tool" />
@@ -232,6 +298,7 @@
 =======
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18070363" />
 >>>>>>> 96ab676ffa92990a568fc82af7855a2520c02e46
+>>>>>>> e1868538948de6175e132bbe1b0a15e7332ae707
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -263,6 +330,12 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/spg/function/LoginOperation.java">
+=======
     <entry file="file://$PROJECT_DIR$/src/spg/function/Flight.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1092">
@@ -281,6 +354,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/spg/UI/Administrator.fxml">
+>>>>>>> e1868538948de6175e132bbe1b0a15e7332ae707
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-945" />
       </provider>
@@ -398,5 +472,105 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/spg/function/Flight2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/spg/function/FlightOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="85" column="34" lean-forward="true" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/spg/function/Flight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lyh/Delay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="95" column="2" selection-start-line="95" selection-start-column="2" selection-end-line="95" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>AirTicketManagementSystem</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
