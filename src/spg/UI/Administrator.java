@@ -28,12 +28,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import lyh.Delay;
 import spg.function.Flight;
 import spg.function.FlightOperation;
 import spg.function.Tool;
 
 public class Administrator implements Tool {
     private FlightOperation op = new FlightOperation();
+
+    private Delay deop = new Delay();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -438,6 +441,37 @@ public class Administrator implements Tool {
             op.deleteFlight(textFlight31.getText());
             newFlight.addFlight(textFlight32.getText(), comboAirway3.getValue(), place, time, toggleIsStop3.isSelected(), ticket, price);
             op.saveFlight(newFlight);//Save the data in the database
+        });
+
+        buttonSearch4.addEventHandler(MouseEvent.MOUSE_CLICKED, mouse -> {
+            LocalDate[] dates = deop.DelayFlighTDates(textFlightId4.getText());
+            LocalTime[] times = deop.DelayFlighTtimes(textFlightId4.getText());
+            if (dates[1] == null) {
+                date42.setDisable(true);
+                date43.setDisable(true);
+                time42.setDisable(true);
+                time43.setDisable(true);
+            } else {
+                date42.setDisable(false);
+                date43.setDisable(false);
+                time42.setDisable(false);
+                time43.setDisable(false);
+                date42.setValue(dates[1]);
+                date43.setValue(dates[2]);
+                time42.setValue(times[1]);
+                time43.setValue(times[2]);
+            }
+            date41.setValue(dates[0]);
+            date44.setValue(dates[3]);
+            time41.setValue(times[0]);
+            time44.setValue(times[3]);
+        });
+
+        buttonDelay4.addEventHandler(MouseEvent.MOUSE_CLICKED, mouse -> {
+            deop.DelayTimeUpdate1(textFlightId4.getText(), time41.getValue().toString(), time42.getValue() == null ?
+                            "00:00" : time42.getValue().toString(), time43.getValue() == null ? "00:00" : time43.getValue().toString(),
+                    time44.getValue().toString(), date41.getValue().toString(), date42.getValue() == null ? "0000-00-00" :
+                            date42.getValue().toString(), date43.getValue() == null ? "0000-00-00" : date43.getValue().toString(), date44.getValue().toString());
         });
 
         buttonReturn5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
