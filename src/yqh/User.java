@@ -65,8 +65,8 @@ public class User {
             ResultSet rs = s.executeQuery("select max(index) from flight.order;");
             int orderid=0;
             if(rs.next()) {//目前order中最大ID加1作为新orderID，若目前无order则新ID为0
-                rs.previous();
-                orderid=rs.getInt(1)+1;
+                //rs.previous();
+                orderid=rs.getInt("index")+1;
             }
             s.execute("update flight.flight set ticket1="+x.getTicket1()+",ticket2="+x.getTicket2()+" where flight_id='"+x.getFlightId()+"';");
             s.execute("insert into flight.order values ("+orderid+",'"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"',"+r.getLeg()+")");
@@ -105,7 +105,7 @@ public class User {
             ResultSet rs = s.executeQuery("select max(index) from flight.order;");
             int orderid=0;
             if(rs.next()) {//目前order中最大ID加1作为新orderID，若目前无order则新ID为0
-                rs.previous();
+                //rs.previous();
                 orderid=rs.getInt(1)+1;
             }
             s.execute("insert into flight.order values ("+orderid+",'"+r.getPassengerId()+"','"+r.getFlightId()+"','"+r.getOrderStatus()+"',"+r.getLeg()+")");
