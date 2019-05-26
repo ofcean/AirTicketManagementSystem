@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="222a34e1-1ed6-45ef-afb0-58a0e483490c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/out/production/AirTicketManagementSystem/spg/UI/Administrator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirTicketManagementSystem/spg/UI/Administrator.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AirTicketManagementSystem/spg/UI/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirTicketManagementSystem/spg/UI/Login.fxml" afterDir="false" />
@@ -11,6 +12,10 @@
       <change beforePath="$PROJECT_DIR$/src/spg/UI/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spg/UI/PassengerInterface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/PassengerInterface.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spg/UI/PassengerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spg/UI/PassengerInterface.java" afterDir="false" />
+=======
+    <list default="true" id="3a1df466-2b69-4d4a-893e-d489e6bc4807" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/yqh/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yqh/User.java" afterDir="false" />
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,20 +26,23 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/spg/function/FlightOperation.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/yqh/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+            <state relative-caret-position="186">
+              <caret line="181" column="115" selection-start-line="181" selection-start-column="115" selection-end-line="181" selection-end-column="115" />
               <folding>
-                <element signature="method#saveFlight#0;class#FlightOperation#0" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#354#355#0" expanded="true" />
+                <element signature="e#400#401#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/spg/UI/Login.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
@@ -45,10 +53,31 @@
                 <element signature="method#login#0;class#Login#0" />
                 <element signature="method#showMsgDialog#0;class#Login#0" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/function/FlightOperation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="150" column="131" selection-start-line="150" selection-start-column="131" selection-end-line="150" selection-end-column="131" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#seekFlightWithSort#0;class#FlightOperation#0" />
+                <element signature="method#setFlight2#0;class#FlightOperation#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-570">
+              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/spg/UI/PassengerInterface.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -58,11 +87,19 @@
                 <element signature="e#17426#19155#0" expanded="true" />
                 <element signature="e#19154#19155#0" expanded="true" />
               </folding>
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/AppModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/spg/UI/PassengerInterface.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
@@ -81,20 +118,34 @@
                 <element signature="e#0#7990#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/Administrator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/spg/function/Tool.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="42">
               <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/PassengerInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-513">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/spg/UI/Login.fxml">
           <provider selected="true" editor-type-id="text-editor" />
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -118,16 +169,32 @@
                 <element signature="e#27455#28188#0" />
                 <element signature="e#28194#30230#0" />
                 <element signature="e#30236#30914#0" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/UI/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+              <folding>
+                <element signature="e#809#810#0" expanded="true" />
+                <element signature="e#837#838#0" expanded="true" />
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/spg/function/DatabaseConnection.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
               <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/spg/function/Flight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
             </state>
           </provider>
         </entry>
@@ -135,8 +202,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/spg/function/Order.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="84">
               <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+=======
+            <state relative-caret-position="76">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding>
+                <element signature="e#644#645#0" expanded="true" />
+                <element signature="e#678#679#0" expanded="true" />
+                <element signature="e#707#708#0" expanded="true" />
+                <element signature="e#735#736#0" expanded="true" />
+              </folding>
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
             </state>
           </provider>
         </entry>
@@ -150,6 +228,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/yqh/User.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/spg/UI/Main.java" />
         <option value="$PROJECT_DIR$/src/lyh/Delay.java" />
         <option value="$PROJECT_DIR$/src/spg/UI/Login.java" />
@@ -164,12 +243,57 @@
     <option name="width" value="1612" />
     <option name="height" value="876" />
   </component>
+=======
+      </list>
+    </option>
+  </component>
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="spg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="spg" type="462c0819:PsiDirectoryNode" />
+              <item name="function" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AirTicketManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirTicketManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="yqh" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -228,8 +352,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -243,26 +369,6 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="应用程序" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="spg.UI.Main" />
-      <module name="AirTicketManagementSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="spg.UI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="应用程序.Main" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -270,43 +376,48 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="8164000" />
+=======
+    <option name="totallyTimeSpent" value="186000" />
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Capture Tool" />
-      <window_info id="UI Designer" />
-      <window_info id="设计师" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18070363" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533512" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" weight="0.32910052" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="设计师" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30476192" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32910052" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32910052" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
   </component>
+<<<<<<< HEAD
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="Application">
@@ -468,4 +579,6 @@
       </provider>
     </entry>
   </component>
+=======
+>>>>>>> 565768b2c4cabd7f55e332b7cde22bf9d82fc04b
 </project>
