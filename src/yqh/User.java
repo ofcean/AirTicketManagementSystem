@@ -179,7 +179,7 @@ public class User {
                 rs=s.executeQuery("select * from flight.order");
                 int minid=9999;
                 while (rs.next()) {
-                    if (rs.getInt("index") < minid&&rs.getString("status")=="预约中")
+                    if (rs.getInt("index") < minid && rs.getString("status")=="预约中" && rs.getInt("leg")==n.getLeg())
                         minid = rs.getInt("index");
                 }
                 if(minid==9999){
