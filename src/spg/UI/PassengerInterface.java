@@ -360,7 +360,6 @@ public class PassengerInterface implements Tool {
             System.out.println("预约成功");
         else if (b == 0)
             System.out.println("购票失败");
-        System.out.println(textUserId1.getText());
     }
 
     //A function that passes data between two controllers
