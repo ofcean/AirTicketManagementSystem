@@ -2,12 +2,9 @@ package yqh;
 
 //import com.sun.org.apache.xpath.internal.operations.String;
 
-<<<<<<< HEAD
 import jdk.nashorn.internal.runtime.regexp.joni.constants.OPCode;
-=======
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
->>>>>>> 3591503d38b33fe44539876c8103fba88a1ea0c2
 import spg.function.*;
 
 import java.sql.Connection;
@@ -194,9 +191,9 @@ public class User {
             stmt.executeUpdate();
             if (n.getOrderStatus().equals("已出票")) {
                 rs = s.executeQuery("select * from flight.order_list");
-                String  minid = "9999";
+                String minid = "9999";
                 while (rs.next()) {
-                    if (Integer.valueOf(rs.getString("order_number")) <Integer.valueOf(minid) && rs.getString("order_status").
+                    if (Integer.valueOf(rs.getString("order_number")) < Integer.valueOf(minid) && rs.getString("order_status").
                             equals("预约中") && rs.getInt("leg") == n.getLeg() && rs.getString("flight_id").equals(n.getFlightId()))
                         minid = rs.getString("order_number");
                 }
@@ -232,73 +229,72 @@ public class User {
         }
     }
 
-    public static ObservableList<Flight2> timebest(String place1, String place2){
+    public static ObservableList<Flight2> timebest(String place1, String place2) {
         List<Graph> head = new ArrayList<Graph>();
-        Edge p=new Edge();
-        Graph g=new Graph();
+        Edge p = new Edge();
+        Graph g = new Graph();
         List<Edge> q = new ArrayList<Edge>();
-        int item,mintime;
+        int item, mintime;
         String fid;
         try {
             Connection conn = DatabaseConnection.getCon();
             conn.setAutoCommit(false);
             Statement s = conn.createStatement();
             ResultSet rs;
-            for(int i=0;i<6;i++) {
-                for (int j=0;j<6;j++) {
-                    rs = s.executeQuery("select * from flight.flight where place1='"+intplace(i)+"' and place2='"+intplace(j)+"'");
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 6; j++) {
+                    rs = s.executeQuery("select * from flight.flight where place1='" + intplace(i) + "' and place2='" + intplace(j) + "'");
                     int mintime1 = 9999;
-                    String fid1=null;
+                    String fid1 = null;
                     while (rs.next()) {
-                        item=timesub(rs.getString("time1"),rs.getString("time2"));
+                        item = timesub(rs.getString("time1"), rs.getString("time2"));
                         if (item < mintime1) {
                             mintime1 = item;
-                            fid1=rs.getString("flight_id");
+                            fid1 = rs.getString("flight_id");
                         }
                     }
-                    rs = s.executeQuery("select * from flight.flight where place2='"+intplace(i)+"' and place3='"+intplace(j)+"'");
+                    rs = s.executeQuery("select * from flight.flight where place2='" + intplace(i) + "' and place3='" + intplace(j) + "'");
                     int mintime2 = 9999;
-                    String fid2=null;
+                    String fid2 = null;
                     while (rs.next()) {
-                        item=timesub(rs.getString("time3"),rs.getString("time4"));
+                        item = timesub(rs.getString("time3"), rs.getString("time4"));
                         if (item < mintime2) {
                             mintime2 = item;
-                            fid2=rs.getString("flight_id");
+                            fid2 = rs.getString("flight_id");
                         }
                     }
-                    rs = s.executeQuery("select * from flight.flight where place1='"+intplace(i)+"' and place3='"+intplace(j)+"'");
+                    rs = s.executeQuery("select * from flight.flight where place1='" + intplace(i) + "' and place3='" + intplace(j) + "'");
                     int mintime3 = 9999;
-                    String fid3=null;
+                    String fid3 = null;
                     while (rs.next()) {
-                        item=timesub(rs.getString("time1"),rs.getString("time4"));
+                        item = timesub(rs.getString("time1"), rs.getString("time4"));
                         if (item < mintime3) {
                             mintime3 = item;
-                            fid3=rs.getString("flight_id");
+                            fid3 = rs.getString("flight_id");
                         }
                     }
-                    if(mintime1<=mintime2) {
+                    if (mintime1 <= mintime2) {
                         mintime = mintime1;
-                        fid=fid1;
-                        p.type=1;
-                    }
-                    else {
+                        fid = fid1;
+                        p.type = 1;
+                    } else {
                         mintime = mintime2;
-                        fid=fid2;
-                        p.type=2;
+                        fid = fid2;
+                        p.type = 2;
                     }
-                    if (mintime>mintime3){
-                        mintime=mintime3;
-                        fid=fid3;
-                        p.type=3;
+                    if (mintime > mintime3) {
+                        mintime = mintime3;
+                        fid = fid3;
+                        p.type = 3;
                     }
-                    p.cost=mintime;
-                    p.num=j;
-                    p.start=i;
-                    p.flightid=fid;
+                    p.cost = mintime;
+                    p.num = j;
+                    p.start = i;
+                    p.flightid = fid;
                     q.add(p);
                 }
-                g.num=i;
-                g.p=q;
+                g.num = i;
+                g.p = q;
                 head.add(g);
             }
             s.close();
@@ -307,44 +303,44 @@ public class User {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        int path[]={-1,-1,-1,-1,-1,-1};
-        int dist[]={Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE};
-        int s[]={0,0,0,0,0,0};
-        int v=placeint(place1),t=placeint(place2);
-        dist[v]=0;
-        s[v]=1;
-        int u=v,k,pi=0,ldist;
-        for(int j=0;j<5;j++){
-            while(pi<head.get(v).p.size()){
-                k=head.get(v).p.get(pi).num;
-                if(s[k]!=1 && dist[u]+head.get(v).p.get(pi).cost<dist[k]){
-                    dist[k]=dist[u]+head.get(v).p.get(pi).cost;
-                    path[k]=u;
+        int path[] = {-1, -1, -1, -1, -1, -1};
+        int dist[] = {Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE};
+        int s[] = {0, 0, 0, 0, 0, 0};
+        int v = placeint(place1), t = placeint(place2);
+        dist[v] = 0;
+        s[v] = 1;
+        int u = v, k, pi = 0, ldist;
+        for (int j = 0; j < 5; j++) {
+            while (pi < head.get(v).p.size()) {
+                k = head.get(v).p.get(pi).num;
+                if (s[k] != 1 && dist[u] + head.get(v).p.get(pi).cost < dist[k]) {
+                    dist[k] = dist[u] + head.get(v).p.get(pi).cost;
+                    path[k] = u;
                 }
                 pi++;
             }
-            ldist=Integer.MAX_VALUE;
-            for (int i=0;i<6;i++)
-                if (dist[i]<ldist && s[i]==0){
-                    ldist=dist[i];
-                    u=i;
+            ldist = Integer.MAX_VALUE;
+            for (int i = 0; i < 6; i++)
+                if (dist[i] < ldist && s[i] == 0) {
+                    ldist = dist[i];
+                    u = i;
                 }
-            s[u]=1;
-            if (u==t)
+            s[u] = 1;
+            if (u == t)
                 break;
         }
         int e;
         ObservableList<Flight2> bt = FXCollections.observableArrayList();
         List<Edge> best = new ArrayList<Edge>();
-        while(path[u]!=-1){
-            int j=0;
-            while(u!=head.get(path[u]).p.get(j).num&&j<=head.get(path[u]).p.size()){
+        while (path[u] != -1) {
+            int j = 0;
+            while (u != head.get(path[u]).p.get(j).num && j <= head.get(path[u]).p.size()) {
                 j++;
             }
-            best.add(0,head.get(path[u]).p.get(j));
-            u=path[u];
+            best.add(0, head.get(path[u]).p.get(j));
+            u = path[u];
         }
-        for(int i=0;i<best.size();i++){
+        for (int i = 0; i < best.size(); i++) {
             Flight2 x = new Flight2();
             try {
                 Connection conn = DatabaseConnection.getCon();
@@ -361,10 +357,10 @@ public class User {
                     if (best.get(i).type == 1) {
                         time[0] = rs.getString("time1");
                         time[1] = rs.getString("time2");
-                    }else if(best.get(i).type==2){
+                    } else if (best.get(i).type == 2) {
                         time[0] = rs.getString("time3");
                         time[1] = rs.getString("time4");
-                    }else{
+                    } else {
                         time[0] = rs.getString("time1");
                         time[1] = rs.getString("time4");
                     }
@@ -372,20 +368,20 @@ public class User {
                     x.setTime2(time[1]);
                     int ticket;
                     if (best.get(i).type == 1) {
-                        ticket=rs.getInt("ticket1");
-                    }else if(best.get(i).type==2){
-                        ticket=rs.getInt("ticket2");
-                    }else{
-                        ticket=rs.getInt("ticket1");
+                        ticket = rs.getInt("ticket1");
+                    } else if (best.get(i).type == 2) {
+                        ticket = rs.getInt("ticket2");
+                    } else {
+                        ticket = rs.getInt("ticket1");
                     }
                     x.setTicket(ticket);
                     int price;
                     if (best.get(i).type == 1) {
-                        price=rs.getInt("price1");
-                    }else if(best.get(i).type==2){
-                        price=rs.getInt("price2");
-                    }else{
-                        price=rs.getInt("price1");
+                        price = rs.getInt("price1");
+                    } else if (best.get(i).type == 2) {
+                        price = rs.getInt("price2");
+                    } else {
+                        price = rs.getInt("price1");
                     }
                     x.setPrice(price);
                     x.setFlightId(rs.getString("flight_id"));
@@ -402,8 +398,8 @@ public class User {
         return bt;
     }
 
-    public static int placeint(String place){
-        switch (place){
+    public static int placeint(String place) {
+        switch (place) {
             case "北京":
                 return 0;
             case "上海":
@@ -422,8 +418,8 @@ public class User {
         }
     }
 
-    public static String intplace(int num){
-        switch (num){
+    public static String intplace(int num) {
+        switch (num) {
             case 0:
                 return "北京";
             case 1:
@@ -442,7 +438,7 @@ public class User {
         }
     }
 
-    public static int timesub(String time1,String time2) {
+    public static int timesub(String time1, String time2) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
             return (int) (sdf.parse(time2).getTime() - sdf.parse(time1).getTime()) / (1000 * 60);

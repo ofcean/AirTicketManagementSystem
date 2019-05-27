@@ -31,6 +31,8 @@ import spg.function.*;
 import yqh.Type;
 import yqh.User;
 
+import javax.jws.soap.SOAPBinding;
+
 public class PassengerInterface implements Tool {
 
     User us = new User();
@@ -304,10 +306,16 @@ public class PassengerInterface implements Tool {
         });
 
         buttonRecommend4.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            RecommendByPrice rbp = new RecommendByPrice();
-            this.showFlightTable(rbp.PriceRecommend(comboCity14.getValue() == null ? "北京" : comboCity14.getValue(),
-                    comboCity24.getValue() == null ? "北京" : comboCity24.getValue()), colId4, colAirway4, colCity14,
-                    colCity24, colTime14, colTime24, colTicket4, colPrice4, colStatus4, colBuy4, tableFlight4);
+            if(comboRecommend4.getValue()==null||comboRecommend4.getValue().equals("价格")) {
+                RecommendByPrice rbp = new RecommendByPrice();
+                this.showFlightTable(rbp.PriceRecommend(comboCity14.getValue() == null ? "北京" : comboCity14.getValue(),
+                        comboCity24.getValue() == null ? "北京" : comboCity24.getValue()), colId4, colAirway4, colCity14,
+                        colCity24, colTime14, colTime24, colTicket4, colPrice4, colStatus4, colBuy4, tableFlight4);
+            }else if(comboRecommend4.getValue().equals("用时")){
+                this.showFlightTable(us.timebest(comboCity14.getValue() == null ? "北京" : comboCity14.getValue(),
+                        comboCity24.getValue() == null ? "北京" : comboCity24.getValue()), colId4, colAirway4, colCity14,
+                        colCity24, colTime14, colTime24, colTicket4, colPrice4, colStatus4, colBuy4, tableFlight4);
+            }
         });
 
         buttonReturn5.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
