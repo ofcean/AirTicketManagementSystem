@@ -223,16 +223,14 @@ public class FlightOperation implements Tool {
                 while (r1.next()) {
                     Flight flight = new Flight();
                     flight.setIsStop(r1.getBoolean("is_stop"));
-                    r1.previous();
-                    if (flight.getIsStop()) {
+                    if (!flight.getIsStop()) {
+                        r1.previous();
+                        flightList = setFlight2(flightList, r1, "place1", "place3", "time1", "time4", "ticket1", "price1");
+                    } else {
+                        r1.previous();
                         flightList = setFlight2(flightList, r1, "place1", "place2", "time1", "time2", "ticket1", "price1");
                         r2 = stmt.executeQuery("select * from flight.flight where flight_id='" + a + "'");
                         flightList = setFlight2(flightList, r2, "place2", "place3", "time3", "time4", "ticket2", "price2");
-                    } else {
-                        if (r1.getInt("price1") < r1.getInt("price2"))
-                            flightList = setFlight2(flightList, r1, "place1", "place3", "time1", "time4", "ticket1", "price1");
-                        else
-                            flightList = setFlight2(flightList, r1, "place1", "place3", "time1", "time4", "ticket1", "price2");
                     }
                     break;
                 }
@@ -255,7 +253,7 @@ public class FlightOperation implements Tool {
                     flight.setTime1(r5.getString("time1"));
                     flight.setTime2(r5.getString("time4"));
                     flight.setTicket(r5.getInt("ticket1") < r5.getInt("ticket2") ? r5.getInt("ticket1") : r5.getInt("ticket2"));
-                    flight.setPrice(r3.getInt("price1") == r3.getInt("price2") ? r3.getInt("price1") : r3.getInt("price1") + r3.getInt("price2"));
+                    flight.setPrice(r5.getInt("price1") == r5.getInt("price2") ? r5.getInt("price1") : r5.getInt("price1") + r5.getInt("price2"));
                     flightList.add(flight);
                 }
             }

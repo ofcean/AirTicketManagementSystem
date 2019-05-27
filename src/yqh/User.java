@@ -6,6 +6,7 @@ import jdk.nashorn.internal.runtime.regexp.joni.constants.OPCode;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import spg.function.*;
+import sun.text.resources.cldr.lg.FormatData_lg;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -229,7 +230,7 @@ public class User {
         }
     }
 
-    public static ObservableList<Flight2> timebest(String place1, String place2) {
+    public ObservableList<Flight2> timebest(String place1, String place2) {
         List<Graph> head = new ArrayList<Graph>();
         Edge p = new Edge();
         Graph g = new Graph();
@@ -241,8 +242,8 @@ public class User {
             conn.setAutoCommit(false);
             Statement s = conn.createStatement();
             ResultSet rs;
-            for (int i = 0; i < 6; i++) {
-                for (int j = 0; j < 6; j++) {
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 7; j++) {
                     rs = s.executeQuery("select * from flight.flight where place1='" + intplace(i) + "' and place2='" + intplace(j) + "'");
                     int mintime1 = 9999;
                     String fid1 = null;
@@ -303,14 +304,14 @@ public class User {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        int path[] = {-1, -1, -1, -1, -1, -1};
-        int dist[] = {Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE};
-        int s[] = {0, 0, 0, 0, 0, 0};
+        int path[] = {-1, -1, -1, -1, -1, -1, -1};
+        int dist[] = {Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE};
+        int s[] = {0, 0, 0, 0, 0, 0, 0};
         int v = placeint(place1), t = placeint(place2);
         dist[v] = 0;
         s[v] = 1;
         int u = v, k, pi = 0, ldist;
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 6; j++) {
             while (pi < head.get(v).p.size()) {
                 k = head.get(v).p.get(pi).num;
                 if (s[k] != 1 && dist[u] + head.get(v).p.get(pi).cost < dist[k]) {
@@ -320,7 +321,7 @@ public class User {
                 pi++;
             }
             ldist = Integer.MAX_VALUE;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
                 if (dist[i] < ldist && s[i] == 0) {
                     ldist = dist[i];
                     u = i;
@@ -404,14 +405,16 @@ public class User {
                 return 0;
             case "上海":
                 return 1;
-            case "成都":
+            case "长沙":
                 return 2;
             case "重庆":
                 return 3;
             case "广州":
                 return 4;
-            case "深圳":
+            case "海口":
                 return 5;
+            case "哈尔滨":
+                return 6;
             default:
                 return -1;
 
@@ -425,13 +428,15 @@ public class User {
             case 1:
                 return "上海";
             case 2:
-                return "成都";
+                return "长沙";
             case 3:
                 return "重庆";
             case 4:
                 return "广州";
             case 5:
-                return "深圳";
+                return "海口";
+            case 6:
+                return "哈尔滨";
             default:
                 return "";
 
@@ -447,4 +452,13 @@ public class User {
         }
         return 0;
     }
+
+    public ObservableList<Flight2> best(String flight1, String flight2) {
+        ObservableList<Flight2> flightList = FXCollections.observableArrayList();
+        FlightOperation op = new FlightOperation();
+        flightList.add(op.seekFlightWithSort(flight1, "不限", "不限", "不限").get(0));
+        flightList.add(op.seekFlightWithSort(flight2, "不限", "不限", "不限").get(0));
+        return flightList;
+    }
+
 }
