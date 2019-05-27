@@ -376,6 +376,8 @@ public class Administrator implements Tool {
             } else {
                 place[1] = "无";
                 time[1] = time[2] = "0000-00-00 00:00";
+                ticket[1] = Integer.valueOf(textTicket11.getText());
+                price[1] = Integer.valueOf(textPrice11.getText());
             }
             place[0] = comboCity11.getValue();
             place[2] = comboCity13.getValue();
@@ -442,6 +444,8 @@ public class Administrator implements Tool {
             } else {
                 place[1] = "无";
                 time[1] = time[2] = "0000-00-00 00:00";
+                ticket[1] = Integer.valueOf(textTicket31.getText());
+                price[1] = Integer.valueOf(textPrice31.getText());
             }
             place[0] = comboCity31.getValue();
             place[2] = comboCity33.getValue();

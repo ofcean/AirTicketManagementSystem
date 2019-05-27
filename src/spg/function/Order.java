@@ -1,15 +1,7 @@
 package spg.function;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 public class Order {
-    private int index;
+    private String  index;
     private String passengerId;
     private String flightId;
     private String orderStatus;
@@ -18,7 +10,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(int index, String passengerId, String flightId, String orderStatus, int leg) {
+    public Order(String  index, String passengerId, String flightId, String orderStatus, int leg) {
         this.index = index;
         this.passengerId = passengerId;
         this.flightId = flightId;
@@ -26,11 +18,11 @@ public class Order {
         this.leg = leg;
     }
 
-    public void setIndex(int index) {
+    public void setIndex(String  index) {
         this.index = index;
     }
 
-    public int getIndex() {
+    public String  getIndex() {
         return index;
     }
 

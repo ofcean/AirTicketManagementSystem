@@ -149,10 +149,15 @@ public class FlightOperation implements Tool {
             conn = DatabaseConnection.getCon();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select * from flight.order_list where passenger_id='" + passengerId + "'");//Execute the SQL and return the result set
+            String[] flightId = new String[10];
+            int i = 0;
             while (rs.next()) {
-                String flightId = rs.getString("flight_id");
-                ResultSet rt = stmt.executeQuery("select * from flight.flight where flight_id='" + flightId + "' and status='延误'");
-                if (rt.next()) return flightId;
+                flightId[i] = rs.getString("flight_id");
+                i++;
+            }
+            for (int j = 0; j < flightId.length && flightId[j] != null; j++) {
+                ResultSet rt = stmt.executeQuery("select * from flight.flight where flight_id='" + flightId[j] + "' and status='延误'");
+                if (rt.next()) return flightId[j];
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -224,7 +229,10 @@ public class FlightOperation implements Tool {
                         r2 = stmt.executeQuery("select * from flight.flight where flight_id='" + a + "'");
                         flightList = setFlight2(flightList, r2, "place2", "place3", "time3", "time4", "ticket2", "price2");
                     } else {
-                        flightList = setFlight2(flightList, r1, "place1", "place3", "time1", "time4", "ticket1", "price1");
+                        if (r1.getInt("price1") < r1.getInt("price2"))
+                            flightList = setFlight2(flightList, r1, "place1", "place3", "time1", "time4", "ticket1", "price1");
+                        else
+                            flightList = setFlight2(flightList, r1, "place1", "place3", "time1", "time4", "ticket1", "price2");
                     }
                     break;
                 }
@@ -246,8 +254,8 @@ public class FlightOperation implements Tool {
                     flight.setPlace2(r5.getString("place3"));
                     flight.setTime1(r5.getString("time1"));
                     flight.setTime2(r5.getString("time4"));
-                    flight.setTicket((r5.getInt("ticket1") < r5.getInt("ticket2") || r5.getInt("ticket2") == 0) ? r5.getInt("ticket1") : r5.getInt("ticket2"));
-                    flight.setPrice(r5.getInt("price1") + r5.getInt("price2"));
+                    flight.setTicket(r5.getInt("ticket1") < r5.getInt("ticket2") ? r5.getInt("ticket1") : r5.getInt("ticket2"));
+                    flight.setPrice(r3.getInt("price1") == r3.getInt("price2") ? r3.getInt("price1") : r3.getInt("price1") + r3.getInt("price2"));
                     flightList.add(flight);
                 }
             }
@@ -300,8 +308,8 @@ public class FlightOperation implements Tool {
                 flight.setPlace2(r3.getString("place3"));
                 flight.setTime1(r3.getString("time1"));
                 flight.setTime2(r3.getString("time4"));
-                flight.setTicket((r3.getInt("ticket1") < r3.getInt("ticket2") || r3.getInt("ticket2") == 0) ? r3.getInt("ticket1") : r3.getInt("ticket2"));
-                flight.setPrice(r3.getInt("price1") + r3.getInt("price2"));
+                flight.setTicket(r3.getInt("ticket1") < r3.getInt("ticket2") ? r3.getInt("ticket1") : r3.getInt("ticket2"));
+                flight.setPrice(r3.getInt("price1") == r3.getInt("price2") ? r3.getInt("price1") : r3.getInt("price1") + r3.getInt("price2"));
                 flightList.add(flight);
             }
         } catch (Exception e) {

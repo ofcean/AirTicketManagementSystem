@@ -117,7 +117,7 @@ public class RecommendByPrice implements Tool {
             fli2.setPlace2(flightList.get(m).getPlace2());
             fli2.setTime1(flightList.get(m).getTime1());
             fli2.setTime2(flightList.get(m).getTime2());
-
+            fli2.setPrice(flightList.get(m).getPrice1());
             flightList2.add(m, fli2);
         }
         for (int m = 1; m < flightList.size(); m = m + 2) {
@@ -139,7 +139,7 @@ public class RecommendByPrice implements Tool {
             fli2.setPlace2(flightList.get(m).getPlace3());
             fli2.setTime1(flightList.get(m).getTime1());
             fli2.setTime2(flightList.get(m).getTime4());
-
+            fli2.setPrice(flightList.get(m).getPrice1());
             flightList2.add(m, fli2);
         }
         return flightList2;
@@ -181,7 +181,7 @@ public class RecommendByPrice implements Tool {
             fli2.setPlace2(flightList.get(m).getPlace3());
             fli2.setTime1(flightList.get(m).getTime1());
             fli2.setTime2(flightList.get(m).getTime4());
-
+            fli2.setPrice(flightList.get(m).getPrice1());
             flightList2.add(m, fli2);
         }
         for (int m = 1; m < flightList.size(); m = m + 2) {
@@ -203,7 +203,7 @@ public class RecommendByPrice implements Tool {
             fli2.setPlace2(flightList.get(m).getPlace3());
             fli2.setTime1(flightList.get(m).getTime1());
             fli2.setTime2(flightList.get(m).getTime4());
-
+            fli2.setPrice(flightList.get(m).getPrice1());
             flightList2.add(m, fli2);
         }
         return flightList2;
@@ -237,7 +237,7 @@ public class RecommendByPrice implements Tool {
             fli2.setPlace2(flightList.get(m).getPlace2());
             fli2.setTime1(flightList.get(m).getTime1());
             fli2.setTime2(flightList.get(m).getTime2());
-
+            fli2.setPrice(flightList.get(m).getPrice1());
             flightList2.add(m, fli2);
         }
         for (int m = 1; m < flightList.size(); m = m + 2) {
@@ -252,7 +252,7 @@ public class RecommendByPrice implements Tool {
             fli2.setPlace2(flightList.get(m).getPlace3());
             fli2.setTime1(flightList.get(m).getTime3());
             fli2.setTime2(flightList.get(m).getTime4());
-
+            fli2.setPrice(flightList.get(m).getPrice2());
             flightList2.add(m, fli2);
         }
         return flightList2;
@@ -291,7 +291,7 @@ public class RecommendByPrice implements Tool {
             fli2.setPlace2(flightList.get(m).getPlace3());
             fli2.setTime1(flightList.get(m).getTime1());
             fli2.setTime2(flightList.get(m).getTime4());
-
+            fli2.setPrice(flightList.get(m).getPrice1());
             flightList2.add(m, fli2);
         }
         for (int m = 1; m < flightList.size(); m = m + 2) {
@@ -306,7 +306,7 @@ public class RecommendByPrice implements Tool {
             fli2.setPlace2(flightList.get(m).getPlace3());
             fli2.setTime1(flightList.get(m).getTime3());
             fli2.setTime2(flightList.get(m).getTime4());
-
+            fli2.setPrice(flightList.get(m).getPrice2());
             flightList2.add(m, fli2);
         }
         return flightList2;
@@ -340,12 +340,13 @@ public class RecommendByPrice implements Tool {
                 price = fliList.get(i).getPrice() + fliList.get(i + 1).getPrice();
                 if (minprice == 0) {
                     minprice = price;
-                    flightList.add(fliList.get(i));
+                    flightList.add(fliList.get(i));       //修改
                     flightList.add(fliList.get(i + 1));
                 } else if (price < minprice) {
                     minprice = price;
-                    flightList.removeAll();
-                    flightList.add(fliList.get(i));
+                    flightList.remove(0);
+                    flightList.remove(0);
+                    flightList.add(fliList.get(i));        //修改
                     flightList.add(fliList.get(i + 1));
                 }
             }

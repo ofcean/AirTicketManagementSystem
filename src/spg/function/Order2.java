@@ -1,6 +1,5 @@
 package spg.function;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -10,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Order2 {
-    private int index;
+    private String index;
     private String passengerId;
     private String flightId;
     private String orderStatus;
@@ -27,7 +26,7 @@ public class Order2 {
             ResultSet rs = stmt.executeQuery("select * from flight.order_list where passenger_id='" + passengerId + "'");//Execute the SQL and return the result set
             while (rs.next()) {
                 Order2 order = new Order2();
-                order.setIndex(rs.getInt("index"));
+                order.setIndex(rs.getString("order_number"));
                 order.setPassengerId(rs.getString("passenger_id"));
                 order.setFlightId(rs.getString("flight_id"));
                 order.setOrderStatus(rs.getString("order_status"));
@@ -45,11 +44,11 @@ public class Order2 {
         return orderList;//Returns the result
     }
 
-    public void setIndex(int index) {
+    public void setIndex(String index) {
         this.index = index;
     }
 
-    public int getIndex() {
+    public String getIndex() {
         return index;
     }
 

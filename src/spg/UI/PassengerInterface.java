@@ -282,14 +282,13 @@ public class PassengerInterface implements Tool {
         comboRecommend4.setItems(FXCollections.observableArrayList(RECOMMEND));
 
         buttonCheck1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            String delayFlightId;
-            String[] city = new String[2];
-            if ((delayFlightId = fop.seekDelayFlight(textUserId1.getText())) != null) {
+            String delayFlightId = fop.seekDelayFlight(textUserId1.getText());
+            String[] city = fop.seekDelayFlightCity(textUserId1.getText(), delayFlightId);
+            if (delayFlightId != null) {
                 textMessage1.setText("我们抱歉地通知您，航班" + delayFlightId + "延误。");
+                this.showFlightTable(fop.seekFlightWithoutDelay(city[0], city[1]), colId1, colAirway1, colCity11, colCity21,
+                        colTime11, colTime21, colTicket1, colPrice1, colStatus1, colBuy1, tableFlight1);
             }
-            city = fop.seekDelayFlightCity(textUserId1.getText(), delayFlightId);
-            this.showFlightTable(fop.seekFlightWithoutDelay(city[0], city[1]), colId1, colAirway1, colCity11, colCity21,
-                    colTime11, colTime21, colTicket1, colPrice1, colStatus1, colBuy1, tableFlight1);
         });
 
         buttonSearch2.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
@@ -360,7 +359,6 @@ public class PassengerInterface implements Tool {
                                     showTicketResults(clickedFli.getFlightId(), Type.PlaceEnum.SECOND);
                                 else if (clickedFli.getPlace1().equals(btn.getPlace1()) && clickedFli.getPlace2().equals(btn.getPlace3())) {
                                     showTicketResults(clickedFli.getFlightId(), Type.PlaceEnum.FULL);
-                                    System.out.println("FULL");
                                 }
                             }
                         });

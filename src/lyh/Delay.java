@@ -218,6 +218,7 @@ public class Delay implements Tool {
                     Date[i] = LocalDate.parse("2019-01-01", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 return Date;
             }
+            rs.previous();
             while (rs.next()) {
                 Flight flight = new Flight();
                 flight.setFlightId(rs.getString("flight_id"));
@@ -275,6 +276,7 @@ public class Delay implements Tool {
                     Time[i] = LocalTime.parse("00:00:00", DateTimeFormatter.ofPattern("HH:mm:ss"));
                 return Time;
             }
+            rs.previous();
             while (rs.next()) {
                 Flight flight = new Flight();
                 flight.setFlightId(rs.getString("flight_id"));
