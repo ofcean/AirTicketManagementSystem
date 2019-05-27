@@ -20,16 +20,19 @@ public class User {
 
     public Order buy(Flight x, Type.PlaceEnum t) {//购票，参数为航班x和上下机情况t，购票成功返回Order对象r并修改x，失败返回空订单，x无变化，此方法不改变数据库
         Order r = new Order(0, null, null, null, 0);//初始化为空订单，属性皆为null
-        r.setIndex(0);
         int p[] = new int[2];
         p[0] = x.getTicket1();
-        p[1] = x.getTicket2();
+
+        System.out.println(p[0]);
+        System.out.println(p[1]);
         switch (t) { //检查余票，无余票返回r退出。有则余票数减1
             case FULL:
                 if (p[0] == 0 || p[1] == 0)
                     return r;
                 p[0]--;
                 p[1]--;
+                System.out.println(p[0]);
+                System.out.println(p[1]);
                 x.setTicket1(p[0]);
                 x.setTicket2(p[1]);
                 r.setLeg(3);
@@ -167,7 +170,7 @@ public class User {
             Connection conn = DatabaseConnection.getCon();
             conn.setAutoCommit(false);
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("select * from flight.order_list where index=orderid");
+            ResultSet rs = s.executeQuery("select * from flight.order_list where index = " + orderid + "");
             String place[] = new String[3];
             while (rs.next()) {
                 n.setOrderStatus(rs.getString("status"));

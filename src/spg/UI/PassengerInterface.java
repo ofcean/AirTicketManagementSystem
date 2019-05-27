@@ -358,8 +358,10 @@ public class PassengerInterface implements Tool {
                                     showTicketResults(clickedFli.getFlightId(), Type.PlaceEnum.FIRST);
                                 else if (clickedFli.getPlace1().equals(btn.getPlace2()) && clickedFli.getPlace2().equals(btn.getPlace3()))
                                     showTicketResults(clickedFli.getFlightId(), Type.PlaceEnum.SECOND);
-                                else if (clickedFli.getPlace1().equals(btn.getPlace1()) && clickedFli.getPlace2().equals(btn.getPlace3()))
+                                else if (clickedFli.getPlace1().equals(btn.getPlace1()) && clickedFli.getPlace2().equals(btn.getPlace3())) {
                                     showTicketResults(clickedFli.getFlightId(), Type.PlaceEnum.FULL);
+                                    System.out.println("FULL");
+                                }
                             }
                         });
                     }

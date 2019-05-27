@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import spg.function.DatabaseConnection;
 import spg.function.Flight;
-import spg.function.FlightOperation;
 import spg.function.Tool;
 import spg.function.Flight2;
 
@@ -338,19 +337,14 @@ public class RecommendByPrice implements Tool {
         int minprice = 0, price = 0;
         try {
             for (int i = 0; i < fliList.size(); i = i + 2) {
-                System.out.println(1);
                 price = fliList.get(i).getPrice() + fliList.get(i + 1).getPrice();
                 if (minprice == 0) {
                     minprice = price;
-                    System.out.println(2);
-                    System.out.println(fliList.get(i).getFlightId());
                     flightList.add(fliList.get(i));
                     flightList.add(fliList.get(i + 1));
                 } else if (price < minprice) {
                     minprice = price;
                     flightList.removeAll();
-                    System.out.println(3);
-                    System.out.println(fliList.get(i).getFlightId());
                     flightList.add(fliList.get(i));
                     flightList.add(fliList.get(i + 1));
                 }
